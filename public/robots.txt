@@ -1,0 +1,18 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Disallow admin and private pages
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+
+# Disallow AI scrapers
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+# Sitemap
+Sitemap: https://ai-design-hub.vercel.app/sitemap.xml

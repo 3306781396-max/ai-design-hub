@@ -1,0 +1,148 @@
+"use client";
+
+import { useState, useMemo } from "react";
+import { useTranslation } from "@/i18n";
+import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Pagination } from "@/components/ui/pagination";
+import type { Tool, Category } from "@/types";
+
+const PER_PAGE = 12;
+
+interface Props {
+  allTools: Tool[];
+  allCategories: Category[];
+}
+
+export function ToolsFilteredGrid({ allTools, allCategories }: Props) {
+  const { t } = useTranslation();
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("");
+  const [sort, setSort] = useState<"rating" | "newest" | "clicks">("rating");
+  const [page, setPage] = useState(1);
+
+  const filtered = useMemo(() => {
+    let result = [...allTools];
+    if (search) {
+      const q = search.toLowerCase();
+      result = result.filter((t) => t.name.toLowerCase().includes(q) || t.description.toLowerCase().includes(q));
+    }
+    if (category) result = result.filter((t) => t.category_slug === category);
+    if (sort === "rating") result.sort((a, b) => b.rating - a.rating);
+    if (sort === "newest") result.sort((a, b) => b.id.localeCompare(a.id));
+    if (sort === "clicks") result.sort((a, b) => b.clicks - a.clicks);
+    return result;
+  }, [allTools, search, category, sort]);
+
+  const total = filtered.length;
+  const totalPages = Math.ceil(total / PER_PAGE);
+  const paged = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+
+  const sortOptions = [
+    { value: "rating" as const, label: t("common.highest_rated") },
+    { value: "newest" as const, label: t("common.newest") },
+    { value: "clicks" as const, label: t("common.most_popular") },
+  ];
+
+  return (
+    <div className="flex flex-col lg:flex-row gap-8">
+      {/* Sidebar */}
+      <aside className="lg:w-64 shrink-0">
+        <div className="sticky top-24 space-y-6">
+          <input
+            type="text"
+            placeholder={t("tools.search_placeholder")}
+            value={search}
+            onChange={(e) => { setSearch(e.target.value); setPage(1); }}
+            className="w-full px-4 py-2 rounded-lg bg-dark-900 border border-dark-800 dark:text-white text-gray-900 placeholder-dark-500 focus:outline-none focus:border-primary-500"
+          />
+
+          <div>
+            <h3 className="dark:text-white text-gray-900 font-semibold mb-3">
+              {t("tools.sidebar.categories")}
+            </h3>
+            <div className="space-y-1">
+              <button
+                onClick={() => { setCategory(""); setPage(1); }}
+                className={`block w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${!category ? "bg-primary-500/20 text-primary-400" : "text-dark-300 hover:bg-dark-800"}`}
+              >
+                {t("tools.sidebar.all_tools")}
+              </button>
+              {allCategories.map((cat) => (
+                <button
+                  key={cat.slug}
+                  onClick={() => { setCategory(cat.slug); setPage(1); }}
+                  className={`block w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${category === cat.slug ? "bg-primary-500/20 text-primary-400" : "text-dark-300 hover:bg-dark-800"}`}
+                >
+                  {cat.name}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="dark:text-white text-gray-900 font-semibold mb-3">
+              {t("tools.sidebar.sort_by")}
+            </h3>
+            <div className="space-y-1">
+              {sortOptions.map((opt) => (
+                <button
+                  key={opt.value}
+                  onClick={() => { setSort(opt.value); setPage(1); }}
+                  className={`block w-full text-left px-3 py-2 rounded-md text-sm transition-colors ${sort === opt.value ? "bg-primary-500/20 text-primary-400" : "text-dark-300 hover:bg-dark-800"}`}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      {/* Grid */}
+      <div className="flex-1">
+        {paged.length === 0 ? (
+          <div className="text-center py-20">
+            <p className="text-dark-400 text-lg">{t("tools.empty")}</p>
+          </div>
+        ) : (
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {paged.map((tool) => (
+                <Link key={tool.id} href={`/tool/${tool.slug}`}>
+                  <Card className="bg-dark-900 border-dark-800 hover:border-primary-500/50 transition-all h-full card-hover">
+                    <CardContent className="p-5">
+                      <div className="flex items-start gap-4 mb-3">
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-xl font-bold text-primary-400 shrink-0">
+                          {tool.name.charAt(0)}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-semibold dark:text-white text-gray-900 truncate">{tool.name}</h3>
+                          <div className="flex items-center gap-1 mt-1">
+                            <span className="text-amber-400 text-sm">★</span>
+                            <span className="text-sm dark:text-white text-gray-900">{tool.rating.toFixed(1)}</span>
+                          </div>
+                        </div>
+                        <Badge variant="outline" className="text-xs shrink-0">{tool.pricing}</Badge>
+                      </div>
+                      <p className="text-sm text-dark-400 line-clamp-2">{tool.description}</p>
+                      <div className="flex flex-wrap gap-1 mt-3">
+                        {tool.tags.slice(0, 3).map((tag) => <Badge key={tag} variant="secondary" className="text-xs">{tag}</Badge>)}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+            {totalPages > 1 && (
+              <div className="mt-10 flex justify-center">
+                <Pagination currentPage={page} totalPages={totalPages} onPageChange={setPage} />
+              </div>
+            )}
+          </>
+        )}
+      </div>
+    </div>
+  );
+}

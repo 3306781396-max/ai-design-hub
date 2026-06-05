@@ -1,0 +1,322 @@
+{
+  "common": {
+    "home": "首页",
+    "tools": "工具",
+    "categories": "分类",
+    "blog": "博客",
+    "compare": "对比",
+    "submit_tool": "提交工具",
+    "favorites": "收藏",
+    "search": "搜索",
+    "view_all": "查看全部",
+    "view_details": "查看详情",
+    "back": "返回",
+    "back_to_home": "← 返回首页",
+    "back_to_tools": "← 返回工具",
+    "back_to_blog": "← 返回博客",
+    "loading": "加载中...",
+    "no_results": "没有找到结果。",
+    "all": "全部",
+    "featured": "精选",
+    "sponsored": "赞助",
+    "trending": "热门",
+    "new": "最新",
+    "free": "免费",
+    "freemium": "免费增值",
+    "paid": "付费",
+    "free_trial": "免费试用",
+    "rating": "评分",
+    "reviews": "条评价",
+    "views": "次浏览",
+    "clicks": "次点击",
+    "pricing": "价格",
+    "category": "分类",
+    "tags": "标签",
+    "pros": "优点",
+    "cons": "缺点",
+    "features": "核心功能",
+    "use_cases": "适用场景",
+    "min_read": "分钟阅读",
+    "out_of_5": "分 / 5分",
+    "visit_website": "访问网站",
+    "remove": "移除",
+    "clear_all": "清空全部",
+    "sort_by": "排序方式",
+    "highest_rated": "评分最高",
+    "newest": "最新发布",
+    "most_popular": "最受欢迎",
+    "author": "作者",
+    "read_more": "阅读更多",
+    "related": "相关推荐",
+    "faq": "常见问题",
+    "subscribe": "订阅",
+    "subscribing": "订阅中...",
+    "email_placeholder": "your@example.com",
+    "required": "*",
+    "optional": "（选填）",
+    "select": "请选择...",
+    "submit": "提交",
+    "submitting": "提交中...",
+    "copyright": "版权所有。"
+  },
+  "header": {
+    "logo": "AI Design Hub",
+    "nav": {
+      "tools": "工具",
+      "categories": "分类",
+      "blog": "博客",
+      "compare": "对比",
+      "submit_tool": "提交工具"
+    },
+    "search_placeholder": "搜索工具...",
+    "open_search": "打开搜索",
+    "close_search": "关闭搜索",
+    "open_menu": "打开菜单",
+    "close_menu": "关闭菜单",
+    "favorites": "收藏",
+    "compare_tools": "对比工具",
+    "theme": {
+      "light": "浅色",
+      "dark": "深色",
+      "selection": "主题选择",
+      "light_mode": "浅色模式",
+      "dark_mode": "深色模式"
+    },
+    "language": {
+      "switch": "切换语言",
+      "zh": "中文",
+      "en": "EN"
+    }
+  },
+  "footer": {
+    "tagline": "发现最优秀的 AI 设计工具，加速你的创意工作流程。",
+    "platform": "平台",
+    "platform_links": {
+      "about": "关于我们",
+      "contact": "联系我们",
+      "submit_tool": "提交工具",
+      "advertise": "广告合作"
+    },
+    "categories": "分类",
+    "resources": "资源",
+    "resources_links": {
+      "blog": "博客",
+      "newsletter": "邮件订阅",
+      "api": "API",
+      "faq": "常见问题"
+    },
+    "legal": "法律",
+    "legal_links": {
+      "privacy": "隐私政策",
+      "terms": "服务条款",
+      "cookies": "Cookie 政策"
+    },
+    "copyright": "© {year} AI Design Hub. 版权所有。",
+    "social": {
+      "twitter": "Twitter",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "youtube": "YouTube",
+      "rss": "RSS"
+    }
+  },
+  "home": {
+    "hero": {
+      "badge": "发现 500+ AI 设计工具",
+      "heading": "AI Design Hub",
+      "version": "2.0",
+      "description": "AI 设计工具的终极目录。发现、对比并找到最完美的 AI 工具，覆盖图像生成、视频创作、UI/UX 设计、3D 建模等领域。",
+      "search_placeholder": "搜索 AI 工具...（例如 '图像生成器'、'视频 AI'）",
+      "search_button": "搜索",
+      "cta_browse": "浏览全部工具",
+      "cta_submit": "提交你的工具",
+      "stats": {
+        "ai_tools": "AI 工具",
+        "ai_tools_value": "500+",
+        "categories": "分类",
+        "categories_value": "6",
+        "monthly_visits": "月访问量",
+        "monthly_visits_value": "50K+",
+        "curated_reviews": "精选评测",
+        "curated_reviews_value": "200+"
+      }
+    },
+    "trending": {
+      "title": "热门工具",
+      "subtitle": "本周最受欢迎的 AI 设计工具"
+    },
+    "latest": {
+      "title": "最新工具",
+      "subtitle": "最近新增的 AI 设计工具"
+    },
+    "featured_section": {
+      "title": "精选工具",
+      "subtitle": "编辑推荐的顶级 AI 设计工具",
+      "badge": "⭐ 精选"
+    },
+    "categories_preview": {
+      "title": "按分类浏览",
+      "subtitle": "探索不同设计领域的 AI 工具",
+      "view_all": "查看全部分类"
+    },
+    "blog_preview": {
+      "title": "最新博客文章",
+      "subtitle": "AI 设计领域的洞见、教程和新闻"
+    },
+    "newsletter": {
+      "title": "走在 AI 设计前沿",
+      "description": "每周为你精选最优秀的 AI 设计工具、技巧和行业洞见，直接发送到你的邮箱。",
+      "email_placeholder": "your@example.com",
+      "subscribe": "订阅",
+      "subscribing": "订阅中...",
+      "success": "订阅成功！请查收收件箱。",
+      "error_empty": "请输入邮箱地址。",
+      "error_invalid": "请输入有效的邮箱地址。",
+      "error_general": "出了点问题，请稍后重试。",
+      "footer": "绝无垃圾邮件，随时可以取消订阅。"
+    },
+    "cta": {
+      "badge": "致工具开发者",
+      "title": "让你的 AI 工具触达 50,000+ 设计师",
+      "description": "在 AI Design Hub 展示你的工具，精准触达正在寻找 AI 设计解决方案的目标用户。我们提供赞助展示、精选推荐和联盟合作等多种合作方式。",
+      "submit": "提交你的工具",
+      "advertise": "广告合作"
+    }
+  },
+  "tools": {
+    "page_title": "AI 设计工具",
+    "page_subtitle": "发现 {count} 款 AI 驱动的设计工具，激发你的创作灵感",
+    "search_placeholder": "搜索工具...",
+    "sidebar": {
+      "categories": "分类",
+      "all_tools": "全部工具",
+      "sort_by": "排序方式",
+      "highest_rated": "评分最高",
+      "newest": "最新发布",
+      "most_popular": "最受欢迎"
+    },
+    "empty": "没有找到匹配的工具，请尝试其他搜索词。",
+    "card": {
+      "toggle_favorite": "切换收藏",
+      "add_to_compare": "加入对比",
+      "clicks": "次点击"
+    }
+  },
+  "tool_detail": {
+    "home": "首页",
+    "tools": "工具",
+    "about": "关于 {name}",
+    "review_count": "{count} 条评价",
+    "visit_website": "访问网站 →",
+    "user_reviews": "用户评价",
+    "faq": "常见问题",
+    "side_info": "工具信息",
+    "related_tools": "相关工具",
+    "review_1": "非常喜欢 {name}！它彻底改变了我的工作流程。AI 生成质量非常出色，界面也很直观。",
+    "review_2": "总体来说是很棒的工具。{name} 每周帮我节省了大量时间。希望能看到更多导出选项和更好的 API 文档。",
+    "review_3": "我用过最好的 AI 设计工具。{name} 产出的结果始终令人印象深刻，非常值得订阅。"
+  },
+  "blog": {
+    "page_title": "AI 设计博客",
+    "page_subtitle": "关于 AI 设计工具的教程、对比、技巧和行业洞见。在 AI 驱动的创意领域保持领先。",
+    "sidebar": {
+      "categories": "分类",
+      "all_posts": "全部文章",
+      "tags": "标签"
+    },
+    "empty": "没有找到文章。",
+    "min": "分钟",
+    "detail": {
+      "home": "首页",
+      "blog": "博客",
+      "back_to_blog": "← 返回博客",
+      "related_articles": "相关文章",
+      "faq": "常见问题"
+    }
+  },
+  "compare": {
+    "page_title": "对比 AI 工具",
+    "page_subtitle": "最多同时对比 3 个工具，帮你找到最佳选择。",
+    "add_tool": "添加工具",
+    "add_tool_placeholder": "添加工具",
+    "select": "选择",
+    "no_tools": "未选择工具",
+    "no_tools_desc": "添加工具以开始对比",
+    "select_tools": "选择工具",
+    "select_dialog_title": "选择要对比的工具",
+    "loading": "加载对比...",
+    "remove_tool": "移除 {name}",
+    "fields": {
+      "feature": "功能",
+      "rating": "评分",
+      "pricing": "价格模式",
+      "views": "浏览量",
+      "tags": "标签",
+      "pros": "优点",
+      "cons": "缺点",
+      "features": "核心功能",
+      "use_cases": "适用场景",
+      "view_details": "查看详情",
+      "visit_website": "访问网站 →"
+    }
+  },
+  "favorites": {
+    "page_title": "❤️ 我的收藏",
+    "saved_count": "已收藏 {count} 个工具",
+    "saved_count_plural": "已收藏 {count} 个工具",
+    "clear_all": "清空全部",
+    "empty_title": "🤍 还没有收藏",
+    "empty_desc": "点击任意工具卡片上的爱心图标，即可将其保存到这里。",
+    "browse_tools": "浏览工具",
+    "loading": "加载收藏...",
+    "remove": "取消收藏"
+  },
+  "submit": {
+    "page_title": "提交 AI 工具",
+    "page_description": "发现了一个未收录的优秀 AI 设计工具？在这里提交以供审核。",
+    "required_info": "必填信息",
+    "tool_name": "工具名称",
+    "tool_name_placeholder": "例如 Midjourney",
+    "website_url": "官方网站",
+    "website_url_placeholder": "https://example.com",
+    "category": "分类",
+    "category_placeholder": "请选择...",
+    "pricing": "价格模式",
+    "short_description": "简短描述",
+    "short_description_placeholder": "用一两句话简要描述这个工具的功能...",
+    "detailed_description": "详细描述",
+    "detailed_description_placeholder": "说明功能、使用场景以及这个工具的特别之处...",
+    "optional_details": "选填信息",
+    "tags": "标签（用逗号分隔）",
+    "tags_placeholder": "AI 图像, 文字转图, 生成艺术",
+    "pros": "优点（每行一个）",
+    "pros_placeholder": "易于使用\n高质量输出",
+    "cons": "缺点（每行一个）",
+    "cons_placeholder": "免费版功能有限\n学习曲线较陡",
+    "features": "核心功能（每行一个）",
+    "features_placeholder": "文字转图生成\n局部重绘支持",
+    "your_info": "你的信息（选填）",
+    "your_name": "你的名字",
+    "your_name_placeholder": "张三",
+    "your_email": "你的邮箱",
+    "your_email_placeholder": "zhangsan@example.com",
+    "submit_button": "提交审核",
+    "submitting": "提交中...",
+    "disclaimer": "提交即表示你同意我们的团队将在发布前审核该工具。",
+    "error_required": "请填写所有必填字段。",
+    "success": {
+      "title": "提交成功！",
+      "description": "感谢你提交 {name}。我们的团队将在 2-3 个工作日内进行审核并回复你。",
+      "browse": "浏览工具",
+      "home": "返回首页"
+    }
+  },
+  "category": {
+    "image_tools": "AI 图像工具",
+    "video_tools": "AI 视频工具",
+    "ui_ux_tools": "AI UI/UX 工具",
+    "animation_tools": "AI 动画工具",
+    "3d_tools": "AI 3D 工具",
+    "productivity_tools": "AI 效率工具"
+  }
+}

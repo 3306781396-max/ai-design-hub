@@ -1,0 +1,322 @@
+{
+  "common": {
+    "home": "Home",
+    "tools": "Tools",
+    "categories": "Categories",
+    "blog": "Blog",
+    "compare": "Compare",
+    "submit_tool": "Submit Tool",
+    "favorites": "Favorites",
+    "search": "Search",
+    "view_all": "View All",
+    "view_details": "View Details",
+    "back": "Back",
+    "back_to_home": "Back to Home",
+    "back_to_tools": "Back to Tools",
+    "back_to_blog": "Back to Blog",
+    "loading": "Loading...",
+    "no_results": "No results found.",
+    "all": "All",
+    "featured": "Featured",
+    "sponsored": "Sponsored",
+    "trending": "Trending",
+    "new": "New",
+    "free": "Free",
+    "freemium": "Freemium",
+    "paid": "Paid",
+    "free_trial": "Free Trial",
+    "rating": "Rating",
+    "reviews": "reviews",
+    "views": "views",
+    "clicks": "clicks",
+    "pricing": "Pricing",
+    "category": "Category",
+    "tags": "Tags",
+    "pros": "Pros",
+    "cons": "Cons",
+    "features": "Key Features",
+    "use_cases": "Use Cases",
+    "min_read": "min read",
+    "out_of_5": "out of 5",
+    "visit_website": "Visit Website",
+    "remove": "Remove",
+    "clear_all": "Clear All",
+    "sort_by": "Sort By",
+    "highest_rated": "Highest Rated",
+    "newest": "Newest",
+    "most_popular": "Most Popular",
+    "author": "Author",
+    "read_more": "Read More",
+    "related": "Related",
+    "faq": "Frequently Asked Questions",
+    "subscribe": "Subscribe",
+    "subscribing": "Subscribing...",
+    "email_placeholder": "you@example.com",
+    "required": "*",
+    "optional": "(optional)",
+    "select": "Select...",
+    "submit": "Submit",
+    "submitting": "Submitting...",
+    "copyright": "All rights reserved."
+  },
+  "header": {
+    "logo": "AI Design Hub",
+    "nav": {
+      "tools": "Tools",
+      "categories": "Categories",
+      "blog": "Blog",
+      "compare": "Compare",
+      "submit_tool": "Submit Tool"
+    },
+    "search_placeholder": "Search tools...",
+    "open_search": "Open search",
+    "close_search": "Close search",
+    "open_menu": "Open menu",
+    "close_menu": "Close menu",
+    "favorites": "Favorites",
+    "compare_tools": "Compare tools",
+    "theme": {
+      "light": "Light",
+      "dark": "Dark",
+      "selection": "Theme selection",
+      "light_mode": "Light Mode",
+      "dark_mode": "Dark Mode"
+    },
+    "language": {
+      "switch": "Switch language",
+      "zh": "中文",
+      "en": "EN"
+    }
+  },
+  "footer": {
+    "tagline": "Discover the best AI design tools to supercharge your creative workflow.",
+    "platform": "Platform",
+    "platform_links": {
+      "about": "About",
+      "contact": "Contact",
+      "submit_tool": "Submit Tool",
+      "advertise": "Advertise"
+    },
+    "categories": "Categories",
+    "resources": "Resources",
+    "resources_links": {
+      "blog": "Blog",
+      "newsletter": "Newsletter",
+      "api": "API",
+      "faq": "FAQ"
+    },
+    "legal": "Legal",
+    "legal_links": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "cookies": "Cookie Policy"
+    },
+    "copyright": "© {year} AI Design Hub. All rights reserved.",
+    "social": {
+      "twitter": "Twitter",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "youtube": "YouTube",
+      "rss": "RSS"
+    }
+  },
+  "home": {
+    "hero": {
+      "badge": "Discover 500+ AI Design Tools",
+      "heading": "AI Design Hub",
+      "version": "2.0",
+      "description": "The ultimate directory for AI-powered design tools. Discover, compare, and find the perfect AI tool for image generation, video creation, UI/UX design, 3D modeling, and more.",
+      "search_placeholder": "Search AI tools... (e.g. 'image generator', 'video AI')",
+      "search_button": "Search",
+      "cta_browse": "Browse All Tools",
+      "cta_submit": "Submit Your Tool",
+      "stats": {
+        "ai_tools": "AI Tools",
+        "ai_tools_value": "500+",
+        "categories": "Categories",
+        "categories_value": "6",
+        "monthly_visits": "Monthly Visits",
+        "monthly_visits_value": "50K+",
+        "curated_reviews": "Curated Reviews",
+        "curated_reviews_value": "200+"
+      }
+    },
+    "trending": {
+      "title": "Trending Tools",
+      "subtitle": "Most popular AI design tools this week"
+    },
+    "latest": {
+      "title": "Latest Tools",
+      "subtitle": "Newly added AI design tools"
+    },
+    "featured_section": {
+      "title": "Featured Tools",
+      "subtitle": "Editor's top picks for AI design tools",
+      "badge": "Featured"
+    },
+    "categories_preview": {
+      "title": "Browse by Category",
+      "subtitle": "Explore AI tools across different design disciplines",
+      "view_all": "View All Categories"
+    },
+    "blog_preview": {
+      "title": "Latest from the Blog",
+      "subtitle": "Insights, tutorials, and news about AI design"
+    },
+    "newsletter": {
+      "title": "Stay Ahead in AI Design",
+      "description": "Get weekly curated picks of the best AI design tools, tips, and industry insights delivered to your inbox.",
+      "email_placeholder": "you@example.com",
+      "subscribe": "Subscribe",
+      "subscribing": "Subscribing...",
+      "success": "You're subscribed! Check your inbox.",
+      "error_empty": "Please enter your email address.",
+      "error_invalid": "Please enter a valid email address.",
+      "error_general": "Something went wrong. Please try again.",
+      "footer": "No spam, ever. Unsubscribe anytime."
+    },
+    "cta": {
+      "badge": "For Tool Creators",
+      "title": "Get Your AI Tool in Front of 50,000+ Designers",
+      "description": "Feature your tool on AI Design Hub. Reach targeted users actively looking for AI design solutions. Sponsored listings, featured placements, and affiliate partnerships available.",
+      "submit": "Submit Your Tool",
+      "advertise": "Advertise With Us"
+    }
+  },
+  "tools": {
+    "page_title": "AI Design Tools",
+    "page_subtitle": "Discover {count} AI-powered design tools to boost your creativity",
+    "search_placeholder": "Search tools...",
+    "sidebar": {
+      "categories": "Categories",
+      "all_tools": "All Tools",
+      "sort_by": "Sort By",
+      "highest_rated": "Highest Rated",
+      "newest": "Newest",
+      "most_popular": "Most Popular"
+    },
+    "empty": "No tools found. Try a different search.",
+    "card": {
+      "toggle_favorite": "Toggle favorite",
+      "add_to_compare": "Add to compare",
+      "clicks": "clicks"
+    }
+  },
+  "tool_detail": {
+    "home": "Home",
+    "tools": "Tools",
+    "about": "About {name}",
+    "review_count": "{count} reviews",
+    "visit_website": "Visit Website",
+    "user_reviews": "User Reviews",
+    "faq": "Frequently Asked Questions",
+    "side_info": "Tool Information",
+    "related_tools": "Related Tools",
+    "review_1": "Absolutely love {name}! It has completely transformed my workflow. The AI generation quality is outstanding and the interface is intuitive.",
+    "review_2": "Great tool overall. {name} saves me hours of work every week. Would love to see more export options and better API documentation.",
+    "review_3": "Best AI design tool I've used. The results from {name} are consistently impressive. Well worth the subscription."
+  },
+  "blog": {
+    "page_title": "AI Design Blog",
+    "page_subtitle": "Tips, tutorials, comparisons, and industry insights about AI design tools. Stay ahead of the curve in AI-powered creativity.",
+    "sidebar": {
+      "categories": "Categories",
+      "all_posts": "All Posts",
+      "tags": "Tags"
+    },
+    "empty": "No posts found.",
+    "min": "min",
+    "detail": {
+      "home": "Home",
+      "blog": "Blog",
+      "back_to_blog": "Back to Blog",
+      "related_articles": "Related Articles",
+      "faq": "Frequently Asked Questions"
+    }
+  },
+  "compare": {
+    "page_title": "Compare AI Tools",
+    "page_subtitle": "Compare up to 3 tools side by side to find the best fit.",
+    "add_tool": "Add Tool",
+    "add_tool_placeholder": "Add tool",
+    "select": "Select",
+    "no_tools": "No tools selected",
+    "no_tools_desc": "Add tools to start comparing",
+    "select_tools": "Select Tools",
+    "select_dialog_title": "Select a Tool to Compare",
+    "loading": "Loading comparison...",
+    "remove_tool": "Remove {name}",
+    "fields": {
+      "feature": "Feature",
+      "rating": "Rating",
+      "pricing": "Pricing Model",
+      "views": "Views",
+      "tags": "Tags",
+      "pros": "Pros",
+      "cons": "Cons",
+      "features": "Key Features",
+      "use_cases": "Use Cases",
+      "view_details": "View Details",
+      "visit_website": "Visit Website"
+    }
+  },
+  "favorites": {
+    "page_title": "My Favorites",
+    "saved_count": "{count} tool saved",
+    "saved_count_plural": "{count} tools saved",
+    "clear_all": "Clear All",
+    "empty_title": "No favorites yet",
+    "empty_desc": "Click the heart icon on any tool card to save it here.",
+    "browse_tools": "Browse Tools",
+    "loading": "Loading favorites...",
+    "remove": "Remove from favorites"
+  },
+  "submit": {
+    "page_title": "Submit an AI Tool",
+    "page_description": "Know a great AI design tool that is not listed yet? Submit it here for review.",
+    "required_info": "Required Information",
+    "tool_name": "Tool Name",
+    "tool_name_placeholder": "e.g. Midjourney",
+    "website_url": "Website URL",
+    "website_url_placeholder": "https://example.com",
+    "category": "Category",
+    "category_placeholder": "Select...",
+    "pricing": "Pricing",
+    "short_description": "Short Description",
+    "short_description_placeholder": "Briefly describe what this tool does in 1-2 sentences...",
+    "detailed_description": "Detailed Description",
+    "detailed_description_placeholder": "Explain features, use cases, and what makes this tool special...",
+    "optional_details": "Optional Details",
+    "tags": "Tags (comma-separated)",
+    "tags_placeholder": "AI image, text-to-image, generative art",
+    "pros": "Pros (one per line)",
+    "pros_placeholder": "Easy to use\nHigh quality output",
+    "cons": "Cons (one per line)",
+    "cons_placeholder": "Limited free tier\nSteep learning curve",
+    "features": "Key Features (one per line)",
+    "features_placeholder": "Text-to-image generation\nInpainting support",
+    "your_info": "Your Information (Optional)",
+    "your_name": "Your Name",
+    "your_name_placeholder": "John Doe",
+    "your_email": "Your Email",
+    "your_email_placeholder": "john@example.com",
+    "submit_button": "Submit Tool for Review",
+    "submitting": "Submitting...",
+    "disclaimer": "By submitting, you agree that our team will review the tool before publishing.",
+    "error_required": "Please fill in all required fields.",
+    "success": {
+      "title": "Submission Received!",
+      "description": "Thank you for submitting {name}. Our team will review it and get back to you within 2-3 business days.",
+      "browse": "Browse Tools",
+      "home": "Back to Home"
+    }
+  },
+  "category": {
+    "image_tools": "AI Image Tools",
+    "video_tools": "AI Video Tools",
+    "ui_ux_tools": "AI UI/UX Tools",
+    "animation_tools": "AI Animation Tools",
+    "3d_tools": "AI 3D Tools",
+    "productivity_tools": "AI Productivity Tools"
+  }
+}
