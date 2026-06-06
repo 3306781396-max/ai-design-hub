@@ -1346,8 +1346,8 @@ export const tools: Tool[] = [
     updated_at: "2026-06-05T00:00:00.000Z",
   },
   {
-    id: "tool-035",
-    slug: "gpt-image-2",
+        id: "tool-036",
+        slug: "gpt-image-2",
     name: "GPT Image 2",
     description: "OpenAI's most advanced image generation model with ~99% text rendering accuracy, multi-language support, and conversational editing via the Responses API.",
     description_long: "GPT Image 2 (gpt-image-2) represents OpenAI's most significant advancement in AI image generation since DALL-E 3. The model achieves approximately 99% text rendering accuracy, making it the best choice for images requiring readable text. It supports multiple languages and complex compositional editing. GPT Image 2 is available through ChatGPT and the OpenAI API, superseding the deprecated DALL-E API.",

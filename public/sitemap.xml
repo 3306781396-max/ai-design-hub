@@ -1,467 +1,527 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ai-design-hub.vercel.app/</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tools</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/blog</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/blog</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/categories</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/categories</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/compare</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/compare</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/favorites</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/favorites</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/submit</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/submit</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/category/ai-image-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/category/ai-image-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/category/ai-video-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/category/ai-video-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/category/ai-ui-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/category/ai-ui-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/category/ai-animation-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/category/ai-animation-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/category/ai-3d-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/category/ai-3d-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/category/ai-productivity-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/category/ai-productivity-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/dall-e-3</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/dall-e-3</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-image-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-image-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/midjourney</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/midjourney</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-image-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-image-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/stable-diffusion</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/stable-diffusion</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-image-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-image-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/leonardo-ai</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/leonardo-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-image-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-image-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/adobe-firefly</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/adobe-firefly</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-image-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-image-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/canva-ai</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/canva-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-image-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-image-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/runway</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/runway</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-video-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-video-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/pika</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/pika</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-video-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-video-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/heygen</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/heygen</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-video-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-video-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/synthesia</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/synthesia</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-video-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-video-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/capcut-ai</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/capcut-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-video-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-video-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/kaiber</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/kaiber</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-video-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-video-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/galileo-ai</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/galileo-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-ui-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-ui-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/uizard</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/uizard</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-ui-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-ui-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/locofy</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/locofy</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-ui-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-ui-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/framer-ai</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/framer-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-ui-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-ui-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/visily</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/visily</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-ui-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-ui-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/motiff</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/motiff</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-ui-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-ui-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/deepmotion</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/deepmotion</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-animation-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-animation-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/cascadeur</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/cascadeur</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-animation-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-animation-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/plask</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/plask</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-animation-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-animation-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/rokoko-vision</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/rokoko-vision</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-animation-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-animation-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ebsynth</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ebsynth</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-animation-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-animation-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/meshy</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/meshy</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-3d-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-3d-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/spline-ai</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/spline-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-3d-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-3d-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/luma-ai</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/luma-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-3d-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-3d-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/csm-ai</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/csm-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-3d-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-3d-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/3dfy-ai</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/3dfy-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-3d-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-3d-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/gamma</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/gamma</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-productivity-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-productivity-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/beautiful-ai</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/beautiful-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-productivity-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-productivity-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/tome</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/tome</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-productivity-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-productivity-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/notion-ai</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/notion-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-productivity-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-productivity-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/canva-design</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/canva-design</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-productivity-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-productivity-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ideogram-ai</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ideogram-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/tool/ai-image-tools</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-image-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/blog/best-ai-image-generators-2025</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/flux-2</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-image-tools</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/gpt-image-2</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-image-tools</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/recraft-v4</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-image-tools</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/flux-2</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-image-tools</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/gpt-image-2</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-image-tools</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/recraft-v4</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://snazzy-hamster-e99617.netlify.app/tool/ai-image-tools</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://snazzy-hamster-e99617.netlify.app/blog/best-ai-image-generators-2025</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/blog/ai-video-tools-2025-guide</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/blog/ai-video-tools-2025-guide</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/blog/ai-ui-ux-design-revolution</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/blog/ai-ui-ux-design-revolution</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/blog/ai-3d-modeling-beginners</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/blog/ai-3d-modeling-beginners</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/blog/ai-presentation-tools-comparison</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/blog/ai-presentation-tools-comparison</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/blog/ai-design-tools-trends-2025</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/blog/ai-design-tools-trends-2025</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/blog/midjourney-vs-dalle-3-comparison</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/blog/midjourney-vs-dalle-3-comparison</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/blog/ai-animation-game-development</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/blog/ai-animation-game-development</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/blog/complete-guide-ai-3d-modeling</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/blog/complete-guide-ai-3d-modeling</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/blog/ai-design-tools-non-designers</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/blog/ai-design-tools-non-designers</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/blog/ai-changing-web-design-industry</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/blog/ai-changing-web-design-industry</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ai-design-hub.vercel.app/blog/ai-productivity-tools-designers-must-know</loc>
+    <loc>https://snazzy-hamster-e99617.netlify.app/blog/ai-productivity-tools-designers-must-know</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
