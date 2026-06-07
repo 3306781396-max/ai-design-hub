@@ -1,15 +1,12 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/use-auth";
-import { logError } from "@/lib/logger";
-import { getFavorites, getUserReviews, deleteReview } from "@/lib/supabase";
-import type { Review } from "@/lib/supabase";
 import type { Tool } from "@/types";
 import { ToolCard } from "@/components/tools/ToolCard";
-import { Loader2, Heart, Settings, User as UserIcon, Star, MessageSquare, Trash2, AlertTriangle } from "lucide-react";
+import { Loader2, Heart, Settings, User as UserIcon, MessageSquare } from "lucide-react";
 import { useTranslation } from "@/i18n";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,19 +15,14 @@ import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
 
 export default function ProfilePage() {
-  const { user, loading: authLoading, profile, refreshProfile } = useAuth();
+  const { user, loading: authLoading } = useAuth();
   const router = useRouter();
   const [favoriteTools, setFavoriteTools] = useState<Tool[]>([]);
   const [loading, setLoading] = useState(true);
-  const [myReviews, setMyReviews] = useState<Review[]>([]);
-  const [loadingReviews, setLoadingReviews] = useState(true);
-  const [toolNames, setToolNames] = useState<Map<string, { name: string; slug: string }>>(new Map());
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
-  const [deletingReviewId, setDeletingReviewId] = useState<string | null>(null);
   const [formData, setFormData] = useState({
-    full_name: "",
-    username: "",
+    full_name: user?.name || "",
     bio: "",
     website: "",
   });
@@ -45,86 +37,53 @@ export default function ProfilePage() {
 
   // Initialize form data
   useEffect(() => {
-    if (profile) {
+    if (user) {
+      const stored = localStorage.getItem("aid-hub_profile");
+      const saved = stored ? JSON.parse(stored) : {};
       setFormData({
-        full_name: profile.full_name || "",
-        username: profile.username || "",
-        bio: profile.bio || "",
-        website: profile.website || "",
+        full_name: saved.full_name || user.name || "",
+        bio: saved.bio || "",
+        website: saved.website || "",
       });
     }
-  }, [profile]);
+  }, [user]);
 
-  // Fetch favorites
+  // Fetch favorites from localStorage
   useEffect(() => {
-    if (!user) return;
-
-    // Capture userId BEFORE any async work (TypeScript knows this is non-null)
-    const userId = user.id;
-
     async function fetchFavorites() {
       setLoading(true);
       try {
         const { tools } = await import("@/data/mock");
-        const favIds = await getFavorites(userId);
+        const raw = localStorage.getItem("aid-hub_favorites") || "[]";
+        const favIds: string[] = JSON.parse(raw);
         const favTools = tools.filter((t: Tool) => favIds.includes(t.id));
         setFavoriteTools(favTools);
-      } catch (err: any) {
-        logError("Failed to fetch favorites", err);
+      } catch {
+        // Ignore
       } finally {
         setLoading(false);
       }
     }
-
     fetchFavorites();
-  }, [user]);
-
-  // Fetch my reviews
-  useEffect(() => {
-    if (!user) return;
-    const userId = user.id;
-
-    async function fetchReviews() {
-      setLoadingReviews(true);
-      try {
-        const reviews = await getUserReviews(userId);
-        setMyReviews(reviews);
-      } catch (err: any) {
-        logError("Failed to fetch reviews", err);
-      } finally {
-        setLoadingReviews(false);
-      }
-    }
-
-    fetchReviews();
-  }, [user]);
-
-  // Load tool names for reviews
-  useEffect(() => {
-    async function loadToolMap() {
-      const { tools } = await import("@/data/mock");
-      const map = new Map<string, { name: string; slug: string }>();
-      tools.forEach((t: Tool) => map.set(t.id, { name: t.name, slug: t.slug }));
-      setToolNames(map);
-    }
-    loadToolMap();
   }, []);
 
   // Handle form submit
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!user) return;
-
     setSaving(true);
     try {
-      const { updateProfile } = await import("@/lib/supabase");
-      const { error } = await updateProfile(user.id, formData);
-      if (error) throw error;
-      await refreshProfile();
+      localStorage.setItem("aid-hub_profile", JSON.stringify(formData));
       setEditing(false);
-      toast({ title: t("profile.update_success") || "Profile updated", description: t("profile.update_success_desc") || "Your profile has been saved." });
-    } catch (err: any) {
-      toast({ title: t("profile.update_error") || "Update failed", description: err.message || "Failed to update profile", variant: "destructive" });
+      toast({
+        title: t("profile.update_success") || "Profile updated",
+        description: t("profile.update_success_desc") || "Your profile has been saved.",
+      });
+    } catch {
+      toast({
+        title: t("profile.update_error") || "Update failed",
+        description: "Failed to save profile",
+        variant: "destructive",
+      });
     } finally {
       setSaving(false);
     }
@@ -144,15 +103,15 @@ export default function ProfilePage() {
       <div className="flex flex-col items-center gap-6 rounded-2xl border border-dark-700 bg-dark-800 p-8 md:flex-row md:items-start">
         {/* Avatar */}
         <div className="h-24 w-24 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500 flex items-center justify-center overflow-hidden shrink-0">
-          {profile?.avatar_url ? (
+          {user.image ? (
             <img
-              src={profile.avatar_url}
+              src={user.image}
               alt="Avatar"
               className="h-full w-full object-cover"
             />
           ) : (
             <span className="text-3xl font-bold text-white">
-              {(profile?.full_name || user.email || "?")[0].toUpperCase()}
+              {(formData.full_name || user.email || "?")[0].toUpperCase()}
             </span>
           )}
         </div>
@@ -160,20 +119,25 @@ export default function ProfilePage() {
         {/* Profile Info */}
         <div className="flex-1 text-center md:text-left">
           <h1 className="text-2xl font-bold text-white">
-            {profile?.full_name || "User"}
+            {formData.full_name || user.name || "User"}
           </h1>
           <p className="text-dark-400 text-sm">{user.email}</p>
-          {profile?.bio && (
-            <p className="mt-2 text-dark-300 text-sm">{profile.bio}</p>
+          {user.provider && (
+            <p className="text-xs text-dark-500 mt-1">
+              Logged in via {user.provider}
+            </p>
           )}
-          {profile?.website && (
+          {formData.bio && (
+            <p className="mt-2 text-dark-300 text-sm">{formData.bio}</p>
+          )}
+          {formData.website && (
             <a
-              href={profile.website}
+              href={formData.website}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-1 block text-sm text-indigo-400 hover:text-indigo-300"
             >
-              {profile.website}
+              {formData.website}
             </a>
           )}
         </div>
@@ -206,18 +170,6 @@ export default function ProfilePage() {
                 value={formData.full_name}
                 onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
                 className="bg-dark-900 border-dark-700 text-white"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="username" className="text-dark-300 text-sm">
-                {t("profile.username") || "Username"}
-              </Label>
-              <Input
-                id="username"
-                value={formData.username}
-                onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-                className="bg-dark-900 border-dark-700 text-white"
-                placeholder="mysusername"
               />
             </div>
             <div className="space-y-2">
@@ -305,138 +257,26 @@ export default function ProfilePage() {
         )}
       </div>
 
-      {/* My Reviews Section */}
+      {/* Reviews placeholder */}
       <div className="mt-10">
         <h2 className="mb-6 flex items-center gap-2 text-xl font-semibold text-white">
           <MessageSquare className="h-5 w-5 text-amber-400" />
           {t("profile.my_reviews") || "My Reviews"}
-          <span className="text-dark-400 text-base font-normal">
-            ({myReviews.length})
-          </span>
         </h2>
-
-        {loadingReviews ? (
-          <div className="flex justify-center py-12">
-            <Loader2 className="h-8 w-8 animate-spin text-indigo-400" />
-          </div>
-        ) : myReviews.length > 0 ? (
-          <div className="space-y-4">
-            {myReviews.map((review) => {
-              const toolInfo = toolNames.get(review.tool_id);
-
-              const handleDelete = async () => {
-                if (deletingReviewId) return; // prevent double click
-                // Show inline confirmation via toast
-                toast({
-                  title: t("profile.confirm_delete_review") || "Delete this review?",
-                  description: t("profile.delete_review_desc") || "This action cannot be undone.",
-                  variant: "destructive",
-                  action: (
-                    <button
-                      className="rounded bg-white px-3 py-1 text-sm font-medium text-red-600 hover:bg-red-50"
-                      onClick={async () => {
-                        setDeletingReviewId(review.id);
-                        try {
-                          const { error } = await deleteReview(review.id, user!.id);
-                          if (error) throw error;
-                          setMyReviews((prev) => prev.filter((r) => r.id !== review.id));
-                          toast({ title: t("profile.review_deleted") || "Review deleted" });
-                        } catch (err: any) {
-                          logError("Failed to delete review", err);
-                          toast({ title: t("profile.delete_error") || "Delete failed", variant: "destructive" });
-                        } finally {
-                          setDeletingReviewId(null);
-                        }
-                      }}
-                    >
-                      {t("common.confirm") || "Confirm"}
-                    </button>
-                  ),
-                });
-              };
-
-              return (
-                <div
-                  key={review.id}
-                  className="rounded-xl border border-dark-700 bg-dark-800 p-5 transition-colors hover:border-dark-600"
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1 min-w-0">
-                      {/* Tool name */}
-                      <div className="flex items-center gap-2 mb-2">
-                        {toolInfo ? (
-                          <Link
-                            href={`/tool/${toolInfo.slug}/`}
-                            className="text-sm font-medium text-indigo-400 hover:text-indigo-300 hover:underline"
-                          >
-                            {toolInfo.name}
-                          </Link>
-                        ) : (
-                          <span className="text-sm font-medium text-dark-400">
-                            {review.tool_id}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Star rating */}
-                      <div className="flex items-center gap-1 mb-2">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <Star
-                            key={star}
-                            className={`h-4 w-4 ${
-                              star <= review.rating
-                                ? "fill-amber-400 text-amber-400"
-                                : "text-dark-600"
-                            }`}
-                          />
-                        ))}
-                      </div>
-
-                      {/* Comment */}
-                      {review.comment && (
-                        <p className="text-dark-300 text-sm leading-relaxed">
-                          {review.comment}
-                        </p>
-                      )}
-
-                      {/* Date */}
-                      <p className="mt-2 text-xs text-dark-500">
-                        {new Date(review.created_at).toLocaleDateString(
-                          t("common.locale") === "zh" ? "zh-CN" : "en-US",
-                          { year: "numeric", month: "short", day: "numeric" }
-                        )}
-                      </p>
-                    </div>
-
-                    {/* Delete button */}
-                    <button
-                      onClick={handleDelete}
-                      className="shrink-0 rounded-lg p-2 text-dark-500 hover:bg-dark-700 hover:text-red-400 transition-colors"
-                      title={t("reviews.delete") || "Delete"}
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        ) : (
-          <div className="rounded-2xl border border-dark-700 bg-dark-800 p-12 text-center">
-            <MessageSquare className="mx-auto h-10 w-10 text-dark-600 mb-3" />
-            <p className="text-dark-400">
-              {t("profile.no_reviews") || "No reviews yet. Share your thoughts on tools you've used!"}
-            </p>
-            <Link href="/tools">
-              <Button
-                variant="outline"
-                className="mt-4 border-dark-600 text-dark-300 hover:text-white"
-              >
-                {t("profile.explore_tools") || "Explore Tools"}
-              </Button>
-            </Link>
-          </div>
-        )}
+        <div className="rounded-2xl border border-dark-700 bg-dark-800 p-12 text-center">
+          <MessageSquare className="mx-auto h-10 w-10 text-dark-600 mb-3" />
+          <p className="text-dark-400">
+            {t("profile.no_reviews") || "No reviews yet. Share your thoughts on tools you've used!"}
+          </p>
+          <Link href="/tools">
+            <Button
+              variant="outline"
+              className="mt-4 border-dark-600 text-dark-300 hover:text-white"
+            >
+              {t("profile.explore_tools") || "Explore Tools"}
+            </Button>
+          </Link>
+        </div>
       </div>
     </div>
   );

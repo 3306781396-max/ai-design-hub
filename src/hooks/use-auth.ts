@@ -1,23 +1,20 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useSession, signIn as nextAuthSignIn, signOut as nextAuthSignOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import type { User, Session } from "@supabase/supabase-js";
-import {
-  signUp as supaSignUp,
-  signIn as supaSignIn,
-  signInWithOAuth as supaSignInWithOAuth,
-  signOut as supaSignOut,
-  getSession,
-  onAuthStateChange,
-  getProfile,
-} from "@/lib/supabase";
+import { useEffect } from "react";
 
 // ============================================================
 // Types
 // ============================================================
 
-export interface AuthUser extends User {
+export interface AuthUser {
+  id?: string;
+  name?: string | null;
+  email?: string | null;
+  image?: string | null;
+  role?: string;
+  provider?: string;
   profile?: {
     username?: string;
     full_name?: string;
@@ -30,7 +27,7 @@ export interface AuthUser extends User {
 
 export interface UseAuthReturn {
   user: AuthUser | null;
-  session: Session | null;
+  session: any | null;
   loading: boolean;
   error: Error | null;
   // Auth methods
@@ -48,154 +45,95 @@ export interface UseAuthReturn {
 // ============================================================
 
 export function useAuth(): UseAuthReturn {
-  const [user, setUser] = useState<AuthUser | null>(null);
-  const [session, setSession] = useState<Session | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
-  const [profile, setProfile] = useState<any | null>(null);
+  const { data: session, status } = useSession();
 
-  // Initialize - get session
-  useEffect(() => {
-    let mounted = true;
-
-    async function initialize() {
-      try {
-        const session = await getSession();
-        if (!mounted) return;
-
-        setSession(session);
-        if (session?.user) {
-          const authUser = session.user as AuthUser;
-          // Fetch profile
-          const profileData = await getProfile(session.user.id);
-          authUser.profile = profileData;
-          if (mounted) {
-            setUser(authUser);
-            setProfile(profileData);
-          }
-        }
-      } catch (err) {
-        if (mounted) setError(err as Error);
-      } finally {
-        if (mounted) setLoading(false);
+  const loading = status === "loading";
+  const user: AuthUser | null = session?.user
+    ? {
+        id: (session.user as any).id || undefined,
+        name: session.user.name,
+        email: session.user.email,
+        image: session.user.image,
+        role: (session.user as any).role || "user",
+        provider: (session.user as any).provider,
+        profile: null,
       }
+    : null;
+
+  // Sign up - in NextAuth, this is handled by the signIn flow
+  // For credentials provider: sign in == sign up (if not exists)
+  const signUp = async (email: string, password: string, metadata?: { full_name?: string }) => {
+    try {
+      const result = await nextAuthSignIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+      if (result?.error) {
+        return { success: false, error: result.error };
+      }
+      return { success: true };
+    } catch (err: any) {
+      return { success: false, error: err.message };
     }
+  };
 
-    initialize();
-
-    // Listen for auth state changes
-    const { data: { subscription } } = onAuthStateChange(async (event, session) => {
-      if (!mounted) return;
-
-      setSession(session);
-      if (session?.user) {
-        const authUser = session.user as AuthUser;
-        const profileData = await getProfile(session.user.id);
-        authUser.profile = profileData;
-        setUser(authUser);
-        setProfile(profileData);
-      } else {
-        setUser(null);
-        setProfile(null);
+  // Sign in with email/password (credentials)
+  const signIn = async (email: string, password: string) => {
+    try {
+      const result = await nextAuthSignIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+      if (result?.error) {
+        return { success: false, error: result.error };
       }
-      setLoading(false);
-    });
+      return { success: true };
+    } catch (err: any) {
+      return { success: false, error: err.message };
+    }
+  };
 
-    return () => {
-      mounted = false;
-      subscription?.unsubscribe();
-    };
-  }, []);
-
-  // Sign up
-  const signUp = useCallback(
-    async (email: string, password: string, metadata?: { full_name?: string }) => {
-      try {
-        setError(null);
-        const { data, error } = await supaSignUp(email, password, metadata);
-        if (error) return { success: false, error: error.message };
+  // Sign in with OAuth (GitHub)
+  const signInWithOAuth = async (provider: "google" | "github") => {
+    try {
+      // NextAuth only supports GitHub in our config
+      if (provider === "github") {
+        await nextAuthSignIn("github", { callbackUrl: "/" });
         return { success: true };
-      } catch (err: any) {
-        return { success: false, error: err.message };
       }
-    },
-    []
-  );
-
-  // Sign in
-  const signIn = useCallback(
-    async (email: string, password: string) => {
-      try {
-        setError(null);
-        const { data, error } = await supaSignIn(email, password);
-        if (error) return { success: false, error: error.message };
-        return { success: true };
-      } catch (err: any) {
-        return { success: false, error: err.message };
-      }
-    },
-    []
-  );
-
-  // Sign in with OAuth (Google, GitHub)
-  const signInWithOAuth = useCallback(
-    async (provider: "google" | "github") => {
-      try {
-        setError(null);
-        const { data, error } = await supaSignInWithOAuth(provider);
-        if (error) return { success: false, error: error.message };
-        // OAuth will redirect, so we don't return success here
-        return { success: true };
-      } catch (err: any) {
-        return { success: false, error: err.message };
-      }
-    },
-    []
-  );
+      return { success: false, error: `Provider ${provider} is not configured` };
+    } catch (err: any) {
+      return { success: false, error: err.message };
+    }
+  };
 
   // Sign out
-  const signOut = useCallback(async () => {
-    try {
-      setError(null);
-      const { error } = await supaSignOut();
-      if (error) throw error;
-      setUser(null);
-      setSession(null);
-      setProfile(null);
-      // Clear auth-dependent local caches
-      localStorage.removeItem("aid-hub_favorites");
-    } catch (err: any) {
-      setError(err);
-    }
-  }, []);
+  const signOut = async () => {
+    localStorage.removeItem("aid-hub_favorites");
+    await nextAuthSignOut({ callbackUrl: "/" });
+  };
 
-  // Refresh profile
-  const refreshProfile = useCallback(async () => {
-    if (!user?.id) return;
-    const profileData = await getProfile(user.id);
-    setProfile(profileData);
-    setUser((prev) => {
-      if (!prev) return null;
-      return { ...prev, profile: profileData };
-    });
-  }, [user?.id]);
+  // Refresh profile (no-op in NextAuth - profile comes from provider)
+  const refreshProfile = async () => {};
 
   return {
     user,
     session,
     loading,
-    error,
+    error: null,
     signUp,
     signIn,
     signInWithOAuth,
     signOut,
-    profile,
+    profile: null,
     refreshProfile,
   };
 }
 
 // ============================================================
-// useRequireAuth Hook (optional - redirect if not logged in)
+// useRequireAuth Hook
 // ============================================================
 
 export function useRequireAuth(redirectTo: string = "/") {

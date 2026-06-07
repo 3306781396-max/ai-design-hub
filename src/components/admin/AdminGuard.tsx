@@ -2,14 +2,18 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/hooks/use-auth";
+import { useSession } from "next-auth/react";
 
 export function AdminGuard({ children }: { children: React.ReactNode }) {
-  const { user, loading } = useAuth();
+  const { data: session, status } = useSession();
   const router = useRouter();
   const [password, setPassword] = useState("");
   const [passwordVerified, setPasswordVerified] = useState(false);
   const [passwordError, setPasswordError] = useState("");
+
+  const loading = status === "loading";
+  const user = session?.user;
+  const isAdmin = (user as any)?.role === "admin";
 
   // Check sessionStorage for existing password verification
   useEffect(() => {
@@ -19,7 +23,7 @@ export function AdminGuard({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  // Handle password submit
+  // Handle password submit (fallback for non-authenticated admin access)
   const handlePasswordSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
@@ -28,7 +32,6 @@ export function AdminGuard({ children }: { children: React.ReactNode }) {
       setPasswordVerified(true);
       setPasswordError("");
     } else if (!adminPassword) {
-      // No password configured, fall through to auth check
       setPasswordVerified(true);
     } else {
       setPasswordError("Incorrect password");
@@ -47,9 +50,37 @@ export function AdminGuard({ children }: { children: React.ReactNode }) {
     );
   }
 
-  // If not authenticated via Supabase and no password configured, show password form
+  // If logged in via NextAuth and is admin, allow
+  if (user && isAdmin) {
+    return <>{children}</>;
+  }
+
+  // If not admin but logged in, show access denied
+  if (user && !isAdmin) {
+    return (
+      <div className="flex items-center justify-center h-screen bg-slate-950">
+        <div className="text-center max-w-md">
+          <div className="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-4">
+            <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+            </svg>
+          </div>
+          <h2 className="text-xl font-bold text-white mb-2">Access Denied</h2>
+          <p className="text-slate-400 mb-6">You do not have administrator privileges.</p>
+          <a
+            href="/"
+            className="inline-flex items-center px-6 py-3 bg-slate-800 text-white rounded-lg hover:bg-slate-700 transition-colors"
+          >
+            Go Home
+          </a>
+        </div>
+      </div>
+    );
+  }
+
+  // If not authenticated but password exists, show password form
   const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
-  if (!user && !passwordVerified && adminPassword) {
+  if (!passwordVerified && adminPassword) {
     return (
       <div className="flex items-center justify-center h-screen bg-slate-950">
         <div className="w-full max-w-md mx-auto p-8">
@@ -81,7 +112,7 @@ export function AdminGuard({ children }: { children: React.ReactNode }) {
           </form>
           <div className="mt-6 text-center">
             <a href="/" className="text-sm text-slate-500 hover:text-slate-300 transition-colors">
-              ← Back to Site
+              Back to Site
             </a>
           </div>
         </div>
@@ -89,9 +120,8 @@ export function AdminGuard({ children }: { children: React.ReactNode }) {
     );
   }
 
-  // If not authenticated and no Supabase session, check if user is admin
-  if (!user && !passwordVerified && !adminPassword) {
-    // No Supabase auth, no password configured - redirect to home
+  // Not authenticated, no password configured - redirect to home
+  if (!user && !adminPassword) {
     router.push("/");
     return (
       <div className="flex items-center justify-center h-screen bg-slate-950">
@@ -103,29 +133,6 @@ export function AdminGuard({ children }: { children: React.ReactNode }) {
     );
   }
 
-  // Check if Supabase user has admin role
-  if (user && user.profile?.role !== "admin") {
-    return (
-      <div className="flex items-center justify-center h-screen bg-slate-950">
-        <div className="text-center max-w-md">
-          <div className="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-4">
-            <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
-            </svg>
-          </div>
-          <h2 className="text-xl font-bold text-white mb-2">Access Denied</h2>
-          <p className="text-slate-400 mb-6">You do not have administrator privileges.</p>
-          <a
-            href="/"
-            className="inline-flex items-center px-6 py-3 bg-slate-800 text-white rounded-lg hover:bg-slate-700 transition-colors"
-          >
-            Go Home
-          </a>
-        </div>
-      </div>
-    );
-  }
-
-  // Authenticated as admin
+  // Password verified (fallback)
   return <>{children}</>;
 }

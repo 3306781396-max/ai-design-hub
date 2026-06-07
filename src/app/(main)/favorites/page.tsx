@@ -10,7 +10,6 @@ import { logError } from "@/lib/logger";
 import { Heart, ArrowRight, Trash2 } from "lucide-react";
 import { useFavorites, useFavorite } from "@/hooks/use-favorite";
 import { useAuth } from "@/hooks/use-auth";
-import { clearAllFavorites } from "@/lib/supabase";
 
 function FavCard({ tool }: { tool: Tool }) {
   const { t } = useTranslation();
@@ -85,22 +84,15 @@ export default function FavoritesPage() {
     load();
   }, [favoriteIds]);
 
-  const clearAll = useCallback(async () => {
+  const clearAll = useCallback(() => {
     try {
-      if (user) {
-        // Logged in: clear Supabase favorites
-        await clearAllFavorites(user.id);
-        // Also clear localStorage for consistency
-      }
-      // Clear localStorage
       localStorage.setItem("aid-hub_favorites", "[]");
       setTools([]);
-      // Trigger reload to refresh useFavorites
       window.location.reload();
     } catch (err) {
       logError("Failed to clear favorites", err);
     }
-  }, [user]);
+  }, []);
 
   if (loading) {
     return (

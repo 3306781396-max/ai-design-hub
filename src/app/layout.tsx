@@ -9,6 +9,7 @@ import { LangUpdater } from "@/components/layout/LangUpdater";
 import { Toaster } from "@/components/ui/toaster";
 import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
 import { ScrollToTop } from "@/components/common/ScrollToTop";
+import { AuthProvider } from "@/components/auth/AuthProvider";
 import type { ReactNode } from "react";
 
 const inter = Inter({
@@ -154,6 +155,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} font-sans antialiased min-h-screen flex flex-col bg-white text-gray-900 dark:bg-dark-950 dark:text-white`}>
+        <AuthProvider>
         <ThemeProvider>
           <LanguageProvider>
             <LangUpdater />
@@ -166,6 +168,7 @@ export default function RootLayout({
             <Toaster />
           </LanguageProvider>
         </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );

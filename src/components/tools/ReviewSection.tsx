@@ -9,12 +9,21 @@ import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { Star, ThumbsUp, Trash2, Edit3, Loader2, MessageSquare } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { logError } from "@/lib/logger";
-import {
-  getReviews,
-  upsertReview,
-  deleteReview,
-  type Review,
-} from "@/lib/supabase";
+
+// Local storage key for reviews
+const REVIEWS_KEY = "aid-hub_reviews";
+
+interface Review {
+  id: string;
+  user_id: string;
+  tool_id: string;
+  rating: number;
+  comment: string | null;
+  created_at: string;
+  updated_at: string;
+  user_name?: string | null;
+  user_avatar?: string | null;
+}
 
 // ============================================================
 // Types
@@ -92,8 +101,7 @@ function ReviewCard({
   const [clicked, setClicked] = useState(false);
 
   const isOwner = currentUserId === review.user_id;
-  const displayName =
-    review.profiles?.full_name || review.profiles?.username || "Anonymous";
+  const displayName = review.user_name || "Anonymous";
   const initial = displayName[0]?.toUpperCase() || "?";
 
   return (
@@ -176,7 +184,64 @@ function ReviewCard({
 }
 
 // ============================================================
-// Review Form
+// Local storage helpers
+function getStoredReviews(): Review[] {
+  try {
+    const raw = localStorage.getItem(REVIEWS_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveReviews(reviews: Review[]) {
+  localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews));
+}
+
+async function getReviewsForTool(toolId: string): Promise<Review[]> {
+  return getStoredReviews().filter((r) => r.tool_id === toolId);
+}
+
+async function upsertReview(
+  userId: string,
+  toolId: string,
+  rating: number,
+  comment: string | undefined,
+  userName: string,
+  userImage?: string | null
+) {
+  const reviews = getStoredReviews();
+  const existing = reviews.find((r) => r.user_id === userId && r.tool_id === toolId);
+  if (existing) {
+    existing.rating = rating;
+    existing.comment = comment || null;
+    existing.updated_at = new Date().toISOString();
+  } else {
+    reviews.push({
+      id: `review_${Date.now()}_${Math.random().toString(36).slice(2)}`,
+      user_id: userId,
+      tool_id: toolId,
+      rating,
+      comment: comment || null,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString(),
+      user_name: userName,
+      user_avatar: userImage || null,
+    });
+  }
+  saveReviews(reviews);
+  return { error: null };
+}
+
+async function deleteLocalReview(reviewId: string, userId: string) {
+  const reviews = getStoredReviews();
+  const index = reviews.findIndex((r) => r.id === reviewId && r.user_id === userId);
+  if (index !== -1) {
+    reviews.splice(index, 1);
+    saveReviews(reviews);
+  }
+  return { error: null };
+}
 // ============================================================
 
 function ReviewForm({
@@ -232,11 +297,14 @@ function ReviewForm({
     setError(null);
 
     try {
+      const userId = user.email || "anonymous";
       const { error: upsertError } = await upsertReview(
-        user.id,
+        userId,
         toolId,
         rating,
-        sanitized || undefined
+        sanitized || undefined,
+        user.name || user.email || "Anonymous",
+        user.image
       );
       if (upsertError) throw upsertError;
       onSaved();
@@ -351,7 +419,7 @@ export function ReviewSection({ toolId, toolName }: ReviewSectionProps) {
   const fetchReviews = useCallback(async () => {
     setLoading(true);
     try {
-      const data = await getReviews(toolId);
+      const data = await getReviewsForTool(toolId);
       setReviews(data);
     } catch (err) {
       logError("Failed to fetch reviews", err);
@@ -365,9 +433,10 @@ export function ReviewSection({ toolId, toolName }: ReviewSectionProps) {
   }, [fetchReviews]);
 
   // Check if current user already has a review
-  const userReview = user ? reviews.find((r) => r.user_id === user.id) : null;
+  const userId = user?.email || "anonymous";
+  const userReview = user ? reviews.find((r) => r.user_id === userId) : null;
   const otherReviews = user
-    ? reviews.filter((r) => r.user_id !== user.id)
+    ? reviews.filter((r) => r.user_id !== userId)
     : reviews;
 
   // Sort
@@ -405,7 +474,7 @@ export function ReviewSection({ toolId, toolName }: ReviewSectionProps) {
   const confirmDelete = async () => {
     if (!user || !deleteConfirmId) return;
     try {
-      const { error } = await deleteReview(deleteConfirmId, user.id);
+      const { error } = await deleteLocalReview(deleteConfirmId, userId);
       if (error) throw error;
       setDeleteConfirmId(null);
       await fetchReviews();
@@ -541,7 +610,7 @@ export function ReviewSection({ toolId, toolName }: ReviewSectionProps) {
                 review={userReview}
                 onDelete={handleDelete}
                 onEdit={handleEdit}
-                currentUserId={user?.id}
+                currentUserId={userId}
               />
             </div>
           )}

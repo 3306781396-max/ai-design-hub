@@ -11,13 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  signUp,
-  signIn,
-  signInWithOAuth,
-  resetPasswordForEmail,
-  isSupabaseConfigured,
-} from "@/lib/supabase";
+import { signIn } from "next-auth/react";
 import { Loader2, Mail, Lock, User, Github } from "lucide-react";
 import { useTranslation } from "@/i18n";
 
@@ -37,7 +31,7 @@ interface AuthModalProps {
 
 export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
   const { t } = useTranslation();
-  const [mode, setMode] = useState<"login" | "register" | "forgot">("login");
+  const [mode, setMode] = useState<"login" | "register">("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
@@ -68,23 +62,21 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
     setLoading(true);
 
     try {
-      if (!isSupabaseConfigured()) {
-        throw new Error(t("auth.error_supabase_not_configured"));
+      const result = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+
+      if (result?.error) {
+        // Show generic error for both login and register
+        setError(t("auth.invalid_credentials") || "Invalid email or password");
+        setLoading(false);
+        return;
       }
 
-      if (mode === "register") {
-        // Register
-        const { data, error } = await signUp(email, password, {
-          full_name: fullName,
-        });
-        if (error) throw error;
-        setMessage(t("auth.success_register"));
-      } else {
-        // Login
-        const { data, error } = await signIn(email, password);
-        if (error) throw error;
-        handleSuccess();
-      }
+      // Login successful
+      handleSuccess();
     } catch (err: any) {
       setError(err.message || t("auth.error_generic"));
     } finally {
@@ -92,38 +84,15 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
     }
   };
 
-  // OAuth Login (Google, GitHub)
-  const handleOAuth = async (provider: "google" | "github") => {
+  // GitHub OAuth Login
+  const handleGitHub = async () => {
     setError(null);
     setLoading(true);
     try {
-      if (!isSupabaseConfigured()) {
-        throw new Error(t("auth.error_supabase_not_configured"));
-      }
-      const { data, error } = await signInWithOAuth(provider);
-      if (error) throw error;
-      // OAuth will redirect, so we don't handle success here
+      await signIn("github", { callbackUrl: window.location.origin });
+      // This will redirect to GitHub, so we don't need to handle success here
     } catch (err: any) {
       setError(err.message || t("auth.error_generic"));
-      setLoading(false);
-    }
-  };
-
-  // Forgot password handler
-  const handleForgotPassword = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
-    setLoading(true);
-    try {
-      if (!isSupabaseConfigured()) {
-        throw new Error(t("auth.error_supabase_not_configured"));
-      }
-      const { success, message } = await resetPasswordForEmail(email);
-      if (!success) throw new Error(message);
-      setMessage(t("auth.reset_email_sent") || "Password reset email sent! Check your inbox.");
-    } catch (err: any) {
-      setError(err.message || t("auth.error_generic"));
-    } finally {
       setLoading(false);
     }
   };
@@ -157,44 +126,17 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
         </DialogHeader>
 
         <div className="space-y-4 py-4">
-          {/* OAuth Buttons */}
-          <div className="grid grid-cols-2 gap-3">
+          {/* GitHub OAuth Button */}
+          <div className="flex justify-center">
             <Button
               type="button"
               variant="outline"
-              onClick={() => handleOAuth("google")}
+              onClick={handleGitHub}
               disabled={loading}
-              className="border-dark-600 hover:bg-dark-700 text-white"
-            >
-              <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
-                <path
-                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"
-                  fill="#4285F4"
-                />
-                <path
-                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-                  fill="#34A853"
-                />
-                <path
-                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-                  fill="#FBBC05"
-                />
-                <path
-                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.11-3.11C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-                  fill="#EA4335"
-                />
-              </svg>
-              Google
-            </Button>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => handleOAuth("github")}
-              disabled={loading}
-              className="border-dark-600 hover:bg-dark-700 text-white"
+              className="w-full border-dark-600 hover:bg-dark-700 text-white h-12"
             >
               <Github className="w-5 h-5 mr-2" />
-              GitHub
+              {t("auth.login_with_github") || "Continue with GitHub"}
             </Button>
           </div>
 
@@ -205,13 +147,13 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
             </div>
             <div className="relative flex justify-center text-xs uppercase">
               <span className="bg-dark-800 px-2 text-dark-400">
-                {t("auth.or_continue") || "Or continue with"}
+                {t("auth.or_continue") || "Or with email"}
               </span>
             </div>
           </div>
 
           {/* Email/Password Form */}
-          <form onSubmit={mode === "forgot" ? handleForgotPassword : handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             {/* Full Name (register only) */}
             {mode === "register" && (
               <div className="space-y-2">
@@ -252,23 +194,11 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
               </div>
             </div>
 
-            {/* Password (login & register only) */}
-            {mode !== "forgot" && (
+            {/* Password */}
             <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <Label htmlFor="password" className="text-dark-300">
-                  {t("auth.password") || "Password"}
-                </Label>
-                {mode === "login" && (
-                  <button
-                    type="button"
-                    onClick={() => { setMode("forgot"); setError(null); setMessage(null); }}
-                    className="text-xs text-primary-400 hover:text-primary-300"
-                  >
-                    {t("auth.forgot_password") || "Forgot password?"}
-                  </button>
-                )}
-              </div>
+              <Label htmlFor="password" className="text-dark-300">
+                {t("auth.password") || "Password"}
+              </Label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-400" />
                 <Input
@@ -283,7 +213,6 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
                 />
               </div>
             </div>
-            )}
 
             {/* Error Message */}
             {error && (
@@ -312,10 +241,8 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
                 </>
               ) : mode === "login" ? (
                 t("auth.login_button") || "Login"
-              ) : mode === "register" ? (
-                t("auth.register_button") || "Create Account"
               ) : (
-                t("auth.send_reset") || "Send Reset Email"
+                t("auth.register_button") || "Create Account"
               )}
             </Button>
           </form>
@@ -333,7 +260,7 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
                   {t("auth.register_link") || "Register"}
                 </button>
               </>
-            ) : mode === "register" ? (
+            ) : (
               <>
                 {t("auth.has_account") || "Already have an account?"}{" "}
                 <button
@@ -344,18 +271,15 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
                   {t("auth.login_link") || "Login"}
                 </button>
               </>
-            ) : (
-              <>
-                <button
-                  type="button"
-                  onClick={() => { setMode("login"); setError(null); setMessage(null); }}
-                  className="text-primary-400 hover:text-primary-300 font-medium"
-                >
-                  ← {t("auth.back_to_login") || "Back to Login"}
-                </button>
-              </>
             )}
           </div>
+
+          {/* Note about GitHub login */}
+          {mode === "register" && (
+            <p className="text-xs text-dark-500 text-center mt-2">
+              Tip: Use GitHub login for the fastest registration — no password needed!
+            </p>
+          )}
         </div>
       </DialogContent>
     </Dialog>
