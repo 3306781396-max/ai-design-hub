@@ -3,6 +3,9 @@ import GitHub from "next-auth/providers/github";
 import Credentials from "next-auth/providers/credentials";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  // Required for Vercel deployments (behind proxy)
+  // Without this, cookies/callbacks won't work correctly
+  trustHost: true,
   providers: [
     GitHub({
       clientId: process.env.AUTH_GITHUB_ID!,
