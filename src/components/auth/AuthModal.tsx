@@ -11,9 +11,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { signIn } from "next-auth/react";
 import { Loader2, Mail, Lock, User, Github } from "lucide-react";
 import { useTranslation } from "@/i18n";
+import { useAuth } from "@/hooks/use-auth";
 
 // ============================================================
 // Types
@@ -39,6 +39,8 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
 
+  const { signIn, signUp, signInWithGitHub } = useAuth();
+
   // Reset form when modal opens/closes
   const resetForm = () => {
     setEmail("");
@@ -54,7 +56,7 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
     onOpenChange(newOpen);
   };
 
-  // Email/Password Login or Register
+  // Email/Password Login
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -62,24 +64,20 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
     setLoading(true);
 
     try {
-      const result = await signIn("credentials", {
-        email,
-        password,
-        redirect: false,
-      });
+      const result = mode === "login"
+        ? await signIn(email, password)
+        : await signUp(email, password);
 
-      if (result?.error) {
-        // Show generic error for both login and register
-        setError(t("auth.invalid_credentials") || "Invalid email or password");
+      if (!result.success) {
+        setError(result.error || t("auth.invalid_credentials") || "Invalid email or password");
         setLoading(false);
         return;
       }
 
-      // Login successful
+      // Success
       handleSuccess();
     } catch (err: any) {
-      setError(err.message || t("auth.error_generic"));
-    } finally {
+      setError(err.message || t("auth.error_generic") || "An error occurred");
       setLoading(false);
     }
   };
@@ -89,10 +87,10 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
     setError(null);
     setLoading(true);
     try {
-      await signIn("github", { callbackUrl: window.location.origin });
+      await signInWithGitHub();
       // This will redirect to GitHub, so we don't need to handle success here
     } catch (err: any) {
-      setError(err.message || t("auth.error_generic"));
+      setError(err.message || t("auth.error_generic") || "An error occurred");
       setLoading(false);
     }
   };

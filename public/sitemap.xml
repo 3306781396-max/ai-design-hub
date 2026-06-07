@@ -1,657 +1,677 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tools</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/categories</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/categories</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/compare</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/compare</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/favorites</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/favorites</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/submit</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/submit</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/about</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/contact</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/advertise</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/advertise</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/api</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/api</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/faq</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/faq</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/privacy</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/privacy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/terms</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/terms</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/cookies</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/cookies</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/category/ai-image-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/category/ai-image-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/category/ai-video-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/category/ai-video-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/category/ai-ui-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/category/ai-ui-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/category/ai-animation-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/category/ai-animation-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/category/ai-3d-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/category/ai-3d-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/category/ai-productivity-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/category/ai-productivity-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/dall-e-3</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/dall-e-3</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-image-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-image-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/midjourney</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/midjourney</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-image-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-image-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/stable-diffusion</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/stable-diffusion</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-image-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-image-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/leonardo-ai</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/leonardo-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-image-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-image-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/adobe-firefly</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/adobe-firefly</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-image-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-image-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/canva-ai</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/canva-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-image-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-image-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/runway</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/runway</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-video-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-video-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/pika</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/pika</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-video-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-video-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/heygen</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/heygen</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-video-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-video-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/synthesia</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/synthesia</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-video-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-video-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/capcut-ai</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/capcut-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-video-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-video-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/kaiber</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/kaiber</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-video-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-video-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/galileo-ai</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/galileo-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-ui-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-ui-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/uizard</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/uizard</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-ui-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-ui-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/locofy</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/locofy</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-ui-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-ui-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/framer-ai</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/framer-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-ui-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-ui-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/visily</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/visily</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-ui-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-ui-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/motiff</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/motiff</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-ui-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-ui-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/deepmotion</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/deepmotion</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-animation-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-animation-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/cascadeur</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/cascadeur</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-animation-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-animation-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/plask</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/plask</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-animation-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-animation-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/rokoko-vision</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/rokoko-vision</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-animation-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-animation-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ebsynth</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ebsynth</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-animation-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-animation-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/meshy</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/meshy</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-3d-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-3d-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/spline-ai</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/spline-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-3d-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-3d-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/luma-ai</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/luma-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-3d-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-3d-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/csm-ai</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/csm-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-3d-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-3d-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/3dfy-ai</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/3dfy-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-3d-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-3d-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/gamma</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/gamma</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-productivity-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-productivity-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/beautiful-ai</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/beautiful-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-productivity-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-productivity-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/tome</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/tome</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-productivity-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-productivity-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/notion-ai</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/notion-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-productivity-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-productivity-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/canva-design</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/canva-design</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-productivity-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-productivity-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ideogram-ai</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ideogram-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-image-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-image-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/flux-2</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/flux-2</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-image-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-image-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/gpt-image-2</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/gpt-image-2</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-image-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-image-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/recraft-v4</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/recraft-v4</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-image-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-image-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/flux-2</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/lovable</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-image-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-productivity-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/gpt-image-2</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/v0-by-vercel</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-image-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-ui-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/recraft-v4</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/krea-ai</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/tool/ai-image-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-image-tools</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/best-ai-image-generators-2025</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/google-stitch</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-ui-tools</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/magnific-ai</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-image-tools</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/best-ai-image-generators-2025</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-video-tools-2025-guide</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-video-tools-2025-guide</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-ui-ux-design-revolution</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-ui-ux-design-revolution</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-3d-modeling-beginners</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-3d-modeling-beginners</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-presentation-tools-comparison</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-presentation-tools-comparison</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-design-tools-trends-2025</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-design-tools-trends-2025</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/midjourney-vs-dalle-3-comparison</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/midjourney-vs-dalle-3-comparison</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-animation-game-development</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-animation-game-development</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/complete-guide-ai-3d-modeling</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/complete-guide-ai-3d-modeling</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-design-tools-non-designers</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-design-tools-non-designers</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-changing-web-design-industry</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-changing-web-design-industry</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-productivity-tools-designers-must-know</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-productivity-tools-designers-must-know</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-image-upscaling-guide</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-image-upscaling-guide</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-video-editing-tools-comparison</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-video-editing-tools-comparison</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-design-workflow-automation</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-design-workflow-automation</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/interview-midjourney-founder</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/interview-midjourney-founder</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-news-june-2025</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-news-june-2025</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-character-design-guide</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-character-design-guide</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-design-tools-pricing-comparison-2025</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-design-tools-pricing-comparison-2025</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-design-ethics-guide</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-design-ethics-guide</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-design-portfolio-guide</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-design-portfolio-guide</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/best-ai-background-removal-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/best-ai-background-removal-tools</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-design-collaboration-tools</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-design-collaboration-tools</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-generative-design-beginners</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-generative-design-beginners</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-design-tools-api-integration</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-design-tools-api-integration</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-design-accessibility-guide</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-design-accessibility-guide</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-design-tools-news-july-2025</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-design-tools-news-july-2025</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-logo-design-guide</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-logo-design-guide</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-design-productivity-hacks</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-design-productivity-hacks</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://2a160191be19478aa93a1d5816e5ada3.app.codebuddy.work/blog/ai-design-tools-comparison-ultimate</loc>
+    <loc>https://ai-design-hub-ochre.vercel.app/blog/ai-design-tools-comparison-ultimate</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

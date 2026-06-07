@@ -15,14 +15,7 @@ export interface AuthUser {
   image?: string | null;
   role?: string;
   provider?: string;
-  profile?: {
-    username?: string;
-    full_name?: string;
-    avatar_url?: string;
-    website?: string;
-    bio?: string;
-    role?: string;
-  } | null;
+  github_username?: string;
 }
 
 export interface UseAuthReturn {
@@ -31,13 +24,10 @@ export interface UseAuthReturn {
   loading: boolean;
   error: Error | null;
   // Auth methods
-  signUp: (email: string, password: string, metadata?: { full_name?: string }) => Promise<{ success: boolean; error?: string }>;
+  signUp: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
   signIn: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
-  signInWithOAuth: (provider: "google" | "github") => Promise<{ success: boolean; error?: string }>;
+  signInWithGitHub: () => Promise<void>;
   signOut: () => Promise<void>;
-  // Profile
-  profile: any | null;
-  refreshProfile: () => Promise<void>;
 }
 
 // ============================================================
@@ -46,39 +36,21 @@ export interface UseAuthReturn {
 
 export function useAuth(): UseAuthReturn {
   const { data: session, status } = useSession();
-
   const loading = status === "loading";
+
   const user: AuthUser | null = session?.user
     ? {
-        id: (session.user as any).id || undefined,
+        id: (session.user as any).id,
         name: session.user.name,
         email: session.user.email,
         image: session.user.image,
         role: (session.user as any).role || "user",
         provider: (session.user as any).provider,
-        profile: null,
+        github_username: (session.user as any).github_username,
       }
     : null;
 
-  // Sign up - in NextAuth, this is handled by the signIn flow
-  // For credentials provider: sign in == sign up (if not exists)
-  const signUp = async (email: string, password: string, metadata?: { full_name?: string }) => {
-    try {
-      const result = await nextAuthSignIn("credentials", {
-        email,
-        password,
-        redirect: false,
-      });
-      if (result?.error) {
-        return { success: false, error: result.error };
-      }
-      return { success: true };
-    } catch (err: any) {
-      return { success: false, error: err.message };
-    }
-  };
-
-  // Sign in with email/password (credentials)
+  // Email/Password login
   const signIn = async (email: string, password: string) => {
     try {
       const result = await nextAuthSignIn("credentials", {
@@ -95,18 +67,14 @@ export function useAuth(): UseAuthReturn {
     }
   };
 
-  // Sign in with OAuth (GitHub)
-  const signInWithOAuth = async (provider: "google" | "github") => {
-    try {
-      // NextAuth only supports GitHub in our config
-      if (provider === "github") {
-        await nextAuthSignIn("github", { callbackUrl: "/" });
-        return { success: true };
-      }
-      return { success: false, error: `Provider ${provider} is not configured` };
-    } catch (err: any) {
-      return { success: false, error: err.message };
-    }
+  // Sign up — same as signIn for credentials provider
+  const signUp = async (email: string, password: string) => {
+    return signIn(email, password);
+  };
+
+  // GitHub OAuth login
+  const signInWithGitHub = async () => {
+    await nextAuthSignIn("github", { callbackUrl: window.location.origin + "/" });
   };
 
   // Sign out
@@ -115,9 +83,6 @@ export function useAuth(): UseAuthReturn {
     await nextAuthSignOut({ callbackUrl: "/" });
   };
 
-  // Refresh profile (no-op in NextAuth - profile comes from provider)
-  const refreshProfile = async () => {};
-
   return {
     user,
     session,
@@ -125,15 +90,13 @@ export function useAuth(): UseAuthReturn {
     error: null,
     signUp,
     signIn,
-    signInWithOAuth,
+    signInWithGitHub,
     signOut,
-    profile: null,
-    refreshProfile,
   };
 }
 
 // ============================================================
-// useRequireAuth Hook
+// useRequireAuth Hook — client-side route guard
 // ============================================================
 
 export function useRequireAuth(redirectTo: string = "/") {

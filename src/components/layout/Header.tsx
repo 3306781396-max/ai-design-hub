@@ -243,9 +243,9 @@ export default function Header() {
                   className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-gray-300 transition-colors hover:bg-white/5 hover:text-white"
                 >
                   <div className="h-8 w-8 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500 flex items-center justify-center overflow-hidden">
-                    {user.profile?.avatar_url ? (
+                    {user.image ? (
                       <img
-                        src={user.profile.avatar_url}
+                        src={user.image}
                         alt="Avatar"
                         className="h-full w-full object-cover"
                       />
@@ -269,7 +269,7 @@ export default function Header() {
                       {/* User Info */}
                       <div className="border-b border-dark-700 px-4 py-3">
                         <p className="text-sm font-semibold text-white">
-                          {user.profile?.full_name || user.email}
+                          {user.name || user.email}
                         </p>
                         <p className="text-xs text-gray-400">{user.email}</p>
                       </div>
@@ -385,8 +385,8 @@ export default function Header() {
               <>
                 <div className="px-3 py-2">
                   <p className="text-sm font-semibold text-white">
-                    {user.profile?.full_name || user.email}
-                  </p>
+                  {user.name || user.email}
+                </p>
                 </div>
                 <button
                   onClick={() => {
