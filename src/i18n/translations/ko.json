@@ -121,6 +121,8 @@
     "callback_login_failed": "로그인 실패",
     "callback_success": "로그인 성공! 리디렉션 중...",
     "callback_error": "로그인 처리 중 오류 발생",
+    "login_with_github": "GitHub로 로그인",
+    "invalid_credentials": "이메일 또는 비밀번호가 잘못되었습니다",
     "callback_redirecting": "3초 후 홈으로 돌아갑니다..."
   },
   "nav": {

@@ -121,6 +121,8 @@
     "callback_login_failed": "ログインに失敗しました",
     "callback_success": "ログイン成功！リダイレクト中...",
     "callback_error": "ログイン処理中にエラーが発生しました",
+    "login_with_github": "GitHubでログイン",
+    "invalid_credentials": "メールアドレスまたはパスワードが間違っています",
     "callback_redirecting": "3秒後にホームに戻ります..."
   },
   "nav": {

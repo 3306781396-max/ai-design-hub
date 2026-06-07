@@ -121,6 +121,8 @@
     "callback_login_failed": "Login failed",
     "callback_success": "Login successful! Redirecting...",
     "callback_error": "Error processing login",
+    "login_with_github": "Continue with GitHub",
+    "invalid_credentials": "Invalid email or password",
     "callback_redirecting": "Redirecting to home in 3 seconds..."
   },
   "nav": {
