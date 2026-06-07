@@ -4,6 +4,7 @@ import { useState, type FormEvent } from "react";
 import { useTranslation } from "@/i18n";
 import { cn } from "@/lib/utils";
 import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { subscribeToNewsletter } from "@/lib/supabase";
 
 type SubmissionStatus = "idle" | "loading" | "success" | "error";
 
@@ -33,17 +34,22 @@ export default function Newsletter() {
     setErrorMessage("");
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 800));
-      setStatus("success");
-      setEmail("");
-    } catch {
+      const result = await subscribeToNewsletter(email, "", "zh");
+      if (result.success) {
+        setStatus("success");
+        setEmail("");
+      } else {
+        setStatus("error");
+        setErrorMessage(result.message || t("home.newsletter.error_general"));
+      }
+    } catch (err: any) {
       setStatus("error");
-      setErrorMessage(t("home.newsletter.error_general"));
+      setErrorMessage(err.message || t("home.newsletter.error_general"));
     }
   };
 
   return (
-    <section className="relative w-full rounded-2xl p-[2px] overflow-hidden">
+    <section id="newsletter" className="relative w-full rounded-2xl p-[2px] overflow-hidden">
       {/* Animated gradient border */}
       <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-cyan-500 to-indigo-500 bg-[length:200%_100%] animate-[gradient_3s_ease_infinite] rounded-2xl" />
 

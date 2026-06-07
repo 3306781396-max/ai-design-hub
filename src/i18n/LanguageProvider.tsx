@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from "react";
 
-type Locale = "zh" | "en";
+type Locale = "zh" | "en" | "ja" | "ko";
 
 interface LanguageContextType {
   locale: Locale;
@@ -13,12 +13,14 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | null>(null);
 
 // Lazy load translations
-const translationCache: Record<Locale, Record<string, unknown> | null> = {
+const translationCache: Record<string, Record<string, unknown> | null> = {
   zh: null,
   en: null,
+  ja: null,
+  ko: null,
 };
 
-async function loadTranslations(locale: Locale): Promise<Record<string, unknown>> {
+async function loadTranslations(locale: string): Promise<Record<string, unknown>> {
   if (translationCache[locale]) {
     return translationCache[locale]!;
   }
@@ -39,15 +41,28 @@ function getNestedValue(obj: Record<string, unknown>, path: string): string {
 
 const STORAGE_KEY = "ai-design-hub-locale";
 
+function detectBrowserLocale(): Locale {
+  if (typeof window === "undefined") return "zh";
+  try {
+    const lang = navigator.language.toLowerCase();
+    if (lang.startsWith("zh")) return "zh";
+    if (lang.startsWith("ja")) return "ja";
+    if (lang.startsWith("ko")) return "ko";
+    return "en";
+  } catch {
+    return "zh";
+  }
+}
+
 function getStoredLocale(): Locale {
   if (typeof window === "undefined") return "zh";
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === "zh" || stored === "en") return stored;
+    if (stored === "zh" || stored === "en" || stored === "ja" || stored === "ko") return stored;
   } catch {
     // localStorage not available
   }
-  return "zh";
+  return detectBrowserLocale();
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {

@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useState, useEffect, useCallback } from "react";
+import { Suspense, useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTranslation } from "@/i18n";
@@ -8,8 +8,8 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { getToolBySlug, getTools } from "@/lib/supabase";
-import type { Tool } from "@/types";
-import { Star, Check, X, ArrowRight, Trash2, Plus } from "lucide-react";
+import type { Tool, PricingPlan } from "@/types";
+import { Star, Check, X, ArrowRight, Trash2, Plus, Download } from "lucide-react";
 
 export default function ComparePage() {
   return (
@@ -31,6 +31,8 @@ function CompareContent() {
   const [loading, setLoading] = useState(true);
   const [allTools, setAllTools] = useState<Tool[]>([]);
   const [showAddDialog, setShowAddDialog] = useState(false);
+  const tableRef = useRef<HTMLTableElement>(null);
+  const [exporting, setExporting] = useState(false);
 
   const loadTools = useCallback(async () => {
     setLoading(true);
@@ -59,8 +61,29 @@ function CompareContent() {
     const slugs = searchParams.get("tools")?.split(",").filter(Boolean) || [];
     if (slugs.includes(slug)) return;
     if (slugs.length >= 3) return;
-    router.push(`/compare?tools=[...slugs, slug].join(",")}`);
+    router.push(`/compare?tools=${[...slugs, slug].join(",")}`);
     setShowAddDialog(false);
+  };
+
+  const handleExport = async () => {
+    if (!tableRef.current || tools.length === 0) return;
+    setExporting(true);
+    try {
+      const html2canvas = (await import("html2canvas")).default;
+      const canvas = await html2canvas(tableRef.current, {
+        backgroundColor: "#0a0a0f",
+        scale: 2,
+        useCORS: true,
+      });
+      const link = document.createElement("a");
+      link.download = `ai-design-hub-compare-${Date.now()}.png`;
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    } catch (err: any) {
+      console.error("Export failed", err);
+    } finally {
+      setExporting(false);
+    }
   };
 
   const renderStars = (rating: number) =>
@@ -73,7 +96,20 @@ function CompareContent() {
 
   const compareFields = [
     { label: t("compare.fields.rating"), render: (t2: Tool) => <div className="flex items-center gap-1">{renderStars(Math.round(t2.rating))}<span className="text-white ml-1">{t2.rating.toFixed(1)}</span></div> },
-    { label: t("compare.fields.pricing"), render: (t2: Tool) => <Badge variant="outline" className="border-dark-600">{t2.pricing}</Badge> },
+    {
+      label: t("compare.fields.pricing"),
+      render: (t2: Tool) => (
+        <div className="space-y-1">
+          <Badge variant="outline" className="border-dark-600">{t2.pricing}</Badge>
+          {t2.pricing_details?.starting_price && (
+            <p className="text-sm text-amber-400 font-medium">{t2.pricing_details.starting_price}</p>
+          )}
+          {t2.pricing_details?.free_tier && (
+            <p className="text-xs text-green-400">{t2.pricing_details.free_tier}</p>
+          )}
+        </div>
+      ),
+    },
     { label: t("compare.fields.views"), render: (t2: Tool) => <span className="text-dark-300">{t2.clicks.toLocaleString()}</span> },
     { label: t("compare.fields.tags"), render: (t2: Tool) => <div className="flex flex-wrap gap-1">{t2.tags.slice(0, 4).map(tag => <span key={tag} className="text-xs px-1.5 py-0.5 rounded bg-dark-700 text-dark-300">{tag}</span>)}</div> },
     { label: t("compare.fields.pros"), render: (t2: Tool) => <ul className="text-sm text-left space-y-1">{t2.pros?.slice(0, 3).map((p, i) => <li key={i} className="text-green-400 flex items-start gap-1"><Check className="w-3.5 h-3.5 mt-0.5 shrink-0" />{p}</li>)}</ul> },
@@ -81,6 +117,9 @@ function CompareContent() {
     { label: t("compare.fields.features"), render: (t2: Tool) => <div className="text-sm text-dark-300 text-left">{t2.features?.slice(0, 3).join("、")}</div> },
     { label: t("compare.fields.use_cases"), render: (t2: Tool) => <div className="text-sm text-dark-300 text-left">{t2.use_cases?.slice(0, 2).join("、")}</div> },
   ];
+
+  // Check if any tool has pricing details
+  const hasPricingDetails = tools.some((t) => t.pricing_details?.paid_plans?.length);
 
   if (loading) {
     return (
@@ -107,15 +146,37 @@ function CompareContent() {
                 {t("compare.page_subtitle")}
               </p>
             </div>
-            {tools.length < 3 && (
-              <Button
-                onClick={() => setShowAddDialog(true)}
-                className="bg-primary-500 hover:bg-primary-600"
-              >
-                <Plus className="w-4 h-4 mr-2" />
-                {t("compare.add_tool")}
-              </Button>
-            )}
+            <div className="flex items-center gap-3">
+              {tools.length > 0 && (
+                <Button
+                  variant="outline"
+                  onClick={handleExport}
+                  disabled={exporting}
+                  className="border-dark-600 text-white hover:bg-dark-800"
+                >
+                  {exporting ? (
+                    <>
+                      <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
+                      {t("compare.exporting") || "Exporting..."}
+                    </>
+                  ) : (
+                    <>
+                      <Download className="w-4 h-4 mr-2" />
+                      {t("compare.export_image") || "Export as Image"}
+                    </>
+                  )}
+                </Button>
+              )}
+              {tools.length < 3 && (
+                <Button
+                  onClick={() => setShowAddDialog(true)}
+                  className="bg-primary-500 hover:bg-primary-600"
+                >
+                  <Plus className="w-4 h-4 mr-2" />
+                  {t("compare.add_tool")}
+                </Button>
+              )}
+            </div>
           </div>
         </div>
       </section>
@@ -138,7 +199,7 @@ function CompareContent() {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full">
+              <table ref={tableRef} className="w-full">
                 <thead>
                   <tr>
                     <th className="text-left text-dark-400 text-sm font-medium pb-4 w-40">{t("compare.fields.feature")}</th>
@@ -220,6 +281,49 @@ function CompareContent() {
                   </tr>
                 </tbody>
               </table>
+
+              {/* Price Plan Comparison */}
+              {hasPricingDetails && (
+                <div className="mt-12">
+                  <h3 className="text-xl font-bold text-white mb-6">
+                    {t("compare.fields.pricing_details") || "Pricing Plans"}
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {tools.map((tool) =>
+                      tool.pricing_details?.paid_plans?.map((plan: PricingPlan, idx: number) => (
+                        <Card key={`${tool.id}-${idx}`} className="bg-dark-900 border-dark-700">
+                          <CardHeader>
+                            <div className="flex items-center justify-between">
+                              <div>
+                                <p className="text-xs text-dark-500 uppercase tracking-wide">{tool.name}</p>
+                                <h4 className="text-lg font-bold text-white mt-0.5">{plan.name}</h4>
+                              </div>
+                              <div className="text-right">
+                                <p className="text-2xl font-bold text-white">
+                                  {plan.price === 0 ? t("common.free") : `$${plan.price}`}
+                                </p>
+                                {plan.price > 0 && (
+                                  <p className="text-xs text-dark-400">/{plan.interval}</p>
+                                )}
+                              </div>
+                            </div>
+                          </CardHeader>
+                          <CardContent>
+                            <ul className="space-y-2">
+                              {plan.features.map((feature: string, fi: number) => (
+                                <li key={fi} className="flex items-start gap-2 text-sm text-dark-300">
+                                  <Check className="w-4 h-4 text-green-400 mt-0.5 shrink-0" />
+                                  {feature}
+                                </li>
+                              ))}
+                            </ul>
+                          </CardContent>
+                        </Card>
+                      ))
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { getCategoryBySlug, getTools, getCategories } from "@/lib/supabase";
 import { CategoryToolsGrid } from "@/components/tools/CategoryToolsGrid";
+import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { generateSEOMetadata } from "@/lib/seo";
 
 interface Props {
@@ -43,13 +43,12 @@ export default async function CategoryPage({ params }: Props) {
   return (
     <div className="min-h-screen bg-dark-950 pt-32 pb-16 px-4">
       <div className="container mx-auto max-w-7xl">
-        <nav className="flex items-center gap-2 text-sm text-dark-400 mb-6">
-          <Link href="/" className="hover:text-white transition-colors">Home</Link>
-          <span>/</span>
-          <Link href="/tools" className="hover:text-white transition-colors">Tools</Link>
-          <span>/</span>
-          <span className="text-white">{category.name}</span>
-        </nav>
+        <Breadcrumb
+          items={[
+            { label: "Tools", href: "/tools" },
+            { label: category.name },
+          ]}
+        />
         <div className="mb-12">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-3xl">

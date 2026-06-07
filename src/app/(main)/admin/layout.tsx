@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { AdminGuard } from "@/components/admin/AdminGuard";
 
 const navItems = [
   {
@@ -82,7 +83,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
       {/* Main Content */}
       <main className="flex-1 overflow-auto">
-        <div className="p-8">{children}</div>
+        <AdminGuard>
+          <div className="p-8">{children}</div>
+        </AdminGuard>
       </main>
     </div>
   );

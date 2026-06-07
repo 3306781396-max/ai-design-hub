@@ -9,13 +9,6 @@ import { Input } from "@/components/ui/input";
 export function HeroBanner() {
   const { t } = useTranslation();
 
-  const stats = [
-    { label: t("home.hero.stats.ai_tools"), value: t("home.hero.stats.ai_tools_value") },
-    { label: t("home.hero.stats.categories"), value: t("home.hero.stats.categories_value") },
-    { label: t("home.hero.stats.monthly_visits"), value: t("home.hero.stats.monthly_visits_value") },
-    { label: t("home.hero.stats.curated_reviews"), value: t("home.hero.stats.curated_reviews_value") },
-  ];
-
   return (
     <section className="relative overflow-hidden py-24 lg:py-32">
       {/* Background gradient */}
@@ -79,21 +72,10 @@ export function HeroBanner() {
             size="lg"
             className="h-12 px-8 text-base border-dark-600 hover:border-primary-500/50 bg-transparent"
           >
-            <Link href="/submit-tool">{t("home.hero.cta_submit")}</Link>
+            <Link href="/submit">{t("home.hero.cta_submit")}</Link>
           </Button>
         </div>
 
-        {/* Stats */}
-        <div className="flex flex-wrap justify-center gap-8 mt-16 animate-slide-up [animation-delay:800ms]">
-          {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-2xl md:text-3xl font-bold gradient-text">
-                {stat.value}
-              </div>
-              <div className="text-sm text-dark-400 mt-1">{stat.label}</div>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );

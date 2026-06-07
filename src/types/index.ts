@@ -3,6 +3,20 @@ export interface FAQ {
   answer: string;
 }
 
+export interface PricingPlan {
+  name: string;
+  price: number;
+  currency: string;
+  interval: string; // "month" | "year" | "one-time"
+  features: string[];
+}
+
+export interface PricingDetails {
+  free_tier?: string;
+  starting_price?: string; // "Free" | "$10/month" | "Contact for pricing"
+  paid_plans?: PricingPlan[];
+}
+
 export interface Tool {
   id: string;
   slug: string;
@@ -15,7 +29,9 @@ export interface Tool {
   category_name: string;
   logo?: string;
   screenshot?: string;
-  pricing: "Free" | "Freemium" | "Paid" | "Free Trial";
+  screenshots?: string[]; // Image carousel URLs
+  pricing: "Free" | "Freemium" | "Paid" | "Free Trial" | "Enterprise";
+  pricing_details?: PricingDetails;
   rating: number;
   review_count: number;
   clicks: number;
@@ -48,6 +64,8 @@ export interface Category {
   seo_description: string;
   keywords: string[];
   featured: boolean;
+  parent_id?: string;
+  children?: Category[];
 }
 
 export interface BlogPost {

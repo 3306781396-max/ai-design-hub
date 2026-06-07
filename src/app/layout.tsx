@@ -5,6 +5,10 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { LanguageProvider } from "@/i18n";
+import { LangUpdater } from "@/components/layout/LangUpdater";
+import { Toaster } from "@/components/ui/toaster";
+import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
+import { ScrollToTop } from "@/components/common/ScrollToTop";
 import type { ReactNode } from "react";
 
 const inter = Inter({
@@ -97,9 +101,36 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Google Analytics (GA4) */}
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
+                    page_path: window.location.pathname,
+                  });
+                `,
+              }}
+            />
+          </>
+        )}
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="AI Design Hub Blog RSS"
+          href="/feed.xml"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -125,9 +156,14 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans antialiased min-h-screen flex flex-col bg-white text-gray-900 dark:bg-dark-950 dark:text-white`}>
         <ThemeProvider>
           <LanguageProvider>
+            <LangUpdater />
             <Header />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1">
+              <ErrorBoundary>{children}</ErrorBoundary>
+            </main>
             <Footer />
+            <ScrollToTop />
+            <Toaster />
           </LanguageProvider>
         </ThemeProvider>
       </body>

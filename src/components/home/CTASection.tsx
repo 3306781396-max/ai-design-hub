@@ -26,7 +26,7 @@ export function CTASection() {
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <Button asChild size="lg" className="h-12 px-8 text-base">
-            <Link href="/submit-tool">
+            <Link href="/submit">
               {t("home.cta.submit")}
               <ArrowRight className="ml-2 w-4 h-4" />
             </Link>

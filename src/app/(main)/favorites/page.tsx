@@ -1,14 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { useTranslation } from "@/i18n";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { getToolBySlug } from "@/lib/supabase";
 import type { Tool } from "@/types";
+import { logError } from "@/lib/logger";
 import { Heart, ArrowRight, Trash2 } from "lucide-react";
 import { useFavorites, useFavorite } from "@/hooks/use-favorite";
+import { useAuth } from "@/hooks/use-auth";
+import { clearAllFavorites } from "@/lib/supabase";
 
 function FavCard({ tool }: { tool: Tool }) {
   const { t } = useTranslation();
@@ -18,7 +20,7 @@ function FavCard({ tool }: { tool: Tool }) {
     <Card className="bg-dark-900 border-dark-800 hover:border-primary-500/50 transition-colors group relative">
       <button
         onClick={toggle}
-        className="absolute top-3 right-3 z-10 w-8 h-8 rounded-lg bg-dark-800/80 flex items-center justify-center text-red-400 hover:bg-red-500/20 transition-colors opacity-0 group-hover:opacity-100"
+        className="absolute top-3 right-3 z-10 w-8 h-8 rounded-lg bg-dark-800/80 flex items-center justify-center text-red-400 hover:bg-red-500/20 transition-colors"
         aria-label={t("favorites.remove")}
       >
         <Heart className="w-4 h-4 fill-red-400" />
@@ -55,6 +57,7 @@ function FavCard({ tool }: { tool: Tool }) {
 
 export default function FavoritesPage() {
   const { t } = useTranslation();
+  const { user } = useAuth();
   const [tools, setTools] = useState<Tool[]>([]);
   const [loading, setLoading] = useState(true);
   const favoriteIds = useFavorites();
@@ -64,25 +67,40 @@ export default function FavoritesPage() {
       setLoading(true);
       const ids: string[] = favoriteIds;
       if (ids.length === 0) {
+        setTools([]);
         setLoading(false);
         return;
       }
-      const loaded = await Promise.all(
-        ids.map((slug) => getToolBySlug(slug))
-      );
-      setTools(loaded.filter(Boolean) as Tool[]);
+
+      // Load all tools from mock data and filter by favorite IDs
+      const { tools: allTools } = await import("@/data/mock");
+      // Build a map of id->tool for fast lookup
+      const toolMap = new Map(allTools.map((t) => [t.id, t]));
+      const loaded = ids
+        .map((id) => toolMap.get(id))
+        .filter(Boolean) as Tool[];
+      setTools(loaded);
       setLoading(false);
     }
     load();
   }, [favoriteIds]);
 
-  const clearAll = () => {
+  const clearAll = useCallback(async () => {
     try {
+      if (user) {
+        // Logged in: clear Supabase favorites
+        await clearAllFavorites(user.id);
+        // Also clear localStorage for consistency
+      }
+      // Clear localStorage
       localStorage.setItem("aid-hub_favorites", "[]");
       setTools([]);
+      // Trigger reload to refresh useFavorites
       window.location.reload();
-    } catch {}
-  };
+    } catch (err) {
+      logError("Failed to clear favorites", err);
+    }
+  }, [user]);
 
   if (loading) {
     return (

@@ -105,7 +105,7 @@ export function AdminToolsTable({ tools }: Props) {
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-md bg-slate-700 flex items-center justify-center shrink-0">
                           {tool.logo ? (
-                            <img src={tool.logo} alt="" className="w-5 h-5 rounded" />
+                            <img src={tool.logo} alt={tool.name} className="w-5 h-5 rounded" />
                           ) : (
                             <span className="text-slate-500 text-xs font-bold">{tool.name.charAt(0)}</span>
                           )}

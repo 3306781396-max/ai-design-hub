@@ -13,6 +13,22 @@ type Props = {
   section?: string;
 };
 
+/**
+ * Merge tags and explicit keywords, deduplicate, and optionally
+ * weight by frequency for tag cloud / hot search usage.
+ */
+export function getKeywords(
+  tags: string[] = [],
+  keywords: string[] = [],
+): string[] {
+  const merged = new Map<string, number>();
+  for (const k of [...tags, ...keywords]) {
+    const key = k.toLowerCase().trim();
+    if (key) merged.set(key, (merged.get(key) || 0) + 1);
+  }
+  return Array.from(merged.keys());
+}
+
 export function generateSEOMetadata({
   title,
   description,

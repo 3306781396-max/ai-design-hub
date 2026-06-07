@@ -22,7 +22,7 @@ export function ToolCard({ tool, variant = "default", onCompare }: Props) {
   return (
     <Card className="group bg-dark-800 border-dark-700 hover:border-primary-500/50 transition-all duration-300 h-full flex flex-col relative">
       {/* Favorite & Compare buttons */}
-      <div className="absolute top-3 right-3 flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+      <div className="absolute top-3 right-3 flex gap-1.5 z-10">
         <button
           onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleFavorite(); }}
           className={cn(
@@ -51,7 +51,7 @@ export function ToolCard({ tool, variant = "default", onCompare }: Props) {
         <div className="flex items-start gap-3 mb-3">
           <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-lg font-bold text-primary-400 shrink-0 overflow-hidden">
             {tool.logo ? (
-              <img src={tool.logo} alt={tool.name} className="w-7 h-7 rounded-lg object-cover" />
+              <img src={tool.logo} alt={tool.name} loading="lazy" className="w-7 h-7 rounded-lg object-cover" />
             ) : (
               tool.name.charAt(0)
             )}

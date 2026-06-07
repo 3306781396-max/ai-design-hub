@@ -1,10 +1,14 @@
-import type { Metadata } from "next";
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { getAdminStats, getTools, getBlogPosts } from "@/lib/supabase";
+import { useMockStore } from "@/lib/mock-store";
+import { getAdminStats } from "@/lib/supabase";
 import { StatsCards } from "@/components/admin/StatsCards";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import type { AdminStats } from "@/types";
 
 function fmtDate(iso: string) {
   const d = new Date(iso);
@@ -12,19 +16,42 @@ function fmtDate(iso: string) {
   return `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
 }
 
-export const metadata: Metadata = {
-  title: "Admin Dashboard - AI Design Hub",
-  robots: { index: false },
-};
+export default function AdminDashboardPage() {
+  const store = useMockStore();
+  const [stats, setStats] = useState<AdminStats | null>(null);
 
-export default async function AdminDashboardPage() {
-  const stats = await getAdminStats();
-  const { tools } = await getTools({ limit: 5, sort: "newest" });
-  const { posts } = await getBlogPosts({ limit: 5 });
+  useEffect(() => {
+    if (store.isReady) {
+      // Compute live stats from store
+      setStats({
+        total_tools: store.tools.length,
+        total_blogs: store.posts.length,
+        total_categories: [...new Set(store.tools.map((t) => t.category_name))].length,
+        total_submissions: 0,
+        pending_submissions: 0,
+        total_clicks: store.tools.reduce((sum, t) => sum + t.clicks, 0),
+        total_views: store.posts.reduce((sum, p) => sum + p.views, 0),
+        seo_score: 92,
+      });
+    } else {
+      getAdminStats().then(setStats);
+    }
+  }, [store.isReady, store.tools, store.posts]);
+
+  if (!stats) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <p className="text-slate-400">Loading dashboard...</p>
+      </div>
+    );
+  }
+
+  // Get recent 5 from store if ready, else empty
+  const recentTools = store.isReady ? store.tools.slice(0, 5) : [];
+  const recentPosts = store.isReady ? store.posts.slice(0, 5) : [];
 
   return (
     <div className="space-y-8">
-      {/* Page Header */}
       <div>
         <h1 className="text-2xl font-bold text-white">Dashboard</h1>
         <p className="text-slate-400 mt-1">
@@ -32,10 +59,8 @@ export default async function AdminDashboardPage() {
         </p>
       </div>
 
-      {/* Stats Cards */}
       <StatsCards stats={stats} />
 
-      {/* Quick Actions */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Link href="/admin/tools">
           <Card className="border-0 bg-slate-900/80 hover:bg-slate-800/80 transition-colors cursor-pointer">
@@ -86,9 +111,7 @@ export default async function AdminDashboardPage() {
         </Link>
       </div>
 
-      {/* Recent Tools & Blogs */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Recent Tools */}
         <Card className="border-0 bg-slate-900/80">
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle className="text-white">Recent Tools</CardTitle>
@@ -97,7 +120,7 @@ export default async function AdminDashboardPage() {
             </Link>
           </CardHeader>
           <CardContent className="space-y-3">
-            {tools.map((tool) => (
+            {recentTools.map((tool) => (
               <div
                 key={tool.id}
                 className="flex items-center justify-between p-3 rounded-lg bg-slate-800/50"
@@ -105,7 +128,7 @@ export default async function AdminDashboardPage() {
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-md bg-slate-700 flex items-center justify-center text-sm">
                     {tool.logo ? (
-                      <img src={tool.logo} alt="" className="w-5 h-5 rounded" />
+                      <img src={tool.logo} alt={tool.name} className="w-5 h-5 rounded" />
                     ) : (
                       <span className="text-slate-500 text-xs font-bold">
                         {tool.name.charAt(0)}
@@ -129,7 +152,6 @@ export default async function AdminDashboardPage() {
           </CardContent>
         </Card>
 
-        {/* Recent Blogs */}
         <Card className="border-0 bg-slate-900/80">
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle className="text-white">Recent Blog Posts</CardTitle>
@@ -138,7 +160,7 @@ export default async function AdminDashboardPage() {
             </Link>
           </CardHeader>
           <CardContent className="space-y-3">
-            {posts.map((post) => (
+            {recentPosts.map((post) => (
               <div
                 key={post.id}
                 className="flex items-center justify-between p-3 rounded-lg bg-slate-800/50"
@@ -157,6 +179,6 @@ export default async function AdminDashboardPage() {
           </CardContent>
         </Card>
       </div>
-</div>
+    </div>
   );
 }
