@@ -7,7 +7,7 @@
     "dev": "next dev",
     "prebuild": "python3 scripts/prebuild.py",
     "build": "npm run prebuild && next build",
-    "postbuild": "python3 scripts/prebuild.py",
+    "postbuild": "",
     "start": "next start",
     "lint": "next lint",
     "db:push": "npx supabase db push",
