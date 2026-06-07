@@ -120,7 +120,8 @@
     "callback_no_client": "Supabase 客户端未初始化",
     "callback_login_failed": "登录失败",
     "login_with_github": "使用 GitHub 登录",
-    "invalid_credentials": "邮箱或密码错误"    "callback_success": "登录成功！正在跳转...",
+    "invalid_credentials": "邮箱或密码错误",
+    "callback_success": "登录成功！正在跳转...",
     "callback_error": "处理登录时出错",
     "callback_redirecting": "3秒后自动返回首页..."
   },
