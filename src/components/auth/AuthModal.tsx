@@ -11,16 +11,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Loader2, Mail, Lock, User, Github, ExternalLink } from "lucide-react";
+import { Loader2, Mail, Lock, User } from "lucide-react";
 import { useTranslation } from "@/i18n";
 import { useAuth } from "@/hooks/use-auth";
-
-// ============================================================
-// Constants
-// ============================================================
-
-const IS_STATIC = process.env.NEXT_PUBLIC_IS_STATIC === "true";
-const VERCEL_URL = "https://ai-design-hub-ochre.vercel.app";
 
 // ============================================================
 // Types
@@ -46,42 +39,7 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
 
-  const { signIn, signUp, signInWithGitHub } = useAuth();
-
-  // ============================================================
-  // Static Mode: Show redirect to Vercel
-  // ============================================================
-  if (IS_STATIC) {
-    return (
-      <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="sm:max-w-[440px] bg-dark-800 border-dark-700 text-white">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-center">
-              {t("auth.login") || "Login"}
-            </DialogTitle>
-            <DialogDescription className="text-center text-dark-400 mt-2">
-              登录功能需要访问完整版网站
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="space-y-4 py-4 text-center">
-            <p className="text-sm text-dark-300">
-              当前页面为快速浏览版，不支持登录。请在电脑上打开完整版网站体验登录、收藏和评论功能。
-            </p>
-            <Button
-              type="button"
-              onClick={() => window.open(VERCEL_URL, "_blank")}
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500 to-accent-500 hover:from-primary-600 hover:to-accent-600 text-white"
-            >
-              <ExternalLink className="w-4 h-4" />
-              打开完整版网站
-            </Button>
-            <p className="text-xs text-dark-500">{VERCEL_URL}</p>
-          </div>
-        </DialogContent>
-      </Dialog>
-    );
-  }
+  const { signIn, signUp } = useAuth();
 
   // Reset form when modal opens/closes
   const resetForm = () => {
@@ -98,7 +56,7 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
     onOpenChange(newOpen);
   };
 
-  // Email/Password Login
+  // Email/Password Login or Register
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -108,7 +66,7 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
     try {
       const result = mode === "login"
         ? await signIn(email, password)
-        : await signUp(email, password);
+        : await signUp(email, password, fullName || undefined);
 
       if (!result.success) {
         setError(result.error || t("auth.invalid_credentials") || "Invalid email or password");
@@ -118,19 +76,6 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
 
       // Success
       handleSuccess();
-    } catch (err: any) {
-      setError(err.message || t("auth.error_generic") || "An error occurred");
-      setLoading(false);
-    }
-  };
-
-  // GitHub OAuth Login
-  const handleGitHub = async () => {
-    setError(null);
-    setLoading(true);
-    try {
-      await signInWithGitHub();
-      // This will redirect to GitHub, so we don't need to handle success here
     } catch (err: any) {
       setError(err.message || t("auth.error_generic") || "An error occurred");
       setLoading(false);
@@ -166,32 +111,6 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
         </DialogHeader>
 
         <div className="space-y-4 py-4">
-          {/* GitHub OAuth Button */}
-          <div className="flex justify-center">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={handleGitHub}
-              disabled={loading}
-              className="w-full border-dark-600 hover:bg-dark-700 text-white h-12"
-            >
-              <Github className="w-5 h-5 mr-2" />
-              {t("auth.login_with_github") || "Continue with GitHub"}
-            </Button>
-          </div>
-
-          {/* Divider */}
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t border-dark-700" />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-dark-800 px-2 text-dark-400">
-                {t("auth.or_continue") || "Or with email"}
-              </span>
-            </div>
-          </div>
-
           {/* Email/Password Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Full Name (register only) */}
@@ -314,12 +233,10 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
             )}
           </div>
 
-          {/* Note about GitHub login */}
-          {mode === "register" && (
-            <p className="text-xs text-dark-500 text-center mt-2">
-              Tip: Use GitHub login for the fastest registration — no password needed!
-            </p>
-          )}
+          {/* Admin hint */}
+          <p className="text-xs text-dark-500 text-center mt-2">
+            Admin: admin@aidesignhub.com
+          </p>
         </div>
       </DialogContent>
     </Dialog>

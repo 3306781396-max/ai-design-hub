@@ -1,8 +1,16 @@
 "use client";
 
-import { useSession, signIn as nextAuthSignIn, signOut as nextAuthSignOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
+import {
+  registerUser,
+  loginUser,
+  logoutUser,
+  notifyAuthChange,
+  getSession,
+  type AuthSession,
+} from "@/lib/frontend-auth";
+import { useAuthContext } from "@/components/auth/AuthContext";
 
 // ============================================================
 // Types
@@ -20,11 +28,10 @@ export interface AuthUser {
 
 export interface UseAuthReturn {
   user: AuthUser | null;
-  session: any | null;
+  session: AuthSession | null;
   loading: boolean;
   error: Error | null;
-  // Auth methods
-  signUp: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
+  signUp: (email: string, password: string, name?: string) => Promise<{ success: boolean; error?: string }>;
   signIn: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
   signInWithGitHub: () => Promise<void>;
   signOut: () => Promise<void>;
@@ -35,56 +42,57 @@ export interface UseAuthReturn {
 // ============================================================
 
 export function useAuth(): UseAuthReturn {
-  const { data: session, status } = useSession();
-  const loading = status === "loading";
+  const { user: session, loading, refresh } = useAuthContext();
 
-  const user: AuthUser | null = session?.user
+  const mappedUser: AuthUser | null = session
     ? {
-        id: (session.user as any).id,
-        name: session.user.name,
-        email: session.user.email,
-        image: session.user.image,
-        role: (session.user as any).role || "user",
-        provider: (session.user as any).provider,
-        github_username: (session.user as any).github_username,
+        id: session.id,
+        name: session.name,
+        email: session.email,
+        image: session.avatar || null,
+        role: session.role,
+        provider: "credentials",
+        github_username: undefined,
       }
     : null;
 
   // Email/Password login
-  const signIn = async (email: string, password: string) => {
-    try {
-      const result = await nextAuthSignIn("credentials", {
-        email,
-        password,
-        redirect: false,
-      });
-      if (result?.error) {
-        return { success: false, error: result.error };
-      }
-      return { success: true };
-    } catch (err: any) {
-      return { success: false, error: err.message };
+  const signIn = useCallback(async (email: string, password: string) => {
+    const result = await loginUser(email, password);
+    if (result.success) {
+      notifyAuthChange(getSession());
+      refresh();
     }
-  };
+    return result;
+  }, [refresh]);
 
-  // Sign up — same as signIn for credentials provider
-  const signUp = async (email: string, password: string) => {
-    return signIn(email, password);
-  };
+  // Register
+  const signUp = useCallback(async (email: string, password: string, name?: string) => {
+    const result = await registerUser(email, password, name);
+    if (result.success) {
+      notifyAuthChange(getSession());
+      refresh();
+    }
+    return result;
+  }, [refresh]);
 
-  // GitHub OAuth login
-  const signInWithGitHub = async () => {
-    await nextAuthSignIn("github", { callbackUrl: window.location.origin + "/" });
-  };
+  // GitHub OAuth — not available in static mode
+  const signInWithGitHub = useCallback(async () => {
+    // Show a toast/alert that GitHub login requires the full version
+    if (typeof window !== "undefined") {
+      alert("GitHub login is not available in this version. Please use email/password login instead.");
+    }
+  }, []);
 
   // Sign out
-  const signOut = async () => {
-    localStorage.removeItem("aid-hub_favorites");
-    await nextAuthSignOut({ callbackUrl: "/" });
-  };
+  const signOut = useCallback(async () => {
+    logoutUser();
+    notifyAuthChange(null);
+    refresh();
+  }, [refresh]);
 
   return {
-    user,
+    user: mappedUser,
     session,
     loading,
     error: null,

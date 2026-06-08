@@ -2,18 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
+import { useAuthContext } from "@/components/auth/AuthContext";
 
 export function AdminGuard({ children }: { children: React.ReactNode }) {
-  const { data: session, status } = useSession();
+  const { user, loading } = useAuthContext();
   const router = useRouter();
   const [password, setPassword] = useState("");
   const [passwordVerified, setPasswordVerified] = useState(false);
   const [passwordError, setPasswordError] = useState("");
 
-  const loading = status === "loading";
-  const user = session?.user;
-  const isAdmin = (user as any)?.role === "admin";
+  const isAdmin = user?.role === "admin";
 
   // Check sessionStorage for existing password verification
   useEffect(() => {
@@ -50,7 +48,7 @@ export function AdminGuard({ children }: { children: React.ReactNode }) {
     );
   }
 
-  // If logged in via NextAuth and is admin, allow
+  // If logged in and is admin, allow
   if (user && isAdmin) {
     return <>{children}</>;
   }
