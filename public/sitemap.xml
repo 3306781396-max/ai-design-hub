@@ -526,6 +526,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/claude-design</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-ui-tools</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/seedance-2</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ai-design-hub-ochre.vercel.app/tool/ai-video-tools</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://ai-design-hub-ochre.vercel.app/blog/best-ai-image-generators-2025</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
