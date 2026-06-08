@@ -92,7 +92,7 @@ fi
 # 4. Run static build
 echo ""
 echo "--- Building static site ---"
-STATIC_EXPORT=true npm run build
+STATIC_EXPORT=true NEXT_PUBLIC_IS_STATIC=true npm run build
 
 # 5. Fix relative paths (for file:// compatibility)
 echo ""

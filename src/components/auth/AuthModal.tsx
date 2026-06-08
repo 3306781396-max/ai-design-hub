@@ -11,9 +11,16 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Loader2, Mail, Lock, User, Github } from "lucide-react";
+import { Loader2, Mail, Lock, User, Github, ExternalLink } from "lucide-react";
 import { useTranslation } from "@/i18n";
 import { useAuth } from "@/hooks/use-auth";
+
+// ============================================================
+// Constants
+// ============================================================
+
+const IS_STATIC = process.env.NEXT_PUBLIC_IS_STATIC === "true";
+const VERCEL_URL = "https://ai-design-hub-ochre.vercel.app";
 
 // ============================================================
 // Types
@@ -40,6 +47,41 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
   const [message, setMessage] = useState<string | null>(null);
 
   const { signIn, signUp, signInWithGitHub } = useAuth();
+
+  // ============================================================
+  // Static Mode: Show redirect to Vercel
+  // ============================================================
+  if (IS_STATIC) {
+    return (
+      <Dialog open={open} onOpenChange={onOpenChange}>
+        <DialogContent className="sm:max-w-[440px] bg-dark-800 border-dark-700 text-white">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold text-center">
+              {t("auth.login") || "Login"}
+            </DialogTitle>
+            <DialogDescription className="text-center text-dark-400 mt-2">
+              登录功能需要访问完整版网站
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-4 py-4 text-center">
+            <p className="text-sm text-dark-300">
+              当前页面为快速浏览版，不支持登录。请在电脑上打开完整版网站体验登录、收藏和评论功能。
+            </p>
+            <Button
+              type="button"
+              onClick={() => window.open(VERCEL_URL, "_blank")}
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500 to-accent-500 hover:from-primary-600 hover:to-accent-600 text-white"
+            >
+              <ExternalLink className="w-4 h-4" />
+              打开完整版网站
+            </Button>
+            <p className="text-xs text-dark-500">{VERCEL_URL}</p>
+          </div>
+        </DialogContent>
+      </Dialog>
+    );
+  }
 
   // Reset form when modal opens/closes
   const resetForm = () => {
