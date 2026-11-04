@@ -3,7 +3,6 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { useTranslation } from "@/i18n";
 import { useSearchParams, useRouter } from "next/navigation";
-import Link from "next/link";
 import Fuse from "fuse.js";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -299,7 +298,7 @@ export function ToolsFilteredGrid({ allTools, allCategories }: Props) {
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {paged.map((tool) => (
-                <Link key={tool.id} href={`/tool/${tool.slug}`}>
+                <a key={tool.id} href={tool.website_url} target="_blank" rel="noopener noreferrer">
                   <Card className="bg-dark-900 border-dark-800 hover:border-primary-500/50 transition-all h-full card-hover">
                     <CardContent className="p-5">
                       <div className="flex items-start gap-4 mb-3">
@@ -333,7 +332,7 @@ export function ToolsFilteredGrid({ allTools, allCategories }: Props) {
                       </div>
                     </CardContent>
                   </Card>
-                </Link>
+                </a>
               ))}
             </div>
             {totalPages > 1 && (

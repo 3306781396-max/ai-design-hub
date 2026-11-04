@@ -218,11 +218,11 @@ function CompareContent() {
                           </div>
                           <h3 className="text-lg font-bold text-white">{tool.name}</h3>
                           <p className="text-xs text-dark-400 mt-1">{tool.category_name}</p>
-                          <Link href={`/tool/${tool.slug}`}>
+                          <a href={tool.website_url} target="_blank" rel="noopener noreferrer">
                             <Button variant="link" className="text-primary-400 p-0 h-auto mt-2">
                               {t("compare.fields.view_details")} <ArrowRight className="w-3.5 h-3.5 ml-1" />
                             </Button>
-                          </Link>
+                          </a>
                         </div>
                       </th>
                     ))}

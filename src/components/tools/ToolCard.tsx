@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useTranslation } from "@/i18n";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -46,7 +45,7 @@ export function ToolCard({ tool, variant = "default", onCompare }: Props) {
         )}
       </div>
 
-      <Link href={`/tool/${tool.slug}`} className="flex-1 flex flex-col p-5">
+      <a href={tool.website_url} target="_blank" rel="noopener noreferrer" className="flex-1 flex flex-col p-5">
         {/* Header */}
         <div className="flex items-start gap-3 mb-3">
           <div className="w-11 h-11 rounded-xl border border-white/10 bg-white/[0.04] flex items-center justify-center text-lg font-semibold text-white/80 shrink-0 overflow-hidden">
@@ -87,10 +86,10 @@ export function ToolCard({ tool, variant = "default", onCompare }: Props) {
             {tool.pricing}
           </Badge>
           <span className="text-[11px] uppercase tracking-[0.2em] text-white/40 group-hover:text-white transition-colors">
-            {t("common.view_details")} →
+            {t("common.visit_website")} ↗
           </span>
         </div>
-      </Link>
+      </a>
     </Card>
   );
 }

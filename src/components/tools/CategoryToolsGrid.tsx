@@ -61,7 +61,7 @@ export function CategoryToolsGrid({ category, tools, otherCategories }: Props) {
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {paged.map((tool) => (
-              <Link key={tool.id} href={`/tool/${tool.slug}`}>
+              <a key={tool.id} href={tool.website_url} target="_blank" rel="noopener noreferrer">
                 <Card className="bg-dark-900 border-dark-800 hover:border-primary-500/50 transition-all h-full group">
                   <CardContent className="p-5">
                     <div className="flex items-start gap-4 mb-3">
@@ -84,7 +84,7 @@ export function CategoryToolsGrid({ category, tools, otherCategories }: Props) {
                     </div>
                   </CardContent>
                 </Card>
-              </Link>
+              </a>
             ))}
           </div>
 

@@ -25,7 +25,7 @@ function FavCard({ tool }: { tool: Tool }) {
         <Heart className="w-4 h-4 fill-red-400" />
       </button>
 
-      <Link href={`/tool/${tool.slug}`} className="block p-5">
+      <a href={tool.website_url} target="_blank" rel="noopener noreferrer" className="block p-5">
         <div className="flex items-start gap-3 mb-3">
           <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-lg font-bold text-primary-400 shrink-0">
             {tool.name.charAt(0)}
@@ -49,7 +49,7 @@ function FavCard({ tool }: { tool: Tool }) {
             {t("common.view_details")} <ArrowRight className="w-3 h-3 inline" />
           </span>
         </div>
-      </Link>
+      </a>
     </Card>
   );
 }

@@ -129,8 +129,8 @@ function ToolCard({ tool, index }: { tool: Tool; index: number }) {
   return (
     <Card className="group overflow-hidden bg-[#0e0e10] border-white/[0.07] card-hover">
       <CardContent className="p-0">
-        <Link href={`/tool/${tool.slug}`} className="block">
-          <div className="relative h-40 bg-[#101013] border-b border-white/[0.05] flex items-center justify-center overflow-hidden">
+        <a href={tool.website_url} target="_blank" rel="noopener noreferrer" className="block">
+          <div className="relative h-40 bg-[#101013] bg-[radial-gradient(ellipse_at_50%_130%,rgba(91,124,250,0.22),transparent_65%)] border-b border-white/[0.05] flex items-center justify-center overflow-hidden">
             <div className="w-16 h-16 rounded-2xl border border-white/10 bg-white/[0.04] flex items-center justify-center text-3xl font-display font-medium text-white/85 group-hover:scale-110 transition-transform">
               {tool.name.charAt(0)}
             </div>
@@ -171,7 +171,7 @@ function ToolCard({ tool, index }: { tool: Tool; index: number }) {
               </span>
             </div>
           </div>
-        </Link>
+        </a>
       </CardContent>
     </Card>
   );
@@ -182,8 +182,8 @@ function FeaturedToolCard({ tool, index }: { tool: Tool; index: number }) {
   return (
     <Card className="group overflow-hidden bg-[#0e0e10] border-white/[0.07] card-hover">
       <CardContent className="p-0">
-        <Link href={`/tool/${tool.slug}`} className="block">
-          <div className="relative h-48 bg-[#101013] border-b border-white/[0.05] flex items-center justify-center overflow-hidden">
+        <a href={tool.website_url} target="_blank" rel="noopener noreferrer" className="block">
+          <div className="relative h-48 bg-[#101013] bg-[radial-gradient(ellipse_at_50%_130%,rgba(91,124,250,0.22),transparent_65%)] border-b border-white/[0.05] flex items-center justify-center overflow-hidden">
             <div className="w-20 h-20 rounded-2xl border border-white/10 bg-white/[0.05] flex items-center justify-center text-4xl font-display font-medium text-white/85 group-hover:scale-110 transition-transform">
               {tool.name.charAt(0)}
             </div>
@@ -214,7 +214,7 @@ function FeaturedToolCard({ tool, index }: { tool: Tool; index: number }) {
               <span className="text-[10px] uppercase tracking-wider text-white/40">{tool.category_name}</span>
             </div>
           </div>
-        </Link>
+        </a>
       </CardContent>
     </Card>
   );
