@@ -30,12 +30,17 @@ export function TrendingTools() {
               {t("home.trending.subtitle")}
             </h2>
           </div>
-          <Link
-            href="/tools?sort=trending"
-            className="hidden sm:inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-white/45 transition-colors hover:text-white"
-          >
-            {t("common.view_all")} <ArrowRight className="h-3.5 w-3.5" />
-          </Link>
+          <div className="hidden max-w-xs text-right sm:block">
+            <p className="text-sm leading-relaxed text-white/45">
+              Live rankings built from clicks, saves, and weekly re-scores.
+            </p>
+            <Link
+              href="/tools?sort=trending"
+              className="mt-3 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-white/45 transition-colors hover:text-white"
+            >
+              {t("common.view_all")} <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -102,16 +107,18 @@ export function FeaturedTools() {
             <h2 className="font-display text-3xl md:text-5xl font-semibold text-white">
               {t("common.tools")}
             </h2>
-            <p className="mt-3 text-sm text-white/45">
-              {t("home.featured_section.subtitle")}
-            </p>
           </div>
-          <Link
-            href="/tools?featured=true"
-            className="hidden sm:inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-white/45 transition-colors hover:text-white"
-          >
-            {t("common.view_all")} <ArrowRight className="h-3.5 w-3.5" />
-          </Link>
+          <div className="hidden max-w-xs text-right sm:block">
+            <p className="text-sm leading-relaxed text-white/45">
+              Hand-picked by our editors — the tools we actually reach for every day.
+            </p>
+            <Link
+              href="/tools?featured=true"
+              className="mt-3 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-white/45 transition-colors hover:text-white"
+            >
+              {t("common.view_all")} <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

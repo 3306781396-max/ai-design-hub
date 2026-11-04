@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "@/i18n";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { getCategories } from "@/lib/supabase";
 import type { Category } from "@/types";
 
@@ -32,27 +32,32 @@ export function CategoriesPreview() {
             className="inline-flex w-fit items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-white/45 transition-colors hover:text-white"
           >
             {t("home.categories_preview.view_all")}
-            <ArrowRight className="h-3.5 w-3.5" />
+            <ArrowUpRight className="h-3.5 w-3.5" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="border-t border-white/[0.06]">
           {categories.map((cat, i) => {
             const num = String(i + 1).padStart(2, "0");
             return (
-              <Link key={cat.id} href={`/category/${cat.slug}`} className="group">
-                <div className="flex h-full flex-col rounded-2xl border border-white/[0.07] bg-[#0e0e10] p-6 transition-all duration-300 hover:border-white/25 hover:bg-[#121215]">
-                  <div className="mb-8 flex items-start justify-between">
-                    <span className="font-display text-sm text-white/30">{num}</span>
-                    <ArrowRight className="h-4 w-4 -translate-x-1 translate-y-1 text-white/0 transition-all duration-300 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:text-white" />
-                  </div>
-                  <h3 className="mb-2 font-display text-xl font-medium text-white">
+              <Link
+                key={cat.id}
+                href={`/category/${cat.slug}`}
+                className="group flex items-center gap-6 border-b border-white/[0.06] py-8 transition-colors hover:bg-white/[0.02] md:gap-10 md:px-4"
+              >
+                <span className="w-8 shrink-0 font-display text-sm text-white/30">
+                  {num}
+                </span>
+                <div className="min-w-0 flex-1">
+                  <h3 className="font-display text-2xl font-medium text-white md:text-3xl">
                     {cat.name}
                   </h3>
-                  <p className="text-sm leading-relaxed text-white/45 line-clamp-2">
-                    {cat.description}
-                  </p>
+                  <span className="mt-3 block h-[2px] w-20 origin-left bg-[#5b7cfa]" />
                 </div>
+                <p className="hidden max-w-xs shrink-0 text-right text-sm leading-relaxed text-white/45 md:block">
+                  {cat.description}
+                </p>
+                <ArrowUpRight className="h-5 w-5 shrink-0 text-white/25 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white" />
               </Link>
             );
           })}

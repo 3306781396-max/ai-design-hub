@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { HeroBanner } from "@/components/home/HeroBanner";
 import { Manifesto, BrandMarquee } from "@/components/home/Manifesto";
+import { Approach, Process } from "@/components/home/Approach";
 import { TrendingTools } from "@/components/home/ToolSections";
 
 // Lazy load non-critical below-fold components to reduce initial JS bundle
@@ -55,7 +56,9 @@ export default function HomePage() {
       <BrandMarquee />
       <TrendingTools />
       <CategoriesPreview />
+      <Approach />
       <FeaturedTools />
+      <Process />
       <LatestBlogPosts />
       <Newsletter />
       <CTASection />
