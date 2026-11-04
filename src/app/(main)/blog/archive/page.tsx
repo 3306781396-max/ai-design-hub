@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getBlogPosts } from "@/lib/supabase";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { generateSEOMetadata } from "@/lib/seo";
+import { toBlogMini } from "@/lib/blog-mini";
 import { Sidebar, RecentPosts, CategoryNav, TagCloud, RecentComments } from "@/components/sidebar";
 import { BlogArchiveClient } from "@/components/blog/BlogArchiveClient";
 
@@ -77,7 +78,7 @@ export default async function BlogArchivePage() {
 
           {/* Sidebar */}
           <Sidebar className="w-full lg:w-80 shrink-0">
-            <RecentPosts posts={sortedByDate} />
+            <RecentPosts posts={toBlogMini(sortedByDate)} />
             <CategoryNav categories={categoryCounts} />
             <TagCloud tags={tags} />
             <RecentComments />

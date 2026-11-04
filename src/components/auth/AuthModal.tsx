@@ -74,7 +74,17 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
         return;
       }
 
-      // Success
+      // If email confirmation is required (Supabase sign-up with email verification)
+      if ("emailConfirmationRequired" in result && result.emailConfirmationRequired) {
+        setMessage(
+          "Account created! Please check your email to confirm your account. " +
+          "Once confirmed, you can log in."
+        );
+        setLoading(false);
+        return;
+      }
+
+      // Success — close modal
       handleSuccess();
     } catch (err: any) {
       setError(err.message || t("auth.error_generic") || "An error occurred");
@@ -235,7 +245,9 @@ export function AuthModal({ open, onOpenChange, onSuccess }: AuthModalProps) {
 
           {/* Admin hint */}
           <p className="text-xs text-dark-500 text-center mt-2">
-            Admin: admin@aidesignhub.com
+            {mode === "login"
+              ? "Admin login: admin@aidesignhub.com / Admin123!"
+              : "Register to save favorites and write reviews"}
           </p>
         </div>
       </DialogContent>

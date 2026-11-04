@@ -3,11 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import type { BlogPost } from "@/types";
+import type { BlogMini } from "@/lib/blog-mini";
 import { Clock, ArrowRight } from "lucide-react";
 
 interface RecentPostsProps {
-  posts: BlogPost[];
+  posts: BlogMini[];
   max?: number;
 }
 

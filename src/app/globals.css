@@ -3,52 +3,56 @@
 @tailwind utilities;
 
 @layer base {
-  /* Dark mode (default) */
+  /* Dark theme (default, VESPER-inspired cinematic monochrome) */
   :root, .dark {
-    --background: 240 10% 4%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 4%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 4%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 239 84% 67%;
+    --background: 240 6% 4%;
+    --foreground: 0 0% 100%;
+    --card: 240 6% 6%;
+    --card-foreground: 0 0% 100%;
+    --popover: 240 6% 6%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 228 90% 66%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 240 4% 12%;
+    --secondary: 0 0% 10%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 240 4% 16%;
-    --muted-foreground: 240 5% 65%;
-    --accent: 183 92% 42%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 58%;
+    --accent: 228 60% 72%;
     --accent-foreground: 0 0% 100%;
-    --destructive: 0 63% 31%;
+    --destructive: 0 63% 45%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 4% 16%;
-    --input: 240 4% 16%;
-    --ring: 239 84% 67%;
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 228 90% 66%;
     --radius: 0.75rem;
   }
 
-  /* Light mode */
+  /* Light mode (kept for internal pages) */
   .light {
     --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    --foreground: 240 10% 8%;
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 240 10% 8%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-    --primary: 239 84% 67%;
+    --popover-foreground: 240 10% 8%;
+    --primary: 228 90% 58%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222 47% 11%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 183 92% 38%;
+    --secondary: 240 6% 96%;
+    --secondary-foreground: 240 10% 8%;
+    --muted: 240 6% 96%;
+    --muted-foreground: 240 5% 42%;
+    --accent: 228 80% 52%;
     --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
+    --destructive: 0 84% 55%;
     --destructive-foreground: 0 0% 100%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 239 84% 67%;
+    --border: 240 6% 88%;
+    --input: 240 6% 88%;
+    --ring: 228 90% 58%;
     --radius: 0.75rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
@@ -57,6 +61,95 @@
     font-feature-settings: "ss01", "ss02", "cv01", "cv02";
     transition: background-color 0.3s ease, color 0.3s ease;
   }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.35);
+    color: #fff;
+  }
+}
+
+/* Display font (Clash Display via Fontshare) */
+.font-display {
+  font-family: "Clash Display", "Inter", system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Uppercase kicker label with dot — VESPER style */
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+.kicker::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: hsl(var(--primary));
+  box-shadow: 0 0 10px hsl(var(--primary) / 0.8);
+  flex-shrink: 0;
+}
+
+/* Starfield background (two twinkling layers) */
+.starfield {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.starfield::before,
+.starfield::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background-repeat: repeat;
+}
+.starfield::before {
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 22%, rgba(255,255,255,0.7) 50%, transparent 51%),
+    radial-gradient(1px 1px at 34% 68%, rgba(255,255,255,0.45) 50%, transparent 51%),
+    radial-gradient(2px 2px at 56% 14%, rgba(255,255,255,0.55) 50%, transparent 51%),
+    radial-gradient(1px 1px at 71% 42%, rgba(255,255,255,0.4) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 88% 76%, rgba(255,255,255,0.6) 50%, transparent 51%),
+    radial-gradient(1px 1px at 8% 84%, rgba(255,255,255,0.5) 50%, transparent 51%),
+    radial-gradient(1px 1px at 44% 38%, rgba(255,255,255,0.35) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 64% 90%, rgba(255,255,255,0.5) 50%, transparent 51%);
+  background-size: 620px 620px;
+  animation: twinkle 7s ease-in-out infinite alternate;
+}
+.starfield::after {
+  background-image:
+    radial-gradient(1px 1px at 22% 52%, rgba(255,255,255,0.4) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 48% 78%, rgba(255,255,255,0.5) 50%, transparent 51%),
+    radial-gradient(1px 1px at 78% 28%, rgba(255,255,255,0.45) 50%, transparent 51%),
+    radial-gradient(2px 2px at 92% 58%, rgba(255,255,255,0.4) 50%, transparent 51%),
+    radial-gradient(1px 1px at 5% 38%, rgba(255,255,255,0.4) 50%, transparent 51%);
+  background-size: 480px 480px;
+  animation: twinkle 9s ease-in-out infinite alternate-reverse;
+}
+@keyframes twinkle {
+  0% { opacity: 0.45; }
+  100% { opacity: 1; }
+}
+
+/* Infinite marquee (brand strip) */
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+.marquee-mask {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
 }
 
 /* Custom scrollbar */
@@ -64,18 +157,15 @@
   width: 8px;
   height: 8px;
 }
-
 ::-webkit-scrollbar-track {
-  background-color: hsl(var(--card));
+  background-color: hsl(var(--background));
 }
-
 ::-webkit-scrollbar-thumb {
-  background-color: hsl(var(--muted-foreground));
+  background-color: rgba(255, 255, 255, 0.15);
   border-radius: 9999px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background-color: hsl(var(--accent));
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Smooth transitions */
@@ -88,25 +178,24 @@ a, button {
 .glass {
   background-color: hsl(var(--card) / 0.8);
   backdrop-filter: blur(12px);
-  border: 1px solid rgb(255 255 255 / 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* Gradient text */
+/* Gradient text (kept, muted) */
 .gradient-text {
-  background-image: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)));
+  background-image: linear-gradient(to right, hsl(var(--foreground)), hsl(var(--muted-foreground)));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Card hover effects */
+/* Card hover effects — subtle white border glow instead of color */
 .card-hover {
   transition-property: all;
   transition-duration: 300ms;
 }
-
 .card-hover:hover {
-  border-color: hsl(var(--primary) / 0.3);
-  box-shadow: 0 0 30px rgba(99, 102, 241, 0.1);
-  transform: translateY(-0.25rem);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 20px 50px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
 }

@@ -19,25 +19,23 @@ export function TrendingTools() {
   }, []);
 
   return (
-    <section className="py-16 lg:px-4">
+    <section className="py-24 lg:px-4">
       <div className="container mx-auto">
-        <div className="flex items-center justify-between mb-10">
+        <div className="flex items-end justify-between mb-12">
           <div>
-            <div className="flex items-center gap-2 mb-2">
-              <Flame className="w-5 h-5 text-orange-400" />
-              <h2 className="text-2xl md:text-3xl font-bold">
-                {t("home.trending.title")}
-              </h2>
+            <div className="kicker mb-4">
+              <span>{t("home.trending.title")}</span>
             </div>
-            <p className="text-dark-400">
+            <h2 className="font-display text-3xl md:text-5xl font-semibold text-white">
               {t("home.trending.subtitle")}
-            </p>
+            </h2>
           </div>
-          <Button asChild variant="ghost" className="text-primary-400">
-            <Link href="/tools?sort=trending">
-              {t("common.view_all")} <ArrowRight className="ml-1 w-4 h-4" />
-            </Link>
-          </Button>
+          <Link
+            href="/tools?sort=trending"
+            className="hidden sm:inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-white/45 transition-colors hover:text-white"
+          >
+            {t("common.view_all")} <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -94,23 +92,26 @@ export function FeaturedTools() {
   }, []);
 
   return (
-    <section className="py-16">
+    <section className="py-24">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between mb-10">
+        <div className="flex items-end justify-between mb-12">
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold mb-2">
-              <span className="gradient-text">{t("common.featured")}</span>{" "}
+            <div className="kicker mb-4">
+              <span>{t("common.featured")}</span>
+            </div>
+            <h2 className="font-display text-3xl md:text-5xl font-semibold text-white">
               {t("common.tools")}
             </h2>
-            <p className="text-dark-400">
+            <p className="mt-3 text-sm text-white/45">
               {t("home.featured_section.subtitle")}
             </p>
           </div>
-          <Button asChild variant="ghost" className="text-primary-400">
-            <Link href="/tools?featured=true">
-              {t("common.view_all")} <ArrowRight className="ml-1 w-4 h-4" />
-            </Link>
-          </Button>
+          <Link
+            href="/tools?featured=true"
+            className="hidden sm:inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-white/45 transition-colors hover:text-white"
+          >
+            {t("common.view_all")} <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -126,33 +127,33 @@ export function FeaturedTools() {
 function ToolCard({ tool, index }: { tool: Tool; index: number }) {
   const { t } = useTranslation();
   return (
-    <Card className="group overflow-hidden bg-dark-900 border-dark-800 card-hover">
+    <Card className="group overflow-hidden bg-[#0e0e10] border-white/[0.07] card-hover">
       <CardContent className="p-0">
         <Link href={`/tool/${tool.slug}`} className="block">
-          <div className="relative h-40 bg-gradient-to-br from-dark-800 to-dark-900 flex items-center justify-center overflow-hidden">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-3xl font-bold text-primary-400 group-hover:scale-110 transition-transform">
+          <div className="relative h-40 bg-[#101013] border-b border-white/[0.05] flex items-center justify-center overflow-hidden">
+            <div className="w-16 h-16 rounded-2xl border border-white/10 bg-white/[0.04] flex items-center justify-center text-3xl font-display font-medium text-white/85 group-hover:scale-110 transition-transform">
               {tool.name.charAt(0)}
             </div>
             {tool.trending && (
-              <Badge className="absolute top-3 left-3 bg-orange-500/90 dark:text-white text-gray-900 border-0 text-xs">
-                <TrendingUp className="w-3 h-3 mr-1" />
+              <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-black/40 px-2.5 py-1 text-[10px] uppercase tracking-wider text-white/60 backdrop-blur">
+                <TrendingUp className="h-3 w-3" />
                 {t("common.trending")}
-              </Badge>
+              </span>
             )}
             {tool.sponsored && (
-              <Badge className="absolute top-3 right-3 bg-amber-500/90 dark:text-white text-gray-900 border-0 text-xs">
+              <span className="absolute top-3 right-3 rounded-full border border-white/10 bg-black/40 px-2.5 py-1 text-[10px] uppercase tracking-wider text-white/60 backdrop-blur">
                 {t("common.sponsored")}
-              </Badge>
+              </span>
             )}
           </div>
 
           <div className="p-5">
             <div className="flex items-start justify-between mb-2">
-              <h3 className="font-semibold dark:text-white text-gray-900 group-hover:text-primary-400 transition-colors">
+              <h3 className="font-display font-medium dark:text-white text-gray-900 group-hover:text-white transition-colors">
                 {tool.name}
               </h3>
             </div>
-            <p className="text-sm text-dark-400 line-clamp-2 mb-3">
+            <p className="text-sm text-white/45 line-clamp-2 mb-3">
               {tool.description}
             </p>
             <div className="flex items-center justify-between">
@@ -161,13 +162,13 @@ function ToolCard({ tool, index }: { tool: Tool; index: number }) {
                 <span className="text-sm font-medium dark:text-white text-gray-900">
                   {tool.rating.toFixed(1)}
                 </span>
-                <span className="text-xs text-dark-500">
+                <span className="text-xs text-white/35">
                   ({tool.review_count})
                 </span>
               </div>
-              <Badge variant="outline" className="text-xs border-dark-700 text-dark-300">
+              <span className="text-[10px] uppercase tracking-wider border border-white/15 rounded-full px-2.5 py-0.5 text-white/55">
                 {tool.pricing}
-              </Badge>
+              </span>
             </div>
           </div>
         </Link>
@@ -179,30 +180,30 @@ function ToolCard({ tool, index }: { tool: Tool; index: number }) {
 function FeaturedToolCard({ tool, index }: { tool: Tool; index: number }) {
   const { t } = useTranslation();
   return (
-    <Card className="group overflow-hidden bg-dark-900 border-dark-800 card-hover border-primary-500/20">
+    <Card className="group overflow-hidden bg-[#0e0e10] border-white/[0.07] card-hover">
       <CardContent className="p-0">
         <Link href={`/tool/${tool.slug}`} className="block">
-          <div className="relative h-48 bg-gradient-to-br from-primary-950/50 to-dark-900 flex items-center justify-center overflow-hidden">
-            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary-500/30 to-accent-500/30 flex items-center justify-center text-4xl font-bold text-primary-300 group-hover:scale-110 transition-transform">
+          <div className="relative h-48 bg-[#101013] border-b border-white/[0.05] flex items-center justify-center overflow-hidden">
+            <div className="w-20 h-20 rounded-2xl border border-white/10 bg-white/[0.05] flex items-center justify-center text-4xl font-display font-medium text-white/85 group-hover:scale-110 transition-transform">
               {tool.name.charAt(0)}
             </div>
-            <div className="absolute top-3 left-3 px-2 py-1 rounded-md bg-amber-500/90 dark:text-white text-gray-900 text-xs font-medium">
+            <span className="absolute top-3 left-3 rounded-full border border-white/10 bg-black/40 px-2.5 py-1 text-[10px] uppercase tracking-wider text-white/60 backdrop-blur">
               {t("home.featured_section.badge")}
-            </div>
+            </span>
           </div>
 
           <div className="p-5">
-            <h3 className="font-semibold text-lg dark:text-white text-gray-900 group-hover:text-primary-400 transition-colors mb-2">
+            <h3 className="font-display text-lg font-medium dark:text-white text-gray-900 group-hover:text-white transition-colors mb-2">
               {tool.name}
             </h3>
-            <p className="text-sm text-dark-400 line-clamp-2 mb-4">
+            <p className="text-sm text-white/45 line-clamp-2 mb-4">
               {tool.description}
             </p>
-            <div className="flex flex-wrap gap-2 mb-4">
+            <div className="flex flex-wrap gap-1.5 mb-4">
               {tool.tags.slice(0, 3).map((tag) => (
-                <Badge key={tag} variant="secondary" className="text-xs">
+                <span key={tag} className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 text-[10px] uppercase tracking-wider text-white/50">
                   {tag}
-                </Badge>
+                </span>
               ))}
             </div>
             <div className="flex items-center justify-between">
@@ -210,7 +211,7 @@ function FeaturedToolCard({ tool, index }: { tool: Tool; index: number }) {
                 <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
                 <span className="text-sm font-medium">{tool.rating.toFixed(1)}</span>
               </div>
-              <span className="text-xs text-dark-400">{tool.category_name}</span>
+              <span className="text-[10px] uppercase tracking-wider text-white/40">{tool.category_name}</span>
             </div>
           </div>
         </Link>

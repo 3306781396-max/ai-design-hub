@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getBlogPostBySlug, getBlogPosts } from "@/lib/supabase";
 import { generateSEOMetadata } from "@/lib/seo";
 import BlogDetailClient from "@/components/blog/BlogDetailClient";
+import { toBlogMini } from "@/lib/blog-mini";
 import { Sidebar, RecentPosts, CategoryNav, TagCloud, RecentComments } from "@/components/sidebar";
 
 interface Props {
@@ -79,7 +80,7 @@ export default async function BlogDetailPage({ params }: Props) {
 
             {/* Sidebar */}
             <Sidebar className="w-full lg:w-80 shrink-0">
-              <RecentPosts posts={sortedByDate} />
+              <RecentPosts posts={toBlogMini(sortedByDate)} />
               <CategoryNav categories={categoryCounts} />
               <TagCloud tags={tags} />
               <RecentComments />

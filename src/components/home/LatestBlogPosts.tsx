@@ -19,37 +19,38 @@ export function LatestBlogPosts() {
   }, []);
 
   return (
-    <section className="py-16">
+    <section className="py-24">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between mb-10">
+        <div className="flex items-end justify-between mb-12">
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold mb-2">
-              {t("home.blog_preview.title")}
-            </h2>
-            <p className="text-dark-400">
+            <div className="kicker mb-4">
+              <span>{t("home.blog_preview.title")}</span>
+            </div>
+            <h2 className="font-display text-3xl md:text-5xl font-semibold text-white">
               {t("home.blog_preview.subtitle")}
-            </p>
+            </h2>
           </div>
-          <Button asChild variant="ghost" className="text-primary-400">
-            <Link href="/blog">
-              {t("common.view_all")} <ArrowRight className="ml-1 w-4 h-4" />
-            </Link>
-          </Button>
+          <Link
+            href="/blog"
+            className="hidden sm:inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-white/45 transition-colors hover:text-white"
+          >
+            {t("common.view_all")} <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts.map((post) => (
             <Link key={post.id} href={`/blog/${post.slug}`} className="group">
-              <Card className="overflow-hidden bg-dark-900 border-dark-800 card-hover h-full flex flex-col">
-                <div className="h-44 bg-gradient-to-br from-primary-950/50 to-accent-950/30 flex items-center justify-center">
-                  <div className="w-12 h-12 rounded-xl bg-primary-500/20 flex items-center justify-center">
-                    <svg className="w-6 h-6 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <Card className="overflow-hidden bg-[#0e0e10] border-white/[0.07] card-hover h-full flex flex-col">
+                <div className="h-40 bg-[#101013] border-b border-white/[0.05] flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-xl border border-white/10 bg-white/[0.04] flex items-center justify-center">
+                    <svg className="w-6 h-6 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" />
                     </svg>
                   </div>
                 </div>
                 <CardContent className="p-5 flex-1 flex flex-col">
-                  <div className="flex items-center gap-3 mb-3 text-xs text-dark-500">
+                  <div className="flex items-center gap-3 mb-3 text-xs text-white/35">
                     <span className="flex items-center gap-1">
                       <Calendar className="w-3 h-3" />
                       {new Date(post.published_at).toLocaleDateString("en-US", {
@@ -63,17 +64,17 @@ export function LatestBlogPosts() {
                       {post.read_time} {t("common.min_read")}
                     </span>
                   </div>
-                  <h3 className="font-semibold dark:text-white text-gray-900 group-hover:text-primary-400 transition-colors mb-2 line-clamp-2">
+                  <h3 className="font-display font-medium text-white group-hover:text-white/80 transition-colors mb-2 line-clamp-2">
                     {post.title}
                   </h3>
-                  <p className="text-sm text-dark-400 line-clamp-2 mb-4 flex-1">
+                  <p className="text-sm text-white/45 line-clamp-2 mb-4 flex-1">
                     {post.description}
                   </p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5">
                     {post.tags.slice(0, 2).map((tag) => (
-                      <Badge key={tag} variant="secondary" className="text-xs">
+                      <span key={tag} className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 text-[10px] uppercase tracking-wider text-white/50">
                         {tag}
-                      </Badge>
+                      </span>
                     ))}
                   </div>
                 </CardContent>

@@ -70,6 +70,14 @@ export default async function ToolDetailPage({ params }: Props) {
     .sort((a, b) => b.clicks - a.clicks)
     .slice(0, 4);
 
+  // 替代工具卡片只用到 name / slug / category_name，
+  // 在服务端解析好即可，不必把全量工具数据序列化进页面
+  const toolByName = new Map(allTools.map((t) => [t.name, t]));
+  const alternativeTools = (tool.alternatives || [])
+    .map((name) => toolByName.get(name))
+    .filter((t): t is Tool => Boolean(t))
+    .map(({ name, slug, category_name }) => ({ name, slug, category_name }));
+
   const toolSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -105,7 +113,7 @@ export default async function ToolDetailPage({ params }: Props) {
       <JsonLd data={toolSchema} />
       <ToolDetailClient 
         tool={tool} 
-        allTools={allTools}
+        alternativeTools={alternativeTools}
         relatedTools={relatedTools}
         frequentlyUsedTogether={frequentlyUsedTogether}
         peopleAlsoViewed={peopleAlsoViewed}

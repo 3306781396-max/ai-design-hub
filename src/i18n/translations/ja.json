@@ -153,9 +153,11 @@
   "header": {
     "logo": "AI Design Hub",
     "nav": {
+      "home": "ホーム",
       "tools": "ツール",
       "categories": "カテゴリ",
       "blog": "ブログ",
+      "daily": "AIデイリー",
       "compare": "比較",
       "submit_tool": "ツールを提案"
     },

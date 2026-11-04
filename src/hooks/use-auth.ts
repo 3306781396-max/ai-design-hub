@@ -6,10 +6,10 @@ import {
   registerUser,
   loginUser,
   logoutUser,
-  notifyAuthChange,
   getSession,
   type AuthSession,
 } from "@/lib/frontend-auth";
+import { signInWithOAuth } from "@/lib/supabase";
 import { useAuthContext } from "@/components/auth/AuthContext";
 
 // ============================================================
@@ -31,8 +31,19 @@ export interface UseAuthReturn {
   session: AuthSession | null;
   loading: boolean;
   error: Error | null;
-  signUp: (email: string, password: string, name?: string) => Promise<{ success: boolean; error?: string }>;
-  signIn: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
+  signUp: (
+    email: string,
+    password: string,
+    name?: string
+  ) => Promise<{
+    success: boolean;
+    error?: string;
+    emailConfirmationRequired?: boolean;
+  }>;
+  signIn: (
+    email: string,
+    password: string
+  ) => Promise<{ success: boolean; error?: string }>;
   signInWithGitHub: () => Promise<void>;
   signOut: () => Promise<void>;
 }
@@ -44,6 +55,7 @@ export interface UseAuthReturn {
 export function useAuth(): UseAuthReturn {
   const { user: session, loading, refresh } = useAuthContext();
 
+  // Map AuthSession → AuthUser (generic interface used by UI)
   const mappedUser: AuthUser | null = session
     ? {
         id: session.id,
@@ -56,39 +68,48 @@ export function useAuth(): UseAuthReturn {
       }
     : null;
 
-  // Email/Password login
-  const signIn = useCallback(async (email: string, password: string) => {
-    const result = await loginUser(email, password);
-    if (result.success) {
-      notifyAuthChange(getSession());
-      refresh();
-    }
-    return result;
-  }, [refresh]);
-
   // Register
-  const signUp = useCallback(async (email: string, password: string, name?: string) => {
-    const result = await registerUser(email, password, name);
-    if (result.success) {
-      notifyAuthChange(getSession());
-      refresh();
-    }
-    return result;
-  }, [refresh]);
+  const signUp = useCallback(
+    async (email: string, password: string, name?: string) => {
+      const result = await registerUser(email, password, name);
+      if (result.success && !result.emailConfirmationRequired) {
+        await refresh();
+      }
+      return result;
+    },
+    [refresh]
+  );
 
-  // GitHub OAuth — not available in static mode
+  // Login
+  const signIn = useCallback(
+    async (email: string, password: string) => {
+      const result = await loginUser(email, password);
+      if (result.success) {
+        await refresh();
+      }
+      return result;
+    },
+    [refresh]
+  );
+
+  // GitHub OAuth — uses Supabase client-side OAuth
   const signInWithGitHub = useCallback(async () => {
-    // Show a toast/alert that GitHub login requires the full version
-    if (typeof window !== "undefined") {
-      alert("GitHub login is not available in this version. Please use email/password login instead.");
+    try {
+      const { error } = await signInWithOAuth("github");
+      if (error) {
+        // If there's an error (e.g., not configured), show a message
+        alert("GitHub login is not available. Please use email/password login instead.");
+      }
+      // On success, browser redirects to GitHub — no further action needed
+    } catch {
+      alert("GitHub login is not available. Please use email/password login instead.");
     }
   }, []);
 
   // Sign out
   const signOut = useCallback(async () => {
-    logoutUser();
-    notifyAuthChange(null);
-    refresh();
+    await logoutUser();
+    await refresh();
   }, [refresh]);
 
   return {

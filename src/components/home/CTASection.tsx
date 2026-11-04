@@ -1,44 +1,42 @@
 "use client";
 
 import { useTranslation } from "@/i18n";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export function CTASection() {
   const { t } = useTranslation();
 
   return (
-    <section className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-primary-950/40 to-accent-950/40" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900/10 via-transparent to-transparent" />
+    <section className="relative overflow-hidden border-t border-white/[0.05] py-28">
+      <div className="absolute inset-0 bg-[#0a0a0b]" />
+      <div className="starfield" />
+      <div className="absolute left-1/2 top-1/2 h-[320px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#5b7cfa]/[0.06] blur-[120px]" />
 
       <div className="relative container mx-auto px-4 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-sm mb-6">
-          <Sparkles className="w-4 h-4" />
+        <div className="kicker mb-6 justify-center">
           <span>{t("home.cta.badge")}</span>
         </div>
-        <h2 className="text-2xl md:text-4xl font-bold dark:text-white text-gray-900 mb-4">
+        <h2 className="font-display text-3xl font-semibold leading-tight text-white md:text-5xl">
           {t("home.cta.title")}
         </h2>
-        <p className="text-lg text-dark-300 max-w-2xl mx-auto mb-10">
+        <p className="mx-auto mt-6 max-w-xl text-white/55">
           {t("home.cta.description")}
         </p>
-        <div className="flex flex-wrap justify-center gap-4">
-          <Button asChild size="lg" className="h-12 px-8 text-base">
-            <Link href="/submit">
-              {t("home.cta.submit")}
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Link>
-          </Button>
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="h-12 px-8 text-base border-dark-600 bg-transparent hover:border-primary-500/50"
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <Link
+            href="/submit"
+            className="inline-flex h-12 items-center rounded-full bg-white px-8 text-sm font-medium text-black transition-colors hover:bg-white/85"
           >
-            <Link href="/contact">{t("home.cta.advertise")}</Link>
-          </Button>
+            {t("home.cta.submit")}
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Link>
+          <Link
+            href="/contact"
+            className="inline-flex h-12 items-center rounded-full border border-white/15 px-8 text-sm font-medium text-white/80 transition-colors hover:border-white/35 hover:text-white"
+          >
+            {t("home.cta.advertise")}
+          </Link>
         </div>
       </div>
     </section>

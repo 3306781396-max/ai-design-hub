@@ -4,6 +4,7 @@ import { BlogFilteredList } from "@/components/blog/BlogFilteredList";
 import { BlogPageHeader } from "@/components/blog/BlogPageHeader";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { generateSEOMetadata } from "@/lib/seo";
+import { toBlogMini } from "@/lib/blog-mini";
 import { Sidebar, RecentPosts, CategoryNav, TagCloud, RecentComments } from "@/components/sidebar";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -61,7 +62,7 @@ export default async function BlogPage() {
 
           {/* Sidebar */}
           <Sidebar className="w-full lg:w-80 shrink-0">
-            <RecentPosts posts={sortedByDate} />
+            <RecentPosts posts={toBlogMini(sortedByDate)} />
             <CategoryNav categories={categoryCounts} />
             <TagCloud tags={tags} />
             <RecentComments />

@@ -7,12 +7,9 @@ import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "@/i18n";
 import {
-  Sparkles,
   Search,
   Menu,
   X,
-  Moon,
-  Sun,
   Heart,
   GitCompareArrows,
   Globe,
@@ -26,9 +23,11 @@ import { useAuth } from "@/hooks/use-auth";
 import { AuthModal } from "@/components/auth/AuthModal";
 
 const navLinks = [
+  { labelKey: "header.nav.home", href: "/" },
   { labelKey: "header.nav.tools", href: "/tools" },
   { labelKey: "header.nav.categories", href: "/categories" },
   { labelKey: "header.nav.blog", href: "/blog" },
+  { labelKey: "header.nav.daily", href: "/daily" },
   { labelKey: "header.nav.compare", href: "/compare" },
   { labelKey: "header.nav.submit_tool", href: "/submit" },
 ] as const;
@@ -40,7 +39,6 @@ export default function Header() {
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [langMenuOpen, setLangMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
   const { t, locale, setLocale } = useTranslation();
   const { user, loading, signOut } = useAuth();
   const router = useRouter();
@@ -52,26 +50,22 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-gray-950/80 backdrop-blur-xl supports-[backdrop-filter]:bg-gray-950/60 dark:border-white/10 dark:bg-gray-950/80 light:border-gray-200 light:bg-white/90">
+    <header className="sticky top-0 z-50 w-full border-b border-white/[0.06] bg-[#0a0a0b]/85 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <Sparkles className="h-6 w-6 text-cyan-400 transition-colors group-hover:text-cyan-300" />
-          <span className="text-lg font-bold dark:text-white text-gray-900">
-            AI Design{" "}
-            <span className="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
-              Hub
-            </span>
+          <span className="font-display text-base font-semibold uppercase tracking-[0.3em] text-white">
+            AI Design Hub
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="px-3 py-2 text-sm font-medium dark:text-gray-300 text-gray-600 transition-colors dark:hover:text-white hover:text-gray-900 rounded-lg dark:hover:bg-white/5 hover:bg-gray-100"
+              className="text-[11px] font-medium uppercase tracking-[0.22em] text-white/55 transition-colors hover:text-white"
             >
               {t(link.labelKey)}
             </Link>
@@ -123,7 +117,7 @@ export default function Header() {
                   }}
                   placeholder={t("header.search_placeholder") || "Search tools..."}
                   autoFocus
-                  className="h-9 w-48 rounded-lg border border-white/10 bg-gray-900 pl-9 pr-3 text-sm text-white placeholder-gray-500 outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all sm:w-64"
+                  className="h-9 w-48 rounded-full border border-white/10 bg-white/[0.05] pl-9 pr-3 text-sm text-white placeholder-white/35 outline-none focus:border-white/30 transition-all sm:w-64"
                 />
                 <button
                   type="button"
@@ -148,49 +142,7 @@ export default function Header() {
             )}
           </div>
 
-          {/* Theme Toggle */}
-          <div
-            className="relative flex h-9 items-center rounded-full p-0.5 bg-white/10 dark:bg-white/10 light:bg-gray-100 border border-transparent dark:border-white/5 light:border-gray-200"
-            role="radiogroup"
-            aria-label="Theme selection"
-          >
-            <button
-              onClick={() => setTheme("light")}
-              role="radio"
-              aria-checked={theme === "light"}
-              className={cn(
-                "relative z-10 flex h-8 items-center justify-center gap-1.5 rounded-full px-3 text-xs font-medium transition-colors duration-200",
-                theme === "light"
-                  ? "text-white shadow-sm"
-                  : "text-gray-400 hover:text-gray-300 dark:text-gray-400 dark:hover:text-gray-300 light:text-gray-500 light:hover:text-gray-700"
-              )}
-              title={t("header.theme.light_mode")}
-            >
-              <Sun className="h-3.5 w-3.5" />
-              <span className="hidden sm:inline">{t("header.theme.light")}</span>
-            </button>
-            <button
-              onClick={() => setTheme("dark")}
-              role="radio"
-              aria-checked={theme === "dark"}
-              className={cn(
-                "relative z-10 flex h-8 items-center justify-center gap-1.5 rounded-full px-3 text-xs font-medium transition-colors duration-200",
-                theme === "dark"
-                  ? "text-white shadow-sm"
-                  : "text-gray-400 hover:text-gray-300 dark:text-gray-400 dark:hover:text-gray-300 light:text-gray-500 light:hover:text-gray-700"
-              )}
-              title={t("header.theme.dark_mode")}
-            >
-              <Moon className="h-3.5 w-3.5" />
-              <span className="hidden sm:inline">{t("header.theme.dark")}</span>
-            </button>
-            <div
-              className={cn(
-                "absolute top-0.5 h-8 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500 shadow-lg shadow-indigo-500/25 transition-all duration-300 ease-out",
-                theme === "dark" ? "left-[calc(50%+1px)] right-0.5" : "left-0.5 right-[calc(50%+1px)]"
-              )}
-            />
-          </div>
+          {/* Theme Toggle removed — cinematic dark-first design (VESPER style) */}
 
           {/* Language Toggle */}
           <div className="relative">

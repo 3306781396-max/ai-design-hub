@@ -5,7 +5,7 @@
     <link>https://ai-design-hub-ochre.vercel.app/blog</link>
     <description>Latest AI design trends, tool comparisons, tutorials and best practices for creative professionals.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Jun 2026 08:33:13 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 13:33:42 +0000</lastBuildDate>
     <atom:link href="https://ai-design-hub-ochre.vercel.app/feed.xml" rel="self" type="application/rss+xml" />
 
     <item>
@@ -247,6 +247,302 @@
       <pubDate>Sun, 10 Aug 2025 10:00:00 +0000</pubDate>
       <description>The most comprehensive AI design tools comparison. 50+ tools reviewed across image, video, 3D, UI/UX, and productivity categories.</description>
       <author>Emily Park</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年6月8日 - Figma AI 重大更新, Midjourney V7 发布</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-june-8-2026</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-june-8-2026</guid>
+      <pubDate>Mon, 08 Jun 2026 12:38:16 +0000</pubDate>
+      <description>今日 AI 设计领域速览：Figma 推出全新 AI 布局功能，Midjourney V7 正式发布带来革命性改进，Adobe 发布 AI 视频编辑工具。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年06月20日 - 微软MAI图像模型发布, Figma Make重塑设计流程, 国内AI工具集中开源</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-06-20</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-06-20</guid>
+      <pubDate>Sat, 20 Jun 2026 07:14:07 +0000</pubDate>
+      <description>今日AI设计领域速览：微软发布MAI-Image-2.5图像模型超越谷歌，Figma Make AI应用构建器重塑原型设计，小米华为快手集中开源核心AI工具，谷歌DiffusionGemma颠覆文本生成范式。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年06月24日 - Google 发布 AI 设计语言 Neural Expressive, 腾讯 Ardot 开启 Figma 零成本迁移, Midjourney V7 角色一致性大幅提升</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-06-24</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-06-24</guid>
+      <pubDate>Wed, 24 Jun 2026 00:53:23 +0000</pubDate>
+      <description>今日看点：Google 为 Gemini App 推出全新 AI 设计语言 Neural Expressive；腾讯 Ardot 发布 AI 原生设计平台，支持 Figma 一键导入与 MCP 代码转化；Midjourney V7 引入 Consistency Model 大幅提升角色一致性。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年6月25日 - Google Imagen 3 正式上线, 腾讯 Ardot 打通设计到代码全链路</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-06-25</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-06-25</guid>
+      <pubDate>Thu, 25 Jun 2026 00:58:38 +0000</pubDate>
+      <description>今日 AI 设计速览：Google Imagen 3 Nano/Pro 正式广泛可用，支持视频到图像生成；腾讯 Ardot 成为国内首个全链路 AI 设计平台；Anthropic Claude Opus 4.8 动态工作流重新定义开发者工具链。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年6月26日 - Figma Config 2026 重磅发布, SpaceX 600亿收购 Cursor</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-06-26</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-06-26</guid>
+      <pubDate>Fri, 26 Jun 2026 00:56:29 +0000</pubDate>
+      <description>Figma Config 2026 带来 Motion、Code Layers、Shader 等六大重磅更新；SpaceX 以600亿美元全股票收购 AI 编码工具 Cursor；设计 Agent 升级为团队知识系统。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年6月29日 - Google 发布 DESIGN.md 规范, Figma Config 2026 持续发酵, 美团开源 AIGC 海报体系</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-06-29</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-06-29</guid>
+      <pubDate>Mon, 29 Jun 2026 00:53:34 +0000</pubDate>
+      <description>Google Labs 推出 DESIGN.md 规范，为 AI 编码智能体定义设计系统认知标准；Figma Config 2026 六大功能深度影响设计行业；美团全面开源海报生成 AIGC 全链路技术体系。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年06月30日 - Claude Design 升级设计系统联动，Google Pics 入局 AI 设计</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-06-30</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-06-30</guid>
+      <pubDate>Tue, 30 Jun 2026 00:52:15 +0000</pubDate>
+      <description>Claude Design 发布 6 月更新，支持导入设计系统组件并与 Claude Code 无缝同步；Google I/O 推出 Pics 重塑 AI 图像创作；GPT-Image-2 已向 Plus/Pro 用户全面开放。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年7月2日 - Figma Config 后续效应, Midjourney V8.1 电影级升级, CreativePro Week AI 专场</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-07-02</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-07-02</guid>
+      <pubDate>Thu, 02 Jul 2026 00:54:35 +0000</pubDate>
+      <description>Figma Config 2026 的 Code Layers 与 Motion 功能持续引发设计圈热议，Midjourney V8.1 以电影级画质再刷新标杆，CreativePro Week 纳什维尔站聚焦 AI 设计实战，三大动态一文速览。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年7月3日 - Adobe Firefly 创意智能体全面扩张, Figma 上线 AI 信用额度 API, 视频生成赛道加速洗牌</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-07-03</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-07-03</guid>
+      <pubDate>Fri, 03 Jul 2026 00:54:53 +0000</pubDate>
+      <description>今日 AI 设计领域速览：Adobe Firefly Creative Agent 6月大规模升级落地 Creative Cloud 全家桶；Figma 开放 AI 信用额度 API 支持企业用量追踪；Runway Gen-4 / Veo 3.1 / Kling 3.0 视频生成四强格局初定；Midjourney V7 引入「导演模式」；Google I/O 2026 后 Gemini 与设计工具的协同走向纵深。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年07月07日 - Claude Fable 5 回归创设计自动化新高, 可灵 AI 30亿美元创纪录融资</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-07-07</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-07-07</guid>
+      <pubDate>Tue, 07 Jul 2026 00:58:15 +0000</pubDate>
+      <description>Claude Fable 5 解禁回归，远程设计项目自动化率达 16.1%；快手可灵 AI 完成 30 亿美元融资，投后估值 180 亿；Veo 3.1 稳居视频生成榜首，Sora 2 消费端正式退役。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年07月09日 - Adobe 收购 Topaz Labs 补强 Firefly, 开源基础设施五大新秀引领新范式</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-07-09</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-07-09</guid>
+      <pubDate>Thu, 09 Jul 2026 00:55:42 +0000</pubDate>
+      <description>Adobe 6月25日宣布收购图像视频增强AI公司Topaz Labs以补强Firefly产品线；7月AI工具基础设施五大新秀揭晓，ComfyUI 120K星领跑图像生成工作流；370款AI工具市场全景揭示编程赛道最拥挤、Freemium成绝对主流。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年07月10日 - Meta Muse Image 发布「先推理后生成」图像模型, GPT-5.6 全量开放, 微软 Office 切换自研 MAI</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-07-10</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-07-10</guid>
+      <pubDate>Fri, 10 Jul 2026 00:54:30 +0000</pubDate>
+      <description>Meta推出首款Agent原生图像模型Muse Image，采用「先推理后生成」新范式；OpenAI GPT-5.6系列全球全面开放；微软Office批量接入自研MAI模型逐步替代第三方服务；370款AI工具市场全景数据揭示设计工具赛道新趋势。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年08月31日 - Midjourney V8.2 图像编辑模型上线, OpenDesign 开源设计引擎破 8.4 万 Star</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-08-31</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-08-31</guid>
+      <pubDate>Mon, 31 Aug 2026 01:44:28 +0000</pubDate>
+      <description>Midjourney V8.2 图像编辑模型正式上线，支持指令微调与画布扩展；开源项目 OpenDesign 将 Coding Agent 变成设计引擎；Figma 八月连发 MCP 与 Agent Skills 更新。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年09月02日 - Google Pics 正式上线企业AI设计, Midjourney V8.2 编辑模型开放测试</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-02</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-02</guid>
+      <pubDate>Wed, 02 Sep 2026 01:21:10 +0000</pubDate>
+      <description>谷歌AI设计工具Google Pics正式面向企业用户开放，支持2K/4K分辨率与物体级编辑；Midjourney V8.2图像编辑模型开始公测；Figma生成式插件与Shader功能大幅升级。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年9月6日 - Google Pics 登陆 Workspace 对标 Canva, Midjourney V8.2 编辑模型开放测试</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-06</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-06</guid>
+      <pubDate>Sun, 06 Sep 2026 01:54:07 +0000</pubDate>
+      <description>今日 AI 设计领域速览：Google Pics 正式上线深度集成 Workspace，Midjourney V8.2 编辑模型全面开放测试，Meta Muse Image 登陆 fal 开发者平台，NVIDIA DLSS 5 神经渲染首发。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年09月12日 - Figma 生成式插件支持动画与发布, Adobe Firefly 引入第三方模型</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-12</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-12</guid>
+      <pubDate>Sat, 12 Sep 2026 01:05:18 +0000</pubDate>
+      <description>9月12日 AI 设计速览：Figma 生成式插件与 Shader 新增动画、交互与社区发布能力；Adobe Firefly 推出 Image Model 4 并开放第三方模型；Lovart 围绕设计师真实工作流完成大更新。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年09月13日 - OpenAI Images 2.5 发布 Adobe 首日集成, Figma Shader 全面动画化</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-13</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-13</guid>
+      <pubDate>Sun, 13 Sep 2026 01:47:37 +0000</pubDate>
+      <description>OpenAI 发布 ChatGPT Images 2.5，生成延迟降低 50%，Adobe Firefly 首日完成集成；Figma 生成式插件与 Shader 升级支持动画与社区发布；Webflow Conf 2026 推出 Source 平台与 MCP 2.1。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年09月15日 - ChatGPT 直接驱动 After Effects 动效设计, OpenAI Images 2.5 与 Adobe Firefly 无缝集成</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-15</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-15</guid>
+      <pubDate>Tue, 15 Sep 2026 06:35:02 +0000</pubDate>
+      <description>Higgsfield AI Motion Designer 让 ChatGPT 直接在 After Effects 内写表达式、做动效；OpenAI 发布 Images 2.5 并与 Adobe Firefly 首日集成；Google Pics 正式入局轻量 AI 设计。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年09月17日 - OpenAI Images 2.5 携手 Adobe Firefly, Figma Weave 工具上架社区</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-17</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-17</guid>
+      <pubDate>Thu, 17 Sep 2026 01:05:20 +0000</pubDate>
+      <description>今日要点：OpenAI 发布 ChatGPT Images 2.5 并与 Adobe Firefly 实现当日双向集成；Figma Weave 工具正式开放社区发布；Webflow Conf 2026 推出 Source 平台与 Agent Presence。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年9月19日 - Figma AI 可直接生成插件并发布到社区, OpenAI Images 2.5 与 Adobe Firefly 双向集成</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-19</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-19</guid>
+      <pubDate>Sat, 19 Sep 2026 01:43:52 +0000</pubDate>
+      <description>今日 AI 设计领域速览：Figma AI 升级支持自然语言生成插件并开放 Weave 社区，OpenAI Images 2.5 发布并与 Adobe Firefly 首日双向集成，Google Pics 嵌入 Workspace。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年09月20日 - Figma 用一句话生成插件, Canva ProSuite 四合一, Meta Muse 改读无障碍树</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-20</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-20</guid>
+      <pubDate>Sun, 20 Sep 2026 01:58:07 +0000</pubDate>
+      <description>Figma AI 可直接从文字描述生成并发布插件，Canva 把 Affinity、Cavalry、Flourish、Leonardo 打包成 ProSuite，Meta Muse 靠无障碍树导航网页。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年09月22日 - Figma 一句话生成插件, Midjourney 编辑器大翻新, Adobe 生成式 AI 进时间线</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-22</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-22</guid>
+      <pubDate>Tue, 22 Sep 2026 02:04:15 +0000</pubDate>
+      <description>Figma 上线 AI 插件生成器，Midjourney Alpha 编辑器全面翻新并预告 V9，Adobe 把生成式 AI 直接塞进 Premiere 与 After Effects 时间线。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年09月23日 - OpenAI 发布 GPT Image 2.5, Figma 生成式插件升级</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-23</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-23</guid>
+      <pubDate>Wed, 23 Sep 2026 01:38:01 +0000</pubDate>
+      <description>今日 AI 设计速览：OpenAI GPT Image 2.5 提升速度与编辑一致性，Figma 生成式插件与 Shader 支持动画和 MCP，Adobe Firefly 新增视频去背景与更多比例支持。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年09月24日 - CorelDRAW 上线 Text-to-Vector AI, 阿里开源 Qwen-Image 2.1</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-24</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-24</guid>
+      <pubDate>Thu, 24 Sep 2026 01:07:58 +0000</pubDate>
+      <description>CorelDRAW 2026 九月更新推出 Text-to-Vector AI 文本生成矢量功能；阿里巴巴发布 70 亿参数开源图像模型 Qwen-Image 2.1；美图设计室在服贸会展示 AI Agent 全链路商业设计；Meshy 7.1 升级 3D 生成细节并接入 ChatGPT 插件生态。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年09月27日 - Midjourney 编辑器换用 Edit Model, Adobe 全家桶进驻 Gemini, 混元图像 3.5 预览版发布</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-27</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-27</guid>
+      <pubDate>Sun, 27 Sep 2026 01:55:45 +0000</pubDate>
+      <description>Midjourney 编辑器用 Edit Model 取代 Omni-Reference 并开放选中像素重绘，Adobe 的 Photoshop、Lightroom、Express 进入 Gemini 对话流，腾讯混元图像 3.5 预览版上线，2K 图 0.15 元。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年09月29日 - Runway 接入 DaVinci Resolve, Figma AI 2 自动组件上线, Google Pics 全面开放</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-29</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-09-29</guid>
+      <pubDate>Tue, 29 Sep 2026 01:33:27 +0000</pubDate>
+      <description>9月下旬 AI 设计工具密集更新：Runway 推出 DaVinci Resolve 原生插件实现视频生成直通剪辑时间线；Figma AI 2 发布自动组件功能，设计稿一键转 React 组件；Google Pics 全面上线 Workspace，AI 图像编辑融入日常办公。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年10月01日 - Figma 入驻 OpenAI 企业市场, 动画样式交由编码智能体调用, Midjourney 强化可预览与可撤回</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-10-01</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-10-01</guid>
+      <pubDate>Thu, 01 Oct 2026 02:17:56 +0000</pubDate>
+      <description>Figma 成为 OpenAI B2B Marketplace 首批约 32 家启动伙伴之一，并把可复用动画样式开放给编码智能体；Midjourney Alpha 新增实时风格预览与删除撤销。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年10月04日 - FLUX 3 Image 像素级编辑实测, Midjourney 实时风格预览上线, 国产设计智能体密集发布</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-10-04</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-10-04</guid>
+      <pubDate>Sun, 04 Oct 2026 01:26:33 +0000</pubDate>
+      <description>10 月首周 AI 设计动态：Black Forest Labs 发布 FLUX 3 Image 支持框选构图与 4K 输出，Midjourney 新增实时风格预览，同济×腾讯云 TT DesignX 桌面端与 Pixso 2.0 相继亮相，设计系统同步进 Claude Design 成新趋势。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年10月07日 - Figma 设计智能体正式上线, GPT Image 2.5 领跑十月图像模型</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-10-07</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-10-07</guid>
+      <pubDate>Wed, 07 Oct 2026 01:47:51 +0000</pubDate>
+      <description>Figma 设计智能体正式全量上线并开始计费，OpenAI GPT Image 2.5 成为十月图像生成首选，Suno 推出 Speech 语音配乐一体生成，Adobe 生成式填色升级至全新 Firefly 模型。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年10月08日 - Figma AI Agent 正式商用, Anthropic 推出 Claude Design</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-10-08</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-10-08</guid>
+      <pubDate>Thu, 08 Oct 2026 02:44:00 +0000</pubDate>
+      <description>Figma AI Agent 结束测试并全面开放，Anthropic 推出 Claude Design 布局工具，阿里开源 Qwen-Image-Layered 分层图像模型，Sketch 与 Canva 也有新动作。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年10月09日 - Canva 深度整合 Affinity, Jitter 上线位移着色器, 世赛首现 AI 工业设计</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-10-09</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-10-09</guid>
+      <pubDate>Fri, 09 Oct 2026 01:43:30 +0000</pubDate>
+      <description>Canva Create 2026 把品牌系统接入 Affinity 与 Claude，Jitter 新增位移着色器，世界技能大赛首次允许工业设计项目使用 AI 工具辅助创作。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年10月11日 - Figma 智能体全面商用, Nano Banana 2.1 发布, FLUX 3 像素级排版</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-10-11</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-10-11</guid>
+      <pubDate>Sun, 11 Oct 2026 02:13:06 +0000</pubDate>
+      <description>今日 AI 设计领域速览：Figma 设计智能体结束 Beta 正式商用并接入设计库规范，Google 发布 Nano Banana 2.1 图像模型，Black Forest Labs 推出可像素级精准排版的 FLUX 3 Image。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年10月13日 - Midjourney 测试 Thinking Mode, 可灵 4.0 冲刺十月上线, Magnific One 主打内置艺术指导</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-10-13</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-10-13</guid>
+      <pubDate>Tue, 13 Oct 2026 01:24:32 +0000</pubDate>
+      <description>Midjourney 在 Alpha 站测试 Thinking Mode 并上线共享文件夹；可灵 4.0 完整版确定十月分阶段上线，支持 30 秒长视频与 10 关键帧；Magnific One 发布，生成前先定艺术方向；Vidu Q4 Preview 低至每秒 0.014 美元。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年10月21日 - Meshy Edit 圈选改 3D 模型, Lovart 2.0 推出个人设计 Agent, Figma 扩充 MCP 生态</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-10-21</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-10-21</guid>
+      <pubDate>Wed, 21 Oct 2026 05:36:43 +0000</pubDate>
+      <description>今日要点：Meshy 发布局部编辑功能 Meshy Edit，圈选即可修改 3D 模型局部；Lovart 2.0 上线个人设计 Agent Arti，能记住用户审美偏好；Figma 在 Config India 宣布 20 个 MCP 合作伙伴接入。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年10月22日 - Figma Config India 发布 Specs 与 Code Layers, 可灵 4.0 全面开放, Midjourney 上线共享文件夹</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-10-22</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-10-22</guid>
+      <pubDate>Thu, 22 Oct 2026 01:22:19 +0000</pubDate>
+      <description>Figma 在 Config India 2026 发布 Specs、Guidelines 与 Code Layers 开放测试，可灵 4.0 全量上线支持原生 30 秒与 4K HDR，Midjourney 测试 Thinking Mode 与共享文件夹协作，AI 设计工具本周密集更新。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年10月27日 - Ideogram 出真 SVG, Canva 自研模型 Craft 冲进前四</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-10-27</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-10-27</guid>
+      <pubDate>Tue, 27 Oct 2026 01:05:51 +0000</pubDate>
+      <description>Ideogram Vector 1.0 直接输出可编辑 SVG，Canva Craft 以两段式架构登上 DesignArena 第四，Krea 3 把 2K 改稿压到 8 秒 6 美分。</description>
+      <author>AI Design Hub</author>
+    </item>
+    <item>
+      <title>AI 设计日报 | 2026年10月30日 - Canva Brush 落地, Figma AI 插件支持版本回滚, MOSS-Image 开源</title>
+      <link>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-10-30</link>
+      <guid>https://ai-design-hub-ochre.vercel.app/blog/ai-design-news-2026-10-30</guid>
+      <pubDate>Fri, 30 Oct 2026 01:05:46 +0000</pubDate>
+      <description>Canva 发布自研视觉语言模型 Brush，改稿速度提升 69%；Figma 为生成式插件和着色器加版本历史，MCP 接入 Weave 图像视频模型；OpenMOSS 开源 5B 的 MOSS-Image，长文本渲染居开源首位。</description>
+      <author>AI Design Hub</author>
     </item>
   </channel>
 </rss>

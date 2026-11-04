@@ -153,9 +153,11 @@
   "header": {
     "logo": "AI Design Hub",
     "nav": {
+      "home": "Home",
       "tools": "Tools",
       "categories": "Categories",
       "blog": "Blog",
+      "daily": "AI Daily",
       "compare": "Compare",
       "submit_tool": "Submit Tool"
     },

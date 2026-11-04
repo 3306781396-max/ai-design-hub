@@ -49,15 +49,13 @@ export default function Newsletter() {
   };
 
   return (
-    <section id="newsletter" className="relative w-full rounded-2xl p-[2px] overflow-hidden">
-      {/* Animated gradient border */}
-      <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-cyan-500 to-indigo-500 bg-[length:200%_100%] animate-[gradient_3s_ease_infinite] rounded-2xl" />
-
-      <div className="relative rounded-2xl dark:bg-gray-950 bg-gray-50 px-6 py-12 sm:px-12 sm:py-16 text-center">
-        <h2 className="text-2xl font-bold dark:text-white text-gray-900 sm:text-3xl">
+    <section id="newsletter" className="relative w-full py-24">
+      <div className="container mx-auto px-4">
+        <div className="relative rounded-3xl border border-white/[0.07] bg-[#0e0e10] px-6 py-14 text-center sm:px-12">
+        <h2 className="font-display text-2xl font-semibold text-white sm:text-4xl">
           {t("home.newsletter.title")}
         </h2>
-        <p className="mt-3 text-sm dark:text-gray-400 text-gray-500 max-w-md mx-auto">
+        <p className="mt-3 text-sm text-white/50 max-w-md mx-auto">
           {t("home.newsletter.description")}
         </p>
 
@@ -71,7 +69,7 @@ export default function Newsletter() {
         ) : (
           <form
             onSubmit={handleSubmit}
-            className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:gap-0"
+            className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-3"
           >
             <div className="relative w-full sm:max-w-sm">
               <input
@@ -84,17 +82,17 @@ export default function Newsletter() {
                 placeholder={t("home.newsletter.email_placeholder")}
                 disabled={status === "loading"}
                 className={cn(
-                  "h-11 w-full rounded-l-xl sm:rounded-r-none rounded-xl border dark:bg-gray-900 bg-white px-4 text-sm dark:text-white text-gray-900 placeholder-gray-500 outline-none transition-colors sm:rounded-l-xl sm:rounded-r-none",
+                  "h-12 w-full rounded-full border bg-white/[0.04] px-5 text-sm text-white placeholder-white/35 outline-none transition-colors",
                   status === "error"
                     ? "border-red-500/50 focus:border-red-500"
-                    : "dark:border-white/10 border-gray-200 focus:border-indigo-500"
+                    : "border-white/10 focus:border-white/30"
                 )}
               />
             </div>
             <button
               type="submit"
               disabled={status === "loading"}
-              className="flex h-11 w-full items-center justify-center gap-2 rounded-xl sm:rounded-l-none sm:rounded-r-xl bg-gradient-to-r from-indigo-500 to-cyan-500 px-6 text-sm font-semibold dark:text-white text-gray-900 transition-opacity hover:opacity-90 disabled:opacity-50 sm:w-auto"
+              className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-white px-7 text-sm font-medium text-black transition-colors hover:bg-white/85 disabled:opacity-50 sm:w-auto"
             >
               {status === "loading" ? (
                 <>
@@ -118,19 +116,11 @@ export default function Newsletter() {
           </div>
         )}
 
-        <p className="mt-6 text-xs text-gray-600">
+        <p className="mt-6 text-xs text-white/35">
           {t("home.newsletter.footer")}
         </p>
+        </div>
       </div>
-
-      {/* Keyframe for gradient animation */}
-      <style jsx>{`
-        @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-      `}</style>
     </section>
   );
 }

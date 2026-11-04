@@ -6,6 +6,7 @@ import { ToolsPageHeader } from "@/components/tools/ToolsPageHeader";
 import { KeywordsCloud } from "@/components/tools/KeywordsCloud";
 import { getKeywords } from "@/lib/seo";
 import { generateSEOMetadata } from "@/lib/seo";
+import { toBlogMini } from "@/lib/blog-mini";
 import { Sidebar, RecentPosts, CategoryNav, TagCloud, RecentComments } from "@/components/sidebar";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -51,7 +52,7 @@ export default async function ToolsPage() {
 
           {/* Sidebar */}
           <Sidebar className="w-full lg:w-80 shrink-0">
-            <RecentPosts posts={sortedPosts} />
+            <RecentPosts posts={toBlogMini(sortedPosts)} />
             <CategoryNav categories={categoryCounts} basePath="/tools" />
             <TagCloud tags={[...toolTags, ...blogTags].slice(0, 25)} />
             <RecentComments />

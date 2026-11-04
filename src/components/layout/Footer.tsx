@@ -46,20 +46,16 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/10 dark:bg-gray-950 bg-gray-50 dark:border-white/10 border-gray-200">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+    <footer className="border-t border-white/[0.06] bg-[#0a0a0b]">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
         {/* Top: Logo + Social */}
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
           <div className="flex items-center gap-2">
-            <Sparkles className="h-6 w-6 text-cyan-400" />
-            <span className="text-lg font-bold dark:text-white text-gray-900">
-              AI Design{" "}
-              <span className="bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
-                Hub
-              </span>
+            <span className="font-display text-base font-semibold uppercase tracking-[0.3em] text-white">
+              AI Design Hub
             </span>
           </div>
-          <p className="text-sm dark:text-gray-400 text-gray-500 max-w-xs text-center sm:text-right">
+          <p className="text-sm text-white/45 max-w-xs text-center sm:text-right">
             {t("footer.tagline")}
           </p>
           <div className="flex items-center gap-3">
@@ -69,7 +65,7 @@ export default function Footer() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-lg dark:text-gray-400 text-gray-500 transition-colors dark:hover:bg-white/5 hover:bg-gray-200 dark:hover:text-white hover:text-gray-900"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/50 transition-colors hover:border-white/30 hover:text-white"
                 aria-label={social.label}
               >
                 <social.icon className="h-4 w-4" />
@@ -79,13 +75,13 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="my-10 h-px dark:bg-white/5 bg-gray-200" />
+        <div className="my-10 h-px bg-white/[0.06]" />
 
         {/* Columns */}
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 md:grid-cols-4">
           {/* Platform */}
           <div>
-            <h3 className="text-sm font-semibold dark:text-white text-gray-900 mb-4">
+            <h3 className="text-[11px] font-medium uppercase tracking-[0.25em] text-white/40 mb-5">
               {t("footer.platform")}
             </h3>
             <ul className="space-y-3">
@@ -93,7 +89,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm dark:text-gray-400 text-gray-500 transition-colors dark:hover:text-white hover:text-gray-900"
+                    className="text-sm text-white/55 transition-colors hover:text-white"
                   >
                     {t(link.key)}
                   </Link>
@@ -104,7 +100,7 @@ export default function Footer() {
 
           {/* Categories */}
           <div>
-            <h3 className="text-sm font-semibold dark:text-white text-gray-900 mb-4">
+            <h3 className="text-[11px] font-medium uppercase tracking-[0.25em] text-white/40 mb-5">
               {t("footer.categories")}
             </h3>
             <ul className="space-y-3">
@@ -112,7 +108,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm dark:text-gray-400 text-gray-500 transition-colors dark:hover:text-white hover:text-gray-900"
+                    className="text-sm text-white/55 transition-colors hover:text-white"
                   >
                     {t(link.key)}
                   </Link>
@@ -123,7 +119,7 @@ export default function Footer() {
 
           {/* Resources */}
           <div>
-            <h3 className="text-sm font-semibold dark:text-white text-gray-900 mb-4">
+            <h3 className="text-[11px] font-medium uppercase tracking-[0.25em] text-white/40 mb-5">
               {t("footer.resources")}
             </h3>
             <ul className="space-y-3">
@@ -131,7 +127,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm dark:text-gray-400 text-gray-500 transition-colors dark:hover:text-white hover:text-gray-900"
+                    className="text-sm text-white/55 transition-colors hover:text-white"
                   >
                     {t(link.key)}
                   </Link>
@@ -142,7 +138,7 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h3 className="text-sm font-semibold dark:text-white text-gray-900 mb-4">
+            <h3 className="text-[11px] font-medium uppercase tracking-[0.25em] text-white/40 mb-5">
               {t("footer.legal")}
             </h3>
             <ul className="space-y-3">
@@ -150,7 +146,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm dark:text-gray-400 text-gray-500 transition-colors dark:hover:text-white hover:text-gray-900"
+                    className="text-sm text-white/55 transition-colors hover:text-white"
                   >
                     {t(link.key)}
                   </Link>
@@ -161,8 +157,8 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 border-t dark:border-white/5 border-gray-200 pt-8 text-center">
-          <p className="text-sm dark:text-gray-500 text-gray-400">
+        <div className="mt-12 border-t border-white/[0.06] pt-8 text-center">
+          <p className="text-sm text-white/35">
             {t("footer.copyright", { year })}
           </p>
         </div>

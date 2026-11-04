@@ -3,10 +3,8 @@
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from "react";
 import {
   getSession,
-  saveSession,
-  clearSession,
+  refreshSession,
   onAuthChange,
-  notifyAuthChange,
   type AuthSession,
 } from "@/lib/frontend-auth";
 
@@ -42,23 +40,41 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AuthSession | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const refresh = useCallback(() => {
-    const session = getSession();
+  const refresh = useCallback(async () => {
+    const session = await refreshSession();
     setUser(session);
   }, []);
 
   useEffect(() => {
-    // Initial load
-    const session = getSession();
-    setUser(session);
-    setLoading(false);
+    let cancelled = false;
 
-    // Listen for changes
-    const unsubscribe = onAuthChange((newSession) => {
-      setUser(newSession);
+    // Phase 1: instant cached session (no loading spinner)
+    const cached = getSession();
+    if (cached && !cancelled) {
+      setUser(cached);
+    }
+
+    // Phase 2: validate against Supabase
+    refreshSession().then((session) => {
+      if (!cancelled) {
+        setUser(session);
+        setLoading(false);
+      }
     });
 
-    return unsubscribe;
+    // Listen for auth state changes (login/logout across tabs)
+    const unsubscribe = onAuthChange((newSession) => {
+      if (!cancelled) {
+        setUser(newSession);
+        if (loading) setLoading(false);
+      }
+    });
+
+    return () => {
+      cancelled = true;
+      unsubscribe();
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

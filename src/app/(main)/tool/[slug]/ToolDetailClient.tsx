@@ -14,9 +14,15 @@ import { useViewTracker } from "@/hooks/use-view-tracker";
 import { useTranslation } from "@/i18n/useTranslation";
 import type { Tool } from "@/types";
 
+interface AlternativeTool {
+  name: string;
+  slug: string;
+  category_name?: string;
+}
+
 interface Props {
   tool: Tool;
-  allTools?: Tool[];
+  alternativeTools?: AlternativeTool[];
   relatedTools: Tool[];
   frequentlyUsedTogether?: Tool[];
   peopleAlsoViewed?: Tool[];
@@ -24,7 +30,7 @@ interface Props {
 
 export default function ToolDetailClient({ 
   tool, 
-  allTools = [],
+  alternativeTools = [],
   relatedTools, 
   frequentlyUsedTogether = [],
   peopleAlsoViewed = []
@@ -34,10 +40,8 @@ export default function ToolDetailClient({
   // Track page view
   const displayClicks = useViewTracker(tool.slug, tool.clicks);
 
-  // Find alternative tools by name
-  const alternativeTools = (tool.alternatives || [])
-    .map((name) => allTools.find((t) => t.name === name))
-    .filter(Boolean) as Tool[];
+  // 替代工具已由服务端解析为 { name, slug, category_name }
+  const altMap = new Map(alternativeTools.map((t) => [t.name, t]));
 
   return (
     <div className="min-h-screen bg-dark-950">
@@ -250,7 +254,7 @@ export default function ToolDetailClient({
                 <CardContent>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {tool.alternatives!.map((altName, i) => {
-                      const altTool = alternativeTools.find((t) => t.name === altName);
+                      const altTool = altMap.get(altName);
                       return (
                         <div
                           key={i}

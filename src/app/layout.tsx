@@ -102,6 +102,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Clash Display display font */}
+        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap"
+          rel="stylesheet"
+        />
         {/* Google Analytics (GA4) */}
         {process.env.NEXT_PUBLIC_GA_ID && (
           <>
@@ -169,6 +175,23 @@ export default function RootLayout({
           </LanguageProvider>
         </ThemeProvider>
         </AuthProvider>
+        {/* Static-host fallback fix: some static servers (e.g. CodeBuddy sandbox) have no
+            clean-URL rewrite, so "/tools" serves the homepage HTML. When we detect the
+            homepage was served for a non-root extensionless path, redirect to "<path>.html". */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){
+  try {
+    var p = window.location.pathname.replace(/\\/+$/, "");
+    if (p === "" || p === "/" || /\\.[a-zA-Z0-9]+$/.test(p)) return;
+    if (!document.querySelector('[data-page="home"]')) return; // correct page already served
+    fetch(p + ".html", { method: "HEAD" }).then(function (r) {
+      if (r.ok) window.location.replace(p + ".html");
+    }).catch(function(){});
+  } catch (e) {}
+})();`,
+          }}
+        />
       </body>
     </html>
   );

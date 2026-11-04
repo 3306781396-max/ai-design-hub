@@ -1,36 +1,16 @@
 // ============================================================
-// Frontend Auth System (localStorage-based, no backend required)
+// Frontend Auth System (Supabase-backed, works in static export)
+// ============================================================
+// This module wraps Supabase Auth for use in a static Next.js export.
+// Supabase client-side SDK communicates directly with supabase.co REST API,
+// so no server-side runtime is needed.
 // ============================================================
 
-const USERS_KEY = "aid-hub_users";
-const SESSION_KEY = "aid-hub_session";
-
-// ============================================================
-// Built-in admin account (hashed at build time)
-// ============================================================
-
-const BUILTIN_ADMIN: StoredUser = {
-  id: "admin-001",
-  email: "admin@aidesignhub.com",
-  // Pre-hashed password: Admin123!
-  passwordHash: "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
-  name: "Admin",
-  avatar: "",
-  role: "admin" as const,
-};
+import { supabase, isSupabaseConfigured } from "./supabase";
 
 // ============================================================
 // Types
 // ============================================================
-
-export interface StoredUser {
-  id: string;
-  email: string;
-  passwordHash: string;
-  name: string;
-  avatar: string;
-  role: "admin" | "user";
-}
 
 export interface AuthSession {
   id: string;
@@ -41,56 +21,54 @@ export interface AuthSession {
 }
 
 // ============================================================
-// Password Hashing (SHA-256 via Web Crypto)
+// Admin email — users with this email get admin role
 // ============================================================
 
-async function hashPassword(password: string): Promise<string> {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(password + "aid-hub-salt-v1");
-  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+const ADMIN_EMAIL = "admin@aidesignhub.com";
+
+// ============================================================
+// Session helpers
+// ============================================================
+
+function supabaseSessionToAuthSession(session: any): AuthSession | null {
+  if (!session?.user) return null;
+  const user = session.user;
+  const email = (user.email || "").toLowerCase();
+  const metadata = user.user_metadata || {};
+  return {
+    id: user.id,
+    email,
+    name: metadata.full_name || user.email?.split("@")[0] || "User",
+    avatar: metadata.avatar_url || "",
+    role: email === ADMIN_EMAIL ? "admin" : "user",
+  };
 }
 
-// ============================================================
-// User Storage
-// ============================================================
+// Cache session in localStorage for instant initial render
+// (avoids loading spinner on every page load)
+const SESSION_CACHE_KEY = "aid-hub_session";
 
-function getUsers(): StoredUser[] {
-  if (typeof window === "undefined") return [];
-  try {
-    const raw = localStorage.getItem(USERS_KEY);
-    if (!raw) return [];
-    return JSON.parse(raw) as StoredUser[];
-  } catch {
-    return [];
-  }
-}
-
-function saveUsers(users: StoredUser[]): void {
+function cacheSession(session: AuthSession | null): void {
   if (typeof window === "undefined") return;
-  localStorage.setItem(USERS_KEY, JSON.stringify(users));
-}
-
-function getAllUsers(): StoredUser[] {
-  const users = getUsers();
-  // Always ensure built-in admin exists
-  const hasAdmin = users.some((u) => u.email === BUILTIN_ADMIN.email);
-  if (!hasAdmin) {
-    users.push(BUILTIN_ADMIN);
-    saveUsers(users);
+  if (session) {
+    try {
+      localStorage.setItem(SESSION_CACHE_KEY, JSON.stringify(session));
+    } catch { /* ignore quota errors */ }
+  } else {
+    try {
+      localStorage.removeItem(SESSION_CACHE_KEY);
+    } catch { /* ignore */ }
   }
-  return users;
 }
 
 // ============================================================
-// Session Management
+// Public API — synchronous cache read (fast first render)
 // ============================================================
 
 export function getSession(): AuthSession | null {
   if (typeof window === "undefined") return null;
   try {
-    const raw = localStorage.getItem(SESSION_KEY);
+    const raw = localStorage.getItem(SESSION_CACHE_KEY);
     if (!raw) return null;
     return JSON.parse(raw) as AuthSession;
   } catch {
@@ -98,14 +76,21 @@ export function getSession(): AuthSession | null {
   }
 }
 
-export function saveSession(session: AuthSession): void {
-  if (typeof window === "undefined") return;
-  localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+export function clearSession(): void {
+  cacheSession(null);
 }
 
-export function clearSession(): void {
-  if (typeof window === "undefined") return;
-  localStorage.removeItem(SESSION_KEY);
+// Async refresh — validates against Supabase
+export async function refreshSession(): Promise<AuthSession | null> {
+  if (!isSupabaseConfigured()) return null;
+  try {
+    const { data } = await supabase!.auth.getSession();
+    const authSession = supabaseSessionToAuthSession(data.session);
+    cacheSession(authSession);
+    return authSession;
+  } catch {
+    return null;
+  }
 }
 
 // ============================================================
@@ -116,8 +101,18 @@ export async function registerUser(
   email: string,
   password: string,
   name?: string
-): Promise<{ success: boolean; error?: string }> {
-  // Validate
+): Promise<{
+  success: boolean;
+  error?: string;
+  emailConfirmationRequired?: boolean;
+}> {
+  if (!isSupabaseConfigured()) {
+    return {
+      success: false,
+      error: "Authentication service is not configured.",
+    };
+  }
+
   if (!email || !password) {
     return { success: false, error: "Email and password are required" };
   }
@@ -125,81 +120,101 @@ export async function registerUser(
     return { success: false, error: "Password must be at least 6 characters" };
   }
 
-  const users = getAllUsers();
-
-  // Check if email already exists
-  if (users.some((u) => u.email.toLowerCase() === email.toLowerCase())) {
-    return { success: false, error: "An account with this email already exists" };
-  }
-
-  // Create user
-  const passwordHash = await hashPassword(password);
-  const newUser: StoredUser = {
-    id: `user-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
-    email: email.toLowerCase(),
-    passwordHash,
-    name: name || email.split("@")[0],
-    avatar: "",
-    role: "user",
-  };
-
-  users.push(newUser);
-  saveUsers(users);
-
-  // Auto-login after register
-  saveSession({
-    id: newUser.id,
-    email: newUser.email,
-    name: newUser.name,
-    avatar: newUser.avatar,
-    role: newUser.role,
+  const { data, error } = await supabase!.auth.signUp({
+    email,
+    password,
+    options: {
+      data: { full_name: name || email.split("@")[0] },
+    },
   });
 
-  return { success: true };
+  if (error) {
+    // Map common errors
+    if (error.message.includes("already registered") || error.message.includes("already exists")) {
+      return { success: false, error: "An account with this email already exists" };
+    }
+    return { success: false, error: error.message };
+  }
+
+  // If the user has no identities, email confirmation is required
+  if (data.user && (!data.user.identities || data.user.identities.length === 0)) {
+    return { success: true, emailConfirmationRequired: true };
+  }
+
+  // Auto-login (no email confirmation required)
+  if (data.session) {
+    const authSession = supabaseSessionToAuthSession(data.session);
+    cacheSession(authSession);
+    notifyAuthChange(authSession);
+    return { success: true };
+  }
+
+  // Default: confirmation required
+  return { success: true, emailConfirmationRequired: true };
 }
 
 export async function loginUser(
   email: string,
   password: string
 ): Promise<{ success: boolean; error?: string }> {
+  if (!isSupabaseConfigured()) {
+    return {
+      success: false,
+      error: "Authentication service is not configured.",
+    };
+  }
+
   if (!email || !password) {
     return { success: false, error: "Email and password are required" };
   }
 
-  const users = getAllUsers();
-  const user = users.find((u) => u.email.toLowerCase() === email.toLowerCase());
-
-  if (!user) {
-    return { success: false, error: "Invalid email or password" };
-  }
-
-  const passwordHash = await hashPassword(password);
-  if (passwordHash !== user.passwordHash) {
-    return { success: false, error: "Invalid email or password" };
-  }
-
-  // Create session
-  saveSession({
-    id: user.id,
-    email: user.email,
-    name: user.name,
-    avatar: user.avatar,
-    role: user.role,
+  const { data, error } = await supabase!.auth.signInWithPassword({
+    email,
+    password,
   });
 
+  if (error) {
+    // Map Supabase errors to user-friendly messages
+    const msg = error.message.toLowerCase();
+    if (msg.includes("invalid login credentials") || msg.includes("invalid email or password")) {
+      return { success: false, error: "Invalid email or password" };
+    }
+    if (msg.includes("email not confirmed")) {
+      return {
+        success: false,
+        error: "Please confirm your email first. Check your inbox for the confirmation link.",
+      };
+    }
+    return { success: false, error: error.message };
+  }
+
+  const authSession = supabaseSessionToAuthSession(data.session);
+  cacheSession(authSession);
+  notifyAuthChange(authSession);
   return { success: true };
 }
 
-export function logoutUser(): void {
+export async function logoutUser(): Promise<void> {
   clearSession();
-  // Clear favorites on logout (user-specific data)
+  notifyAuthChange(null);
+
+  // Clear user-specific localStorage data
   if (typeof window !== "undefined") {
-    localStorage.removeItem("aid-hub_favorites");
+    try {
+      localStorage.removeItem("aid-hub_favorites");
+    } catch { /* ignore */ }
+  }
+
+  // Sign out from Supabase
+  if (isSupabaseConfigured()) {
+    try {
+      await supabase!.auth.signOut();
+    } catch { /* silently fail */ }
   }
 }
 
 // ============================================================
-// Session Change Listener
+// Session Change Listener (custom event bus)
 // ============================================================
 
 type AuthListener = (session: AuthSession | null) => void;
@@ -207,9 +222,33 @@ const listeners: Set<AuthListener> = new Set();
 
 export function onAuthChange(listener: AuthListener): () => void {
   listeners.add(listener);
-  return () => listeners.delete(listener);
+  return () => {
+    listeners.delete(listener);
+  };
 }
 
-export function notifyAuthChange(session: AuthSession | null): void {
+function notifyAuthChange(session: AuthSession | null): void {
   listeners.forEach((fn) => fn(session));
+}
+
+// ============================================================
+// Subscribe to Supabase auth state changes (cross-tab sync)
+// ============================================================
+
+if (typeof window !== "undefined" && isSupabaseConfigured()) {
+  supabase!.auth.onAuthStateChange((event, session) => {
+    if (event === "SIGNED_IN" || event === "TOKEN_REFRESHED" || event === "USER_UPDATED") {
+      const authSession = supabaseSessionToAuthSession(session);
+      cacheSession(authSession);
+      notifyAuthChange(authSession);
+    } else if (event === "SIGNED_OUT") {
+      cacheSession(null);
+      notifyAuthChange(null);
+    }
+  });
+
+  // Initial refresh to validate cached session
+  refreshSession().then((session) => {
+    if (session) notifyAuthChange(session);
+  });
 }
