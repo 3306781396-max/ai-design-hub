@@ -65,8 +65,12 @@ export function CategoryToolsGrid({ category, tools, otherCategories }: Props) {
                 <Card className="bg-dark-900 border-dark-800 hover:border-primary-500/50 transition-all h-full group">
                   <CardContent className="p-5">
                     <div className="flex items-start gap-4 mb-3">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-xl font-bold text-primary-400 shrink-0 group-hover:scale-110 transition-transform">
-                        {tool.name.charAt(0)}
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-xl font-bold text-primary-400 shrink-0 group-hover:scale-110 transition-transform overflow-hidden">
+                        {tool.logo ? (
+                          <img src={tool.logo} alt={tool.name} loading="lazy" className="w-full h-full object-cover" />
+                        ) : (
+                          tool.name.charAt(0)
+                        )}
                       </div>
                       <div className="flex-1 min-w-0">
                         <h3 className="font-semibold dark:text-white text-gray-900 truncate group-hover:text-primary-400 transition-colors">{tool.name}</h3>

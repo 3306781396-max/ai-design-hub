@@ -76,7 +76,7 @@ export default async function ToolDetailPage({ params }: Props) {
   const alternativeTools = (tool.alternatives || [])
     .map((name) => toolByName.get(name))
     .filter((t): t is Tool => Boolean(t))
-    .map(({ name, slug, category_name }) => ({ name, slug, category_name }));
+    .map(({ name, slug, category_name, logo }) => ({ name, slug, category_name, logo }));
 
   const toolSchema = {
     "@context": "https://schema.org",

@@ -27,8 +27,12 @@ function FavCard({ tool }: { tool: Tool }) {
 
       <a href={tool.website_url} target="_blank" rel="noopener noreferrer" className="block p-5">
         <div className="flex items-start gap-3 mb-3">
-          <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-lg font-bold text-primary-400 shrink-0">
-            {tool.name.charAt(0)}
+          <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-lg font-bold text-primary-400 shrink-0 overflow-hidden">
+            {tool.logo ? (
+              <img src={tool.logo} alt={tool.name} loading="lazy" className="w-full h-full object-cover" />
+            ) : (
+              tool.name.charAt(0)
+            )}
           </div>
           <div className="flex-1 min-w-0">
             <h3 className="font-semibold text-white truncate">{tool.name}</h3>

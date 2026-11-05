@@ -213,8 +213,12 @@ function CompareContent() {
                           >
                             <Trash2 className="w-3.5 h-3.5" />
                           </button>
-                          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-2xl font-bold text-primary-400 mx-auto mb-3">
-                            {tool.name.charAt(0)}
+                          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-2xl font-bold text-primary-400 mx-auto mb-3 overflow-hidden">
+                            {tool.logo ? (
+                              <img src={tool.logo} alt={tool.name} className="w-full h-full object-cover" />
+                            ) : (
+                              tool.name.charAt(0)
+                            )}
                           </div>
                           <h3 className="text-lg font-bold text-white">{tool.name}</h3>
                           <p className="text-xs text-dark-400 mt-1">{tool.category_name}</p>
@@ -347,8 +351,12 @@ function CompareContent() {
                       onClick={() => addTool(tool.slug)}
                       className="w-full flex items-center gap-3 p-3 rounded-lg bg-dark-800 hover:bg-dark-700 transition-colors text-left"
                     >
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-sm font-bold text-primary-400">
-                        {tool.name.charAt(0)}
+                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-sm font-bold text-primary-400 overflow-hidden">
+                        {tool.logo ? (
+                          <img src={tool.logo} alt={tool.name} className="w-full h-full object-cover" />
+                        ) : (
+                          tool.name.charAt(0)
+                        )}
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="text-white font-medium truncate">{tool.name}</div>

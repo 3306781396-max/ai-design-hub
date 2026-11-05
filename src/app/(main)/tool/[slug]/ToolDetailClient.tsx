@@ -18,6 +18,7 @@ interface AlternativeTool {
   name: string;
   slug: string;
   category_name?: string;
+  logo?: string;
 }
 
 interface Props {
@@ -64,8 +65,12 @@ export default function ToolDetailClient({
 
           <div className="flex flex-col md:flex-row gap-8">
             {/* Logo */}
-            <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-4xl font-bold text-primary-400 shrink-0">
-              {tool.name.charAt(0)}
+            <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-4xl font-bold text-primary-400 shrink-0 overflow-hidden">
+              {tool.logo ? (
+                <img src={tool.logo} alt={tool.name} className="w-full h-full object-cover" />
+              ) : (
+                tool.name.charAt(0)
+              )}
             </div>
 
             {/* Info */}
@@ -266,8 +271,12 @@ export default function ToolDetailClient({
                         >
                           {altTool ? (
                             <Link href={`/tool/${altTool.slug}`} className="flex items-center gap-3 w-full">
-                              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-sm font-bold text-primary-400 shrink-0">
-                                {altName.charAt(0)}
+                              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-sm font-bold text-primary-400 shrink-0 overflow-hidden">
+                                {altTool.logo ? (
+                                  <img src={altTool.logo} alt={altName} className="w-full h-full object-cover" />
+                                ) : (
+                                  altName.charAt(0)
+                                )}
                               </div>
                               <div className="min-w-0">
                                 <p className="text-white text-sm font-medium truncate">{altName}</p>
@@ -432,8 +441,12 @@ function ToolCardSimple({ tool }: { tool: Tool }) {
     <Link href={`/tool/${tool.slug}`}>
       <Card className="bg-dark-800 border-dark-700 hover:border-primary-500/50 transition-colors h-full">
         <CardContent className="p-4">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-lg font-bold text-primary-400 mb-3">
-            {tool.name.charAt(0)}
+          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-500/20 to-accent-500/20 flex items-center justify-center text-lg font-bold text-primary-400 mb-3 overflow-hidden">
+            {tool.logo ? (
+              <img src={tool.logo} alt={tool.name} loading="lazy" className="w-full h-full object-cover" />
+            ) : (
+              tool.name.charAt(0)
+            )}
           </div>
           <h3 className="font-medium text-white mb-1">{tool.name}</h3>
           <p className="text-xs text-dark-400 line-clamp-2">
