@@ -5,128 +5,101 @@ import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "@/i18n";
 import { ArrowRight, Search, Sparkles } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { recommend } from "@/lib/recommend";
+
+interface ChipTool {
+  name: string;
+  slug: string;
+  logo?: string;
+  pricing?: string;
+  rating?: number;
+}
 
 interface ChatMsg {
   role: "user" | "ai";
   text: string;
-  tools?: { name: string; slug: string; logo: string }[];
+  tools?: ChipTool[];
 }
 
-const TOOL = (name: string, slug: string) => ({
-  name,
-  slug,
-  logo: `/logos/${slug}.png`,
-});
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-type Conv = { user: string; ai: string; tools: { name: string; slug: string; logo: string }[] };
+const TOOL = (name: string, slug: string): ChipTool => ({ name, slug, logo: `/logos/${slug}.png` });
+
+type Conv = { user: string; ai: string; tools: ChipTool[] };
 
 const SCRIPTS: Record<string, Conv[][]> = {
   zh: [
     [
-      {
-        user: "帮我找适合做产品海报的 AI 工具",
-        ai: "这 3 个最擅长图像生成：",
-        tools: [TOOL("Midjourney", "midjourney"), TOOL("Nano Banana", "nano-banana"), TOOL("Recraft", "recraft-v4")],
-      },
+      { user: "帮我找适合做产品海报的 AI 工具", ai: "这 3 个最擅长图像生成：", tools: [TOOL("Midjourney", "midjourney"), TOOL("Nano Banana", "nano-banana"), TOOL("Recraft", "recraft-v4")] },
     ],
     [
-      {
-        user: "我想把设计稿直接转成前端代码",
-        ai: "设计转代码用这几个：",
-        tools: [TOOL("v0", "v0-by-vercel"), TOOL("Galileo AI", "galileo-ai"), TOOL("Uizard", "uizard")],
-      },
+      { user: "我想把设计稿直接转成前端代码", ai: "设计转代码用这几个：", tools: [TOOL("v0", "v0-by-vercel"), TOOL("Lovable", "lovable"), TOOL("Uizard", "uizard")] },
     ],
     [
-      {
-        user: "要一个文字生成视频的工具做宣传短片",
-        ai: "视频生成推荐：",
-        tools: [TOOL("Sora 2", "sora-2"), TOOL("Kling AI", "kling-ai"), TOOL("Runway", "runway")],
-      },
+      { user: "要一个文字生成视频的工具做宣传短片", ai: "视频生成推荐：", tools: [TOOL("Sora 2", "sora-2"), TOOL("Kling AI", "kling-ai"), TOOL("Runway", "runway")] },
     ],
   ],
   en: [
     [
-      {
-        user: "Find me an AI tool for product posters",
-        ai: "These 3 are best for image generation:",
-        tools: [TOOL("Midjourney", "midjourney"), TOOL("Nano Banana", "nano-banana"), TOOL("Recraft", "recraft-v4")],
-      },
+      { user: "Find me an AI tool for product posters", ai: "These 3 are best for image generation:", tools: [TOOL("Midjourney", "midjourney"), TOOL("Nano Banana", "nano-banana"), TOOL("Recraft", "recraft-v4")] },
     ],
     [
-      {
-        user: "I want to turn my design file into front-end code",
-        ai: "Design-to-code picks:",
-        tools: [TOOL("v0", "v0-by-vercel"), TOOL("Galileo AI", "galileo-ai"), TOOL("Uizard", "uizard")],
-      },
+      { user: "I want to turn my design file into front-end code", ai: "Design-to-code picks:", tools: [TOOL("v0", "v0-by-vercel"), TOOL("Lovable", "lovable"), TOOL("Uizard", "uizard")] },
     ],
     [
-      {
-        user: "Need a text-to-video tool for a promo clip",
-        ai: "Video generation picks:",
-        tools: [TOOL("Sora 2", "sora-2"), TOOL("Kling AI", "kling-ai"), TOOL("Runway", "runway")],
-      },
+      { user: "Need a text-to-video tool for a promo clip", ai: "Video generation picks:", tools: [TOOL("Sora 2", "sora-2"), TOOL("Kling AI", "kling-ai"), TOOL("Runway", "runway")] },
     ],
   ],
   ja: [
     [
-      {
-        user: "商品ポスターに合うAIツールを探して",
-        ai: "画像生成ならこの3つがおすすめ：",
-        tools: [TOOL("Midjourney", "midjourney"), TOOL("Nano Banana", "nano-banana"), TOOL("Recraft", "recraft-v4")],
-      },
+      { user: "商品ポスターに合うAIツールを探して", ai: "画像生成ならこの3つがおすすめ：", tools: [TOOL("Midjourney", "midjourney"), TOOL("Nano Banana", "nano-banana"), TOOL("Recraft", "recraft-v4")] },
     ],
     [
-      {
-        user: "デザインをそのままコードにしたい",
-        ai: "デザインからコードなら：",
-        tools: [TOOL("v0", "v0-by-vercel"), TOOL("Galileo AI", "galileo-ai"), TOOL("Uizard", "uizard")],
-      },
+      { user: "デザインをそのままコードにしたい", ai: "デザインからコードなら：", tools: [TOOL("v0", "v0-by-vercel"), TOOL("Lovable", "lovable"), TOOL("Uizard", "uizard")] },
     ],
     [
-      {
-        user: "テキストから動画を作りたい",
-        ai: "動画生成のおすすめ：",
-        tools: [TOOL("Sora 2", "sora-2"), TOOL("Kling AI", "kling-ai"), TOOL("Runway", "runway")],
-      },
+      { user: "テキストから動画を作りたい", ai: "動画生成のおすすめ：", tools: [TOOL("Sora 2", "sora-2"), TOOL("Kling AI", "kling-ai"), TOOL("Runway", "runway")] },
     ],
   ],
   ko: [
     [
-      {
-        user: "제품 포스터에 맞는 AI 도구 찾아줘",
-        ai: "이미지 생성엔 이 3개가 최고예요:",
-        tools: [TOOL("Midjourney", "midjourney"), TOOL("Nano Banana", "nano-banana"), TOOL("Recraft", "recraft-v4")],
-      },
+      { user: "제품 포스터에 맞는 AI 도구 찾아줘", ai: "이미지 생성엔 이 3개가 최고예요:", tools: [TOOL("Midjourney", "midjourney"), TOOL("Nano Banana", "nano-banana"), TOOL("Recraft", "recraft-v4")] },
     ],
     [
-      {
-        user: "디자인을 코드로 바꾸고 싶어요",
-        ai: "디자인→코드 추천:",
-        tools: [TOOL("v0", "v0-by-vercel"), TOOL("Galileo AI", "galileo-ai"), TOOL("Uizard", "uizard")],
-      },
+      { user: "디자인을 코드로 바꾸고 싶어요", ai: "디자인→코드 추천:", tools: [TOOL("v0", "v0-by-vercel"), TOOL("Lovable", "lovable"), TOOL("Uizard", "uizard")] },
     ],
     [
-      {
-        user: "텍스트로 영상을 만들고 싶어요",
-        ai: "영상 생성 추천:",
-        tools: [TOOL("Sora 2", "sora-2"), TOOL("Kling AI", "kling-ai"), TOOL("Runway", "runway")],
-      },
+      { user: "텍스트로 영상을 만들고 싶어요", ai: "영상 생성 추천:", tools: [TOOL("Sora 2", "sora-2"), TOOL("Kling AI", "kling-ai"), TOOL("Runway", "runway")] },
     ],
   ],
 };
 
-const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+/** 面板底部输入框 placeholder */
+const INPUT_PLACEHOLDER: Record<string, string> = {
+  zh: "输入你的需求，AI 帮你挑工具…",
+  en: "Describe what you need…",
+  ja: "ご要望を入力…",
+  ko: "필요한 내용을 입력…",
+};
 
-function useHeroChat(locale: string) {
+/** 演示阶段底部提示（不可点） */
+const DEMO_HINT: Record<string, string> = {
+  zh: "↓ 在这里输入你的需求，AI 帮你挑工具",
+  en: "↓ Type your need below, AI picks tools for you",
+  ja: "↓ 下に入力するとAIがツールを選びます",
+  ko: "↓ 아래에 입력하면 AI가 도구를 골라줘요",
+};
+
+/* ============ 演示模式动效（用户未交互时循环播放） ============ */
+function useDemoChat(locale: string, active: boolean) {
   const [msgs, setMsgs] = useState<ChatMsg[]>([]);
   const [aiTyping, setAiTyping] = useState(false);
   const [userTyping, setUserTyping] = useState(false);
   const [chipsShown, setChipsShown] = useState(0);
-  const ref = useRef<{ cancelled: boolean }>({ cancelled: false });
 
   useEffect(() => {
+    if (!active) return;
     const state = { cancelled: false };
-    ref.current = state;
 
     (async () => {
       const scripts = (SCRIPTS[locale] || SCRIPTS.zh).flat();
@@ -140,7 +113,6 @@ function useHeroChat(locale: string) {
         setAiTyping(false);
         await sleep(450);
 
-        // user message — typewriter
         setMsgs([{ role: "user", text: "" }]);
         setUserTyping(true);
         for (let i = 1; i <= conv.user.length; i++) {
@@ -151,13 +123,11 @@ function useHeroChat(locale: string) {
         setUserTyping(false);
         await sleep(420);
 
-        // AI thinking
         setAiTyping(true);
         await sleep(1000);
         if (state.cancelled) return;
         setAiTyping(false);
 
-        // AI reply
         setMsgs([
           { role: "user", text: conv.user },
           { role: "ai", text: conv.ai, tools: conv.tools },
@@ -175,14 +145,85 @@ function useHeroChat(locale: string) {
     return () => {
       state.cancelled = true;
     };
-  }, [locale]);
+  }, [locale, active]);
 
   return { msgs, aiTyping, userTyping, chipsShown };
 }
 
+/* ============ 工具胶囊（带 logo / 首字母兜底 / 价格评分） ============ */
+function ToolChip({ tool, index }: { tool: ChipTool; index: number }) {
+  return (
+    <Link
+      href={`/tool/${tool.slug}`}
+      style={{ animationDelay: `${index * 90}ms` }}
+      className="chip-in group/chip flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.05] py-1.5 pl-1.5 pr-3.5 transition-colors hover:border-[#5b7cfa]/60 hover:bg-[#5b7cfa]/10"
+    >
+      {tool.logo ? (
+        <img src={tool.logo} alt={tool.name} className="h-6 w-6 rounded-full bg-white/[0.06] object-cover" />
+      ) : (
+        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#5b7cfa]/25 text-[11px] font-medium text-white/80">
+          {tool.name.charAt(0)}
+        </span>
+      )}
+      <span className="text-xs font-medium text-white/80 transition-colors group-hover/chip:text-white">{tool.name}</span>
+      {tool.rating != null && <span className="text-[10px] text-amber-300/80">★ {tool.rating.toFixed(1)}</span>}
+      <ArrowRight className="h-3 w-3 text-white/30 transition-colors group-hover/chip:text-[#8ba2ff]" />
+    </Link>
+  );
+}
+
+/* ============ 主组件 ============ */
 export function HeroBanner() {
   const { t, locale } = useTranslation();
-  const { msgs, aiTyping, userTyping, chipsShown } = useHeroChat(locale);
+  const [mode, setMode] = useState<"demo" | "live">("demo");
+  const [liveMsgs, setLiveMsgs] = useState<ChatMsg[]>([]);
+  const [liveTyping, setLiveTyping] = useState(false);
+  const [draft, setDraft] = useState("");
+  const [busy, setBusy] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const seqRef = useRef(0);
+
+  const demo = useDemoChat(locale, mode === "demo");
+
+  // 自动滚动到底
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
+  }, [mode, liveMsgs, liveTyping, demo.msgs, demo.chipsShown]);
+
+  async function handleSend(text: string) {
+    const query = text.trim();
+    if (!query || busy) return;
+    setBusy(true);
+    seqRef.current += 1;
+    const seq = seqRef.current;
+
+    if (mode === "demo") setMode("live");
+    setDraft("");
+    setLiveMsgs((m) => [...m, { role: "user", text: query }]);
+
+    // AI "thinking"
+    setLiveTyping(true);
+    await sleep(700 + Math.min(query.length * 30, 700));
+    if (seqRef.current !== seq) return;
+
+    const res = recommend(query, locale);
+    setLiveTyping(false);
+    const chipTools: ChipTool[] = res.items.map((it) => ({
+      name: it.tool.name,
+      slug: it.tool.slug,
+      logo: it.tool.logo,
+      pricing: it.tool.pricing,
+      rating: it.tool.rating,
+    }));
+    setLiveMsgs((m) => [...m, { role: "ai", text: res.reply, tools: chipTools }]);
+    setBusy(false);
+  }
+
+  const msgs = mode === "demo" ? demo.msgs : liveMsgs;
+  const aiTyping = mode === "demo" ? demo.aiTyping : liveTyping;
+  const userTyping = mode === "demo" ? demo.userTyping : false;
+  const chipsShown = mode === "demo" ? demo.chipsShown : 99;
 
   return (
     <section className="relative overflow-hidden">
@@ -257,9 +298,7 @@ export function HeroBanner() {
                   <span className="flex h-6 w-6 items-center justify-center rounded-md bg-[#5b7cfa]/20">
                     <Sparkles className="h-3.5 w-3.5 text-[#8ba2ff]" />
                   </span>
-                  <span className="text-xs font-medium uppercase tracking-[0.18em] text-white/60">
-                    AI Copilot
-                  </span>
+                  <span className="text-xs font-medium uppercase tracking-[0.18em] text-white/60">AI Copilot</span>
                 </div>
                 <span className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-emerald-400/80">
                   <span className="relative flex h-1.5 w-1.5">
@@ -271,13 +310,13 @@ export function HeroBanner() {
               </div>
 
               {/* Messages */}
-              <div className="flex h-[340px] flex-col justify-end gap-3 overflow-hidden px-4 py-4 sm:h-[380px]">
+              <div ref={scrollRef} className="flex h-[340px] flex-col justify-end gap-3 overflow-y-auto px-4 py-4 sm:h-[380px]">
                 {msgs.map((m, i) =>
                   m.role === "user" ? (
                     <div key={i} className="msg-in flex justify-end">
                       <div className="max-w-[85%] rounded-2xl rounded-br-md bg-[#5b7cfa] px-4 py-2.5 text-sm leading-relaxed text-white shadow-[0_8px_24px_rgba(91,124,250,0.35)]">
                         {m.text}
-                        {userTyping && (
+                        {userTyping && i === msgs.length - 1 && (
                           <span className="caret-blink ml-0.5 inline-block h-3.5 w-[2px] translate-y-[2px] bg-white/80" />
                         )}
                       </div>
@@ -294,22 +333,8 @@ export function HeroBanner() {
                       </div>
                       {m.tools && (
                         <div className="flex flex-wrap gap-2 pl-8">
-                          {m.tools.slice(0, chipsShown).map((tool) => (
-                            <Link
-                              key={tool.slug}
-                              href={`/tool/${tool.slug}`}
-                              className="chip-in group/chip flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.05] py-1.5 pl-1.5 pr-3.5 transition-colors hover:border-[#5b7cfa]/60 hover:bg-[#5b7cfa]/10"
-                            >
-                              <img
-                                src={tool.logo}
-                                alt={tool.name}
-                                className="h-6 w-6 rounded-full bg-white/[0.06] object-cover"
-                              />
-                              <span className="text-xs font-medium text-white/80 transition-colors group-hover/chip:text-white">
-                                {tool.name}
-                              </span>
-                              <ArrowRight className="h-3 w-3 text-white/30 transition-colors group-hover/chip:text-[#8ba2ff]" />
-                            </Link>
+                          {m.tools.slice(0, chipsShown).map((tool, ti) => (
+                            <ToolChip key={`${m.tools!.map((x) => x.slug).join()}-${tool.slug}`} tool={tool} index={ti} />
                           ))}
                         </div>
                       )}
@@ -332,16 +357,34 @@ export function HeroBanner() {
                 )}
               </div>
 
-              {/* Panel footer (fake input) */}
+              {/* Panel footer — real input */}
               <div className="border-t border-white/[0.07] px-4 py-3">
-                <div className="flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-2">
-                  <span className="text-xs text-white/30">
-                    {locale === "zh" ? "描述你的需求…" : locale === "ja" ? "ニーズを入力…" : locale === "ko" ? "필요한 내용을 입력…" : "Describe what you need…"}
-                  </span>
-                  <span className="ml-auto flex h-6 w-6 items-center justify-center rounded-full bg-[#5b7cfa]/25">
-                    <ArrowRight className="h-3 w-3 text-[#8ba2ff]" />
-                  </span>
-                </div>
+                {mode === "demo" && (
+                  <p className="mb-2 px-1 text-[11px] text-white/35">{DEMO_HINT[locale] || DEMO_HINT.en}</p>
+                )}
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    handleSend(draft);
+                  }}
+                  className="flex items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.03] pl-4 pr-1.5 py-1.5 transition-colors focus-within:border-[#5b7cfa]/60"
+                >
+                  <input
+                    value={draft}
+                    onChange={(e) => setDraft(e.target.value)}
+                    placeholder={INPUT_PLACEHOLDER[locale] || INPUT_PLACEHOLDER.en}
+                    className="min-w-0 flex-1 bg-transparent text-xs text-white placeholder:text-white/30 outline-none"
+                    maxLength={200}
+                  />
+                  <button
+                    type="submit"
+                    aria-label="Send"
+                    disabled={!draft.trim() || busy}
+                    className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#5b7cfa]/25 transition-all hover:bg-[#5b7cfa] disabled:opacity-40 disabled:hover:bg-[#5b7cfa]/25"
+                  >
+                    <ArrowRight className={`h-3.5 w-3.5 text-[#8ba2ff] transition-colors ${draft.trim() && !busy ? "group-hover:text-white" : ""} hover:text-white`} />
+                  </button>
+                </form>
               </div>
             </div>
           </div>
